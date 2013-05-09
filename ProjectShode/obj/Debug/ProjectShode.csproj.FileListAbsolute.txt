@@ -6,3 +6,6 @@ C:\Users\Administrador\Documents\GitHub\ProjectShode\ProjectShode\bin\ProjectSho
 C:\Users\Administrador\Documents\GitHub\ProjectShode\ProjectShode\bin\ProjectShode.pdb
 C:\Users\Administrador\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\ProjectShode.dll
 C:\Users\Administrador\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\ProjectShode.pdb
+C:\Users\agg180\Documents\Visual Studio 2010\Projects\ProjectShode\ProjectShode\bin\ShodeLibrary.dll
+C:\Users\agg180\Documents\Visual Studio 2010\Projects\ProjectShode\ProjectShode\bin\ShodeLibrary.pdb
+C:\Users\agg180\Documents\Visual Studio 2010\Projects\ProjectShode\ProjectShode\obj\Debug\ProjectShode.csprojResolveAssemblyReference.cache

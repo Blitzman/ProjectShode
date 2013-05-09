@@ -67,7 +67,7 @@ namespace ShodeLibrary {
          */
         public string Code {
             get { return code; }
-            set { code=Value; }
+            set { code=value; }
         }
 
         public UserBE Writer {

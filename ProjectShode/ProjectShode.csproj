@@ -56,6 +56,10 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="App_Data\ShodeDatabase.mdf" />
+    <Content Include="App_Data\ShodeDatabase_log.ldf">
+      <DependentUpon>ShodeDatabase.mdf</DependentUpon>
+    </Content>
     <Content Include="CreateProject.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Profile.aspx" />
@@ -244,7 +248,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +259,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Profile.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShodeLibrary\ShodeLibrary.csproj">
+      <Project>{3F8CCE22-81E7-4BEA-9431-78A2AA2CA27E}</Project>
+      <Name>ShodeLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

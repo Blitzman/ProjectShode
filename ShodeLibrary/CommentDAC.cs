@@ -56,7 +56,7 @@ namespace ShodeLibrary {
         /*
          * Update, in general, a comment.
          */
-        public void update (CommentBE) {
+        public void update (CommentBE comment) {
 
         }
 

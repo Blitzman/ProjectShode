@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>fed17a47-e012-4db5-8149-897f635f851b</ProjectGuid>
+    <ProjectGuid>{3F8CCE22-81E7-4BEA-9431-78A2AA2CA27E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ShodeLibrary</RootNamespace>
@@ -40,8 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CommentBE.cs" />
+    <Compile Include="CommentDAC.cs" />
+    <Compile Include="ContributionBE.cs" />
+    <Compile Include="ContributionDAC.cs" />
+    <Compile Include="MessageBE.cs" />
+    <Compile Include="MessageDAC.cs" />
+    <Compile Include="NewsBE.cs" />
+    <Compile Include="NewsDAC.cs" />
+    <Compile Include="ProjectBE.cs" />
+    <Compile Include="ProjectDAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TopicBE.cs" />
+    <Compile Include="TopicDAC.cs" />
+    <Compile Include="UserBE.cs" />
+    <Compile Include="UserDAC.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
