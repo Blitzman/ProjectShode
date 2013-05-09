@@ -1,0 +1,434 @@
+﻿html {
+    background-color: #24242C;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+h3 
+{
+    color: #333;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.contentTitle
+{
+    color: #333;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+#global_header {
+    height: 80px;
+    width: 100%;
+    padding-top: 20px;
+    background-color: #24242C;
+    border-bottom: 5px solid #CCC;
+}
+
+.header_obj {
+    color: #E2E2E2;
+    padding-left: 20px;
+    text-shadow: 1px 2px 4px #333;
+    display: inline;
+    padding-right: 25px;
+    /*border: 1px solid #FFF;*/
+    vertical-align:middle;
+    display: table-cell;
+}
+.header_obj a {
+    text-decoration: none;
+    color: #AAA;
+}
+.header_obj a:hover {
+    text-decoration: none;
+    color: #FFF;
+}
+
+#global_footer {
+    background-color: #24242C;
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    color: #e2e2e2;
+    padding-top: 20px;
+    border-top: 5px solid #CCC;
+}
+
+#global_section {
+    margin-left: 50px;
+    padding-bottom: 20px;
+    padding-right: 50px;
+    /*border: 1px solid #000;*/
+}
+
+#menu_bar {
+    width: 100%;
+    height: 50px;
+    /*border: 1px solid #000;*/
+    margin-top: 20px;
+}
+
+#logo {
+    float: left;
+    width: 150px;
+    height: 100%;
+    /*border: 1px solid #000;*/
+    background-image: url(../Images/logo.png);
+    background-repeat: no-repeat;
+}
+#logo a {
+    opacity: 0.0;
+}
+#logo a:hover {
+    opacity: 1.0;
+}
+
+#menu {
+    float: left;
+}
+
+#menu ul {
+    text-decoration: none;
+}
+
+#menu ul li{
+    display: inline;
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: lighter;
+    text-shadow: 1px 2px 1px #EEE;
+}
+
+    #menu ul li a {
+        opacity: 0.4;
+        text-decoration: none;
+        color: #909090;
+    }
+    #menu ul li img {
+        margin-right: 5px;
+        margin-bottom: -5px;
+    }
+    #menu ul li a:hover {
+    color: #000;
+    opacity: 1.0;
+    text-shadow: 1px 2px 4px #DDD;
+}
+    #menu ul li img:hover {
+        opacity: 1.0;
+    }
+
+.clear {
+    clear: both;
+}
+
+#barrita {
+    height: 1px;
+    width: 100%;
+    background-image: url(../Images/barrita.png);
+    margin-top: -3px;
+}
+
+.contact a {
+    font-style:italic;
+    text-decoration: none;
+    color: #d97801
+}
+
+    .contact a:hover {
+        opacity: 1;
+        text-decoration: none;
+        color: #FFF;
+        background-color: #F0AA0F;
+        text-shadow: none;
+    }
+
+#location {
+    width: 100%;
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #F0AA0F;
+    text-shadow: 1px 2px 1px #EEE;
+
+}
+
+#location a {
+    text-decoration: none;
+    color: #F0AA0F;
+}
+
+#location a:hover {
+    opacity: 1;
+    text-decoration: none;
+    color: #FFF;
+    background-color: #F0AA0F;
+    text-shadow: none;
+}
+
+#categories {
+    float: left;
+    width: 300px;
+}
+
+#categories h1 {
+    float: left;
+    font-size: 20px;
+    color: #333;
+    text-shadow: 1px 2px 1px #EEE;
+}
+
+#categories ul {
+    text-decoration: none;
+}
+
+#categories ul li{
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: lighter;
+    text-shadow: 1px 2px 1px #EEE;
+}
+
+#categories ul li a {
+        opacity: 0.5;
+        text-decoration: none;
+        color: #909090;
+    }
+    #categories ul li img {
+        margin-right: 5px;
+        margin-bottom: -5px;
+    }
+    #categories ul li a:hover {
+    color: #000;
+    opacity: 1.0;
+    text-shadow: 1px 2px 4px #DDD;
+}
+    #categories ul li img:hover {
+        opacity: 1.0;
+    }
+    
+    
+    
+    
+#menuSection 
+{
+    float: left;
+    color: #24242C;
+}
+#menuSection a
+{
+    opacity: 0.5;
+    margin-left: 20px;
+    margin-top: 5px;
+    color: #24242C;   
+}
+#menuSection img
+{
+    margin-right: 10px;
+}
+#menuSection a:hover
+{
+    opacity: 1.0;
+}
+
+#contentSection
+{
+    float: left;
+    width: 900px;
+    margin-left: 50px;
+}
+
+
+
+
+#profileResume
+{
+    margin-top: 20px;
+    height: 100px;
+    width: 900px; 
+    border-bottom: 4px solid #24242C;  
+}
+#profileResumeImage
+{
+    float: left;
+    height: 100px;
+    width: 100px;
+    border: 2px solid #24242C;
+    background: #24242C;
+}
+#profileResumeFacts
+{
+    margin-left: 40px;
+    margin-top: 20px;
+    vertical-align: middle;
+    float: left;
+    width: 700px;
+}
+.profileResumeFactsObj
+{
+    color: #24242C;
+    padding-left: 20px;
+    display: inline;
+    padding-right: 5px;
+    /*border: 1px solid #FFF;*/
+    vertical-align:middle;
+    display: table-cell;
+}
+#profileData
+{
+    margin-top: 20px;
+    height: 150px;
+    width: 900px;
+}
+#profileDataTopContributions
+{
+    float:left;
+    width: 450px;
+}
+#profileDataTopDevelopments
+{
+    float:left;
+    width: 450px;
+}
+
+
+#profileSection
+{
+    margin-top: 20px;
+}
+
+.formLabel
+{
+    margin-right: 10px;
+}
+    
+    
+    
+    
+#menuSection 
+{
+    float: left;
+    color: #24242C;
+}
+#menuSection a
+{
+    opacity: 0.5;
+    margin-left: 20px;
+    color: #24242C;   
+}
+#menuSection img
+{
+    margin-right: 10px;
+}
+#menuSection a:hover
+{
+    opacity: 1.0;
+}
+
+#menuSection a
+{
+    opacity: 0.5;
+    margin-left: 20px;
+    margin-top: 5px;
+    color: #24242C;   
+}
+
+#contentSection
+{
+    float: left;
+    margin-left: 50px;
+    max-width: 900px;
+}
+
+#categoriesLeft
+{
+    float:left;
+}
+
+#categoriesRight
+{
+    float:left;
+}
+
+.boxesProject
+{
+    margin-bottom:10px;
+}
+
+#searchEngine
+{
+    float: left;
+}
+
+#searchResults
+{
+    float: left;
+    margin-left: 35px;
+}
+
+#projectProfileStatistics
+{
+    margin-bottom: 10px;
+    border-bottom: 1px solid #24242C; 
+}
+
+.projectProfileStat
+{
+    float:left;
+    margin-left: 35px;
+}
+
+#projectProfile
+{
+    border-bottom: 4px solid #24242C;  
+    padding-bottom:10px;
+}
+
+.projectComment
+{
+    border:1px solid #24242c;
+    background-color:#c0c0c0;
+    margin-bottom:5px;
+}
+
+.authorName
+{
+    margin-bottom:2px;
+}
+
+.LoginSignup input
+{
+    margin: 7px;
+}
+
+.TextBoxLogSign
+{
+    border-style: none;
+    background-color: #FFFFFF;
+    height: 20px;
+    width: 200px;
+    font: "Segoe UI";
+}
+
+.ButtonLogSign
+{
+    background-color: #24242C;
+    border-style:solid;
+    border-width: 2px;
+    border-color: #FFFFFF;
+    height: 30px;
+    color: #FFFFFF;
+}

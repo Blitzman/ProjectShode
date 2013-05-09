@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Project_Shode.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+
+     <header id="global_header">
+        <section class="header_obj">
+            [ 
+            <asp:HyperLink ID="LoginLink" runat="server" NavigateUrl="~/Login.aspx">Log In</asp:HyperLink>
+            | 
+            <asp:HyperLink ID="SignupLink" runat="server" NavigateUrl="~/Signup.aspx">Sign Up</asp:HyperLink>
+            ]
+        </section>
+        <section class="header_obj">
+            Log In or Sign Up to enjoy our comunity
+        </section>
+        <section class = "header_obj">
+            <asp:Image ID="Image4" runat="server"></asp:Image>
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/regalito.png"></asp:Image>
+        </section>
+        <section class = "header_obj">xxxxxx credits in projects</section>
+        <section class = "header_obj">
+            <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/flecha_abajo.png"></asp:Image>
+        </section>
+        <section class = "header_obj">xxxxxx developers</section>
+        <section class = "header_obj">
+            <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/flecha_arriba.png"></asp:Image>
+        </section>
+        <section class = "header_obj">xxxxxxx contributors</section>
+        <div class="clear"></div>
+    </header>
+
+    <section id="global_section">
+        <section id="menu_bar">
+            <section id="logo">
+                <asp:HyperLink ID="LogoLink" runat="server" NavigateUrl="~/Default.aspx">
+                    <asp:Image ID="Logo" runat="server" ImageUrl="~/Images/logo.png"></asp:Image>
+                 </asp:HyperLink>
+            </section>
+            <section id="menu">
+                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem Text="What is Shode?" Value="About" ImageUrl="~/Images/questionmark.png" NavigateUrl="About.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Projects" Value="About" ImageUrl="~/Images/search.png" NavigateUrl="Projects.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Profile" Value="About" ImageUrl="~/Images/settings.png" NavigateUrl="Profile.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Contact" Value="About" ImageUrl="~/Images/i.png" NavigateUrl="Contact.aspx"></asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </section>
+            <div class="clear"></div>
+            <section id="barrita"></section>
+        </section>
+        <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+    </section>
+
+    <footer id="global_footer">
+        <asp:Label ID="Label1" runat="server" Text="Shode &#169 2013"></asp:Label>
+    </footer>
+
+    </form>
+</body>
+</html>

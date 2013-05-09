@@ -1,0 +1,4 @@
+c:\users\agg180\documents\visual studio 2010\Projects\ProjectShode\ProjectShode\bin\ProjectShode.dll
+c:\users\agg180\documents\visual studio 2010\Projects\ProjectShode\ProjectShode\bin\ProjectShode.pdb
+c:\users\agg180\documents\visual studio 2010\Projects\ProjectShode\ProjectShode\obj\Debug\ProjectShode.dll
+c:\users\agg180\documents\visual studio 2010\Projects\ProjectShode\ProjectShode\obj\Debug\ProjectShode.pdb
