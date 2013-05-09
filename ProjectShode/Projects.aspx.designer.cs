@@ -31,6 +31,33 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.TreeView treeviewCategories;
         
         /// <summary>
+        /// Control buttonSearchProjects.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button buttonSearchProjects;
+        
+        /// <summary>
+        /// Control projectsResultsLabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label projectsResultsLabel;
+        
+        /// <summary>
+        /// Control projectsMoreResults.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink projectsMoreResults;
+        
+        /// <summary>
         /// Control searchProjects.
         /// </summary>
         /// <remarks>

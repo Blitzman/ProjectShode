@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Project.master" AutoEventWireup="true" CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
+﻿<%@ Page Title="PROJECT: " Language="C#" MasterPageFile="~/Project.master" AutoEventWireup="true" CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentProject" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentProject" runat="server">

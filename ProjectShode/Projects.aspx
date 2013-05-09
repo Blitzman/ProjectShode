@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Acerca de nosotros" Language="C#" MasterPageFile="~/Project.master" AutoEventWireup="true"
+﻿<%@ Page Title="Explore projects" Language="C#" MasterPageFile="~/Project.master" AutoEventWireup="true"
     CodeBehind="Projects.aspx.cs" Inherits="Project_Shode.About" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContentProject">
@@ -8,23 +8,33 @@
     <asp:Label ID="searchLabelProject" runat="server" Text="Select the categories you want to explore."></asp:Label>
     <section id="searchCategories">
         <asp:TreeView ID="treeviewCategories" runat="server" ShowCheckBoxes=All NodeStyle-HorizontalPadding=5 
-        NodeStyle-VerticalPadding=5 ForeColor="#24242c">
+        NodeStyle-VerticalPadding=5 ForeColor="#24242C">
             <Nodes>
-                <asp:TreeNode Text="1. Category one"></asp:TreeNode>
-                <asp:TreeNode Text="2. Category two"></asp:TreeNode>
-                <asp:TreeNode Text="3. Category three"></asp:TreeNode>
-                <asp:TreeNode Text="4. Category four"></asp:TreeNode>
-                <asp:TreeNode Text="5. Category five"></asp:TreeNode>
-                <asp:TreeNode Text="6. Category six"></asp:TreeNode>
-                <asp:TreeNode Text="7. Category seven"></asp:TreeNode>
-                <asp:TreeNode Text="8. Category eight"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="1. Category one"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="2. Category two"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="3. Category three"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="4. Category four"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="5. Category five"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="6. Category six"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="7. Category seven"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="8. Category eight"></asp:TreeNode>
             </Nodes>
         </asp:TreeView>
-    </section>    
+    </section>
+     <asp:Button ID="buttonSearchProjects" runat="server" Text="Search"></asp:Button>   
   </section>
   
-  <section id="searchResults">      
-    <h4>Results</h4>
+  <section id="searchResults">
+    <section id="searchTopLabels">
+        <section id="resultsLabel">
+            <asp:Label ID="projectsResultsLabel" runat="server" Text="Results" Font-Bold=true ></asp:Label>
+        </section>
+        <section id="moreResultsLink">
+            <asp:HyperLink ID="projectsMoreResults" runat="server" Font-Bold=true NavigateUrl="~/Projects.aspx"
+             ForeColor="#24242C">More results</asp:HyperLink>
+        </section>
+        <div class="clear"></div>
+    </section>
 
     <asp:Table ID="searchProjects" runat="server" BackColor="White" CellPadding="5" CellSpacing="5" ForeColor="White">
             <asp:TableRow Width="600px">

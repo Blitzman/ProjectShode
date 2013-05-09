@@ -2,3 +2,7 @@ c:\users\agg180\documents\visual studio 2010\Projects\ProjectShode\ProjectShode\
 c:\users\agg180\documents\visual studio 2010\Projects\ProjectShode\ProjectShode\bin\ProjectShode.pdb
 c:\users\agg180\documents\visual studio 2010\Projects\ProjectShode\ProjectShode\obj\Debug\ProjectShode.dll
 c:\users\agg180\documents\visual studio 2010\Projects\ProjectShode\ProjectShode\obj\Debug\ProjectShode.pdb
+C:\Users\Administrador\Documents\GitHub\ProjectShode\ProjectShode\bin\ProjectShode.dll
+C:\Users\Administrador\Documents\GitHub\ProjectShode\ProjectShode\bin\ProjectShode.pdb
+C:\Users\Administrador\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\ProjectShode.dll
+C:\Users\Administrador\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\ProjectShode.pdb

@@ -1,8 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Project.master" AutoEventWireup="true" CodeBehind="CreateProject.aspx.cs" Inherits="Project_Shode.CreateProject" %>
+﻿<%@ Page Title="Create a new project" Language="C#" MasterPageFile="~/Project.master" AutoEventWireup="true" CodeBehind="CreateProject.aspx.cs" Inherits="Project_Shode.CreateProject" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentProject" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentProject" runat="server">
-  <h2>Propose your idea of a project!</h2>
+  <asp:Label ID="createProjectTittle" runat="server" Text="Propose your idea!" 
+   Font-Size=X-Large Font-Underline=true Height=75></asp:Label>
 
   <section class="formNewProject">
     <section class="boxesProject">

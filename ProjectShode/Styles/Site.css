@@ -379,6 +379,16 @@ h3
     margin-left: 35px;
 }
 
+#resultsLabel
+{
+    float:left;
+}
+
+#moreResultsLink
+{
+    float:right;
+}
+
 #projectProfileStatistics
 {
     margin-bottom: 10px;
