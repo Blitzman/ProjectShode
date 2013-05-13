@@ -40,7 +40,25 @@ namespace ShodeLibrary
         public UserBE getUser(String email)
         {
             UserBE user = new UserBE();
-            //Code for recovering a DataSet type containing User data
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("SELECT * FROM Users WHERE email='" + email + "'", c);
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            while(dr.Read())
+            {
+                user.Name = dr["name"].ToString();
+                user.LastName = dr["last_name"].ToString();
+                user.Email = dr["email"].ToString();
+                user.Nickname = dr["nickname"].ToString();
+                user.Password = dr["password"].ToString();
+                user.Credit = Int32.Parse(dr["credits"].ToString());
+            }
+
+            c.Close();
             return user;
         }
 
@@ -48,16 +66,26 @@ namespace ShodeLibrary
         public UserBE getUserByNick(String nickname)
         {
             UserBE user = new UserBE();
-            //Code for recovering an user passing its nickname as parrameter
-            return user;
-        }
 
-        //Getter for the user using his zipcode
-        public List<UserBE> getUserByZip(String zipcode)
-        {
-            List<UserBE> users = new List<UserBE>();
-            //Code for recovering an user using his zipcode.
-            return users;
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("SELECT * FROM Users WHERE nickname='" + nickname + "'", c);
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                user.Name = dr["name"].ToString();
+                user.LastName = dr["last_name"].ToString();
+                user.Email = dr["email"].ToString();
+                user.Nickname = dr["nickname"].ToString();
+                user.Password = dr["password"].ToString();
+                user.Credit = Int32.Parse(dr["credits"].ToString());
+            }
+
+            c.Close();
+            return user;
         }
 
         //Getter for all the users.
@@ -65,25 +93,54 @@ namespace ShodeLibrary
         {
             List<UserBE> users = new List<UserBE>();
 
-            return users;
-        }
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
 
-        //Getter for the users with more credits.
-        public List<UserBE> getTopUsersByCredit()
-        {
-            List<UserBE> users = new List<UserBE>();
+            SqlCommand com = new SqlCommand("SELECT * FROM Users WHERE nickname='" + nickname + "'", c);
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                UserBE user = new UserBE();
+                user.Name = dr["name"].ToString();
+                user.LastName = dr["last_name"].ToString();
+                user.Email = dr["email"].ToString();
+                user.Nickname = dr["nickname"].ToString();
+                user.Password = dr["password"].ToString();
+                user.Credit = Int32.Parse(dr["credits"].ToString());
+                users.Add(user);
+            }
+
+            c.Close();
 
             return users;
         }
 
         public void updateUser(UserBE updatedUser)
         {
-            //Code for updating an user of the DB, with new user data.
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("UPDATE Users " +
+                "SET name='" + updatedUser.Name + "', last_name='" + updatedUser.LastName + "'," +
+                " email='" + updatedUser.Email + "', nickname='" + updatedUser.Nickname + "'," +
+                " password='" + updatedUser.Password + "', credits=" + updatedUser.Credit.ToString() +
+                " WHERE email='" + updatedUser.Email + "'", c);
+
+            com.ExecuteNonQuery();
+            c.Close();
         }
 
         public void deleteUser(string email)
         {
-            //Code for deleting the user with the specified email.
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("DELETE FROM Users WHERE email ='" + email + "'", c);
+
+            com.ExecuteNonQuery();
+            c.Close();
         }
 
         /* ****************************************************************** */
