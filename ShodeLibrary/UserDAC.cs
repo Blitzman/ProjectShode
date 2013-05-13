@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.Configuration;
 
-/*
- * Task performed by Sergiu
- */
 namespace ShodeLibrary
 {
     class UserDAC
     {
-
         /* ****************************************************************** */
         /* Constructors                                                       */
         /* ****************************************************************** */
         public UserDAC()
         {
-            // Gets the string connection from a unique location
+            connection = "data source=.\\SQLEXPRESS;IntegratedSecurity=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;UserInstance=true";
         }
 
         /* ****************************************************************** */
@@ -26,7 +25,15 @@ namespace ShodeLibrary
         //Method that creates a new user of type UserBe
         public void insertUser(UserBE user)
         {
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
 
+            SqlCommand com = new SqlCommand("INSERT INTO Users (name, last_name, email, nickname, password, credits)" +
+                "VALUES ('" + user.Name + "','" + user.LastName + "','" + user.Email + "','" + user.Nickname + "','" +
+                user.Password + "', 0)", c);
+
+            com.ExecuteNonQuery();
+            c.Close();
         }
 
         //Method that returns an user of type UserBE
