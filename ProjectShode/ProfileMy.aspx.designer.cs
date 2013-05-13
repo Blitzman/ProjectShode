@@ -8,9 +8,10 @@
 //------------------------------------------------------------------------------
 
 namespace Project_Shode {
-    
-    
-    public partial class About {
+
+
+    public partial class ProfileMy
+    {
         
         /// <summary>
         /// Control Username.

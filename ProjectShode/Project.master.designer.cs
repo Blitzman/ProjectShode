@@ -10,7 +10,7 @@
 namespace Project_Shode {
     
     
-    public partial class Projects {
+    public partial class ProjectMaster {
         
         /// <summary>
         /// Control HeadContentProject.

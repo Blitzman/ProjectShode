@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Acerca de nosotros" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="About.aspx.cs" Inherits="Project_Shode.About" %>
+    CodeBehind="About.aspx.cs" Inherits="Project_Shode.Contact" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <section id="location">

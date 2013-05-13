@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Explore projects" Language="C#" MasterPageFile="~/Project.master" AutoEventWireup="true"
-    CodeBehind="Projects.aspx.cs" Inherits="Project_Shode.About" %>
+    CodeBehind="Projects.aspx.cs" Inherits="Project_Shode.Projects" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContentProject">
 </asp:Content>

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Página principal" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="Default.aspx.cs" Inherits="Project_Shode._Default" %>
+    CodeBehind="Default.aspx.cs" Inherits="Project_Shode.Default" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <section id="location">

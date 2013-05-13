@@ -10,7 +10,7 @@
 namespace Project_Shode {
     
     
-    public partial class About {
+    public partial class ProfileCompose {
         
         /// <summary>
         /// Control Compose.

@@ -6,3 +6,4 @@ C:\Users\Albert\Documents\GitHub\ProjectShode\ShodeLibrary\bin\Debug\ShodeLibrar
 C:\Users\Albert\Documents\GitHub\ProjectShode\ShodeLibrary\bin\Debug\ShodeLibrary.pdb
 C:\Users\Albert\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.dll
 C:\Users\Albert\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.pdb
+C:\Users\Administrador\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.dll

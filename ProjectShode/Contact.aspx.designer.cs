@@ -10,7 +10,7 @@
 namespace Project_Shode {
     
     
-    public partial class WebForm1 {
+    public partial class Contact {
         
         /// <summary>
         /// Control form1.

@@ -10,7 +10,7 @@
 namespace Project_Shode {
     
     
-    public partial class About {
+    public partial class Login {
         
         /// <summary>
         /// Control Login1.

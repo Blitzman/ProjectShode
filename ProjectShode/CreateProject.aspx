@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Create a new project" Language="C#" MasterPageFile="~/Project.master" AutoEventWireup="true" CodeBehind="CreateProject.aspx.cs" Inherits="Project_Shode.CreateProject" %>
+﻿<%@ Page Title="Create a new project" Language="C#" MasterPageFile="~/Project.master" AutoEventWireup="true"
+ CodeBehind="CreateProject.aspx.cs" Inherits="Project_Shode.CreateProject" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentProject" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentProject" runat="server">

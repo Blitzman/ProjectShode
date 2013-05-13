@@ -51,7 +51,7 @@
                     <Items>
                         <asp:MenuItem Text="What is Shode?" Value="About" ImageUrl="~/Images/questionmark.png" NavigateUrl="About.aspx"></asp:MenuItem>
                         <asp:MenuItem Text="Projects" Value="About" ImageUrl="~/Images/search.png" NavigateUrl="Projects.aspx"></asp:MenuItem>
-                        <asp:MenuItem Text="Profile" Value="About" ImageUrl="~/Images/settings.png" NavigateUrl="Profile.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Profile" Value="About" ImageUrl="~/Images/settings.png" NavigateUrl="Profiles.aspx"></asp:MenuItem>
                         <asp:MenuItem Text="Contact" Value="About" ImageUrl="~/Images/i.png" NavigateUrl="Contact.aspx"></asp:MenuItem>
                     </Items>
                 </asp:Menu>

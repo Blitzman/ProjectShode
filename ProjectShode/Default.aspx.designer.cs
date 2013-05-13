@@ -10,7 +10,7 @@
 namespace Project_Shode {
     
     
-    public partial class _Default {
+    public partial class Default {
         
         /// <summary>
         /// Control HyperLink1.

@@ -10,6 +10,6 @@
 namespace Project_Shode {
     
     
-    public partial class About {
+    public partial class Profiles {
     }
 }

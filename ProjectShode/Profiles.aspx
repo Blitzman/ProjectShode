@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Shode: Profile" Language="C#" MasterPageFile="~/Profile.master" AutoEventWireup="true"
-    CodeBehind="Profile.aspx.cs" Inherits="Project_Shode.About" %>
+    CodeBehind="Profiles.aspx.cs" Inherits="Project_Shode.Profiles" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContentProfile">
 </asp:Content>

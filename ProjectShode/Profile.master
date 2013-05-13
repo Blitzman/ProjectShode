@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" 
-    CodeBehind="Profile.master.cs" Inherits="Project_Shode.Projects" %>
+    CodeBehind="Profile.master.cs" Inherits="Project_Shode.ProfileMaster" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
     <asp:ContentPlaceHolder ID="HeadContentProfile" runat="server" />
