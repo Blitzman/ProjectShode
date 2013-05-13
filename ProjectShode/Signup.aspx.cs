@@ -5,13 +5,31 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using ShodeLibrary;
+
 namespace Project_Shode
 {
     public partial class Signup : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+     
+        }
 
+        protected void createUserClick(object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            String name="", lastName="", userName="", password="", email="";
+
+            name = Name.Text;
+            lastName = LastName.Text;
+            userName = UserNameBox.Text;
+            password = Password.Text;
+            email = Email.Text;
+
+            UserBE usuario = new UserBE(name, lastName, "", "", email, userName, password);
+
+            usuario.create();
         }
     }
 }
