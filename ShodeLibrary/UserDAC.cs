@@ -78,12 +78,28 @@ namespace ShodeLibrary
 
         public void updateUser(UserBE updatedUser)
         {
-            //Code for updating an user of the DB, with new user data.
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("UPDATE Users " +
+                "SET name='" + updatedUser.Name + "', last_name='" + updatedUser.LastName + "'," +
+                " email='" + updatedUser.Email + "', nickname='" + updatedUser.Nickname + "'," +
+                " password='" + updatedUser.Password + "', credits=" + updatedUser.Credit.ToString() +
+                " WHERE email='" + updatedUser.Email + "')", c);
+
+            com.ExecuteNonQuery();
+            c.Close();
         }
 
         public void deleteUser(string email)
         {
-            //Code for deleting the user with the specified email.
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("DELETE FROM Users WHERE email ='" + email + "'", c);
+
+            com.ExecuteNonQuery();
+            c.Close();
         }
 
         /* ****************************************************************** */

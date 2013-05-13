@@ -9,3 +9,10 @@ C:\Users\Administrador\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\Proj
 C:\Users\agg180\Documents\Visual Studio 2010\Projects\ProjectShode\ProjectShode\bin\ShodeLibrary.dll
 C:\Users\agg180\Documents\Visual Studio 2010\Projects\ProjectShode\ProjectShode\bin\ShodeLibrary.pdb
 C:\Users\agg180\Documents\Visual Studio 2010\Projects\ProjectShode\ProjectShode\obj\Debug\ProjectShode.csprojResolveAssemblyReference.cache
+C:\Users\Albert\Documents\GitHub\ProjectShode\ProjectShode\bin\ProjectShode.dll
+C:\Users\Albert\Documents\GitHub\ProjectShode\ProjectShode\bin\ProjectShode.pdb
+C:\Users\Albert\Documents\GitHub\ProjectShode\ProjectShode\bin\ShodeLibrary.dll
+C:\Users\Albert\Documents\GitHub\ProjectShode\ProjectShode\bin\ShodeLibrary.pdb
+C:\Users\Albert\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\ProjectShode.csprojResolveAssemblyReference.cache
+C:\Users\Albert\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\ProjectShode.dll
+C:\Users\Albert\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\ProjectShode.pdb
