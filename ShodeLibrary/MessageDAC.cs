@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.Configuration;
 
-/*
- * Task performed by Pablo
- */
 namespace ShodeLibrary
 {
     public class MessageDAC
@@ -16,7 +16,7 @@ namespace ShodeLibrary
 
     	public MessageDAC()
     	{
-			// Gets the string connection from a unique location
+            connection = "data source=.\\SQLEXPRESS;IntegratedSecurity=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;UserInstance=true";
     	}
 
 
@@ -25,11 +25,26 @@ namespace ShodeLibrary
         /* ****************************************************************** */
 
     	/* Inserts a new message */
-    	public string insertMessage(MessageBE m)
+    	public void insertMessage(MessageBE m)
     	{
-            string code = "";
-            // Do stuff here
-            return code;
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            if (m.OriginalMessage != null)
+            {
+                SqlCommand com = new SqlCommand("INSERT INTO Messages (code, subject, body, read, del_send, del_addr, original)" +
+                    "VALUES ('" + m.code + "','" + m.Subject + "','" + m.Message + "','" + m.Read + "','" +
+                    m.DelSender + "','" + m.DelAddressee + "','" + m.OriginalMessage + "')", c);
+                com.ExecuteNonQuery();
+            }
+            else
+            {
+                SqlCommand com = new SqlCommand("INSERT INTO Messages (code, subject, body, read, del_send, del_addr, original)" +
+                    "VALUES ('" + m.code + "','" + m.Subject + "','" + m.Message + "','" + m.Read + "','" +
+                    m.DelSender + "','" + m.DelAddressee + "', NULL)", c);
+                com.ExecuteNonQuery();
+            }
+            c.Close();
     	}
 
 
