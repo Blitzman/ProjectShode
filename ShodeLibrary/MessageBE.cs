@@ -40,14 +40,14 @@ namespace ShodeLibrary
         public void sendMessage()
         {
             OriginalMessage = null;
-            Mcode = messageDAC.insertMessage(this);
+            //Mcode = messageDAC.insertMessage(this);
         }
 
         /* Sends a new message replying the one passed as parameter. */
         public void replyMessage(MessageBE Original)
         {
             OriginalMessage = Original;
-            Mcode = messageDAC.insertMessage(this);
+            //Mcode = messageDAC.insertMessage(this);
         }
 
         /* Removes a message from the list of the specified user. */

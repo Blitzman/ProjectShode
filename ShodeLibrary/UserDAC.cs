@@ -15,7 +15,7 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         public UserDAC()
         {
-            connection = "data source=.\\SQLEXPRESS;IntegratedSecurity=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;UserInstance=true";
+            connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;User Instance=true";
         }
 
         /* ****************************************************************** */
@@ -28,9 +28,9 @@ namespace ShodeLibrary
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("INSERT INTO Users (name, last_name, email, nickname, password, credits)" +
+            SqlCommand com = new SqlCommand("INSERT INTO Users (name, last_name, email, nickname, password, credit)" +
                 "VALUES ('" + user.Name + "','" + user.LastName + "','" + user.Email + "','" + user.Nickname + "','" +
-                user.Password + "', 0)", c);
+                user.Password + "', " + user.Credit.ToString() + ")", c);
 
             com.ExecuteNonQuery();
             c.Close();
@@ -96,7 +96,7 @@ namespace ShodeLibrary
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("SELECT * FROM Users WHERE nickname='" + nickname + "'", c);
+            SqlCommand com = new SqlCommand("SELECT * FROM Users", c);
 
             SqlDataReader dr = com.ExecuteReader();
 
