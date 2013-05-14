@@ -23,16 +23,16 @@
             <asp:Label ID="LogInMotivator" runat="server" Text="Log In or Sign Up to enjoy our comunity"></asp:Label>
         </section>
         <section class = "header_obj">
-            <asp:Image ID="Image4" runat="server"></asp:Image>
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/regalito.png"></asp:Image>
+            <asp:Image ID="ImagenX" runat="server"></asp:Image>
+            <asp:Image ID="CreditsImage" runat="server" ImageUrl="~/Images/regalito.png"></asp:Image>
         </section>
         <section class = "header_obj">xxxxxx credits in projects</section>
         <section class = "header_obj">
-            <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/flecha_abajo.png"></asp:Image>
+            <asp:Image ID="DevelopersImage" runat="server" ImageUrl="~/Images/flecha_abajo.png"></asp:Image>
         </section>
         <section class = "header_obj">xxxxxx developers</section>
         <section class = "header_obj">
-            <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/flecha_arriba.png"></asp:Image>
+            <asp:Image ID="ContributorsImage" runat="server" ImageUrl="~/Images/flecha_arriba.png"></asp:Image>
         </section>
         <section class = "header_obj">xxxxxxx contributors</section>
         <div class="clear"></div>
@@ -62,7 +62,7 @@
     </section>
 
     <footer id="global_footer">
-        <asp:Label ID="Label1" runat="server" Text="Shode &#169 2013"></asp:Label>
+        <asp:Label ID="FooterLabel" runat="server" Text="Shode &#169 2013"></asp:Label>
     </footer>
 
     </form>

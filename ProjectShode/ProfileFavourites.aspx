@@ -7,31 +7,31 @@ CodeBehind="ProfileFavourites.aspx.cs" Inherits="Project_Shode.ProfileFavourites
     <section id="profileSection">
         <asp:Table ID="favouriteProjects" runat="server" BackColor="White" CellPadding="5" CellSpacing="5" ForeColor="White">
             <asp:TableRow Width="800">
-                <asp:TableCell BackColor="#24242C" Height="150" Width="150">
-                    Project1
+                <asp:TableCell Id="CellA1" BackColor="#24242C" Height="150" Width="150">
+                    Project 1
                 </asp:TableCell>
-                <asp:TableCell BackColor="#24242C" Height="150" Width="150">
+                <asp:TableCell ID="CellB1" BackColor="#24242C" Height="150" Width="150">
                     Project2
                 </asp:TableCell>
-                <asp:TableCell BackColor="#24242C" Height="150" Width="150">
+                <asp:TableCell ID="CellC1" BackColor="#24242C" Height="150" Width="150">
                     Project 3
                 </asp:TableCell>
-                <asp:TableCell BackColor="#24242C" Height="150" Width="150">
+                <asp:TableCell ID="CellD1" BackColor="#24242C" Height="150" Width="150">
                     Project 4
                 </asp:TableCell>
             </asp:TableRow>
              <asp:TableRow>
-                <asp:TableCell BackColor="#24242C" Height="150" Width="150">
-                    Project1
+                <asp:TableCell Id="CellA2"  BackColor="#24242C" Height="150" Width="150">
+                    Project 5
                 </asp:TableCell>
-                <asp:TableCell BackColor="#24242C" Height="150" Width="150">
-                    Project2
+                <asp:TableCell ID="CellB2" BackColor="#24242C" Height="150" Width="150">
+                    Project 6
                 </asp:TableCell>
-                <asp:TableCell BackColor="#24242C" Height="150" Width="150">
-                    Project 3
+                <asp:TableCell ID="CellC2" BackColor="#24242C" Height="150" Width="150">
+                    Project 7
                 </asp:TableCell>
-                <asp:TableCell BackColor="#24242C" Height="150" Width="150">
-                    Project 4
+                <asp:TableCell ID="CellD2" BackColor="#24242C" Height="150" Width="150">
+                    Project 8
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>

@@ -67,13 +67,22 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label projectProfileLabelCredits;
         
         /// <summary>
-        /// Control creditsTextboxProjectProfile.
+        /// Control GiveLabel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox creditsTextboxProjectProfile;
+        protected global::System.Web.UI.WebControls.Label GiveLabel;
+        
+        /// <summary>
+        /// Control creditsBox.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox creditsBox;
         
         /// <summary>
         /// Control sendCredits.
@@ -85,6 +94,15 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Button sendCredits;
         
         /// <summary>
+        /// Control FeedbackCredit.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FeedbackCredit;
+        
+        /// <summary>
         /// Control checkCredtisProfile.
         /// </summary>
         /// <remarks>
@@ -94,15 +112,6 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator checkCredtisProfile;
         
         /// <summary>
-        /// Control developProjectProfile.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink developProjectProfile;
-        
-        /// <summary>
         /// Control developLinkImage.
         /// </summary>
         /// <remarks>
@@ -110,6 +119,15 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image developLinkImage;
+        
+        /// <summary>
+        /// Control developLink.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink developLink;
         
         /// <summary>
         /// Control Label1.

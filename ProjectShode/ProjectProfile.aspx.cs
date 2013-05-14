@@ -11,7 +11,33 @@ namespace Project_Shode
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Username"] == null)
+            {
+                GiveLabel.Visible = false;
+                creditsBox.Visible = false;
+                FeedbackCredit.Visible = false;
+                sendCredits.Visible = false;
+                checkCredtisProfile.Visible = false;
+                developLinkImage.Visible = false;
+                developLink.Visible = false;
+            }
+        }
 
+        protected void contribute(object sender, EventArgs e)
+        {
+            if (creditsBox.Text.Length > 2)
+            {
+                if (Int32.Parse(creditsBox.Text) <= Int32.Parse(Session["Credit"].ToString()))
+                {
+                    FeedbackCredit.Text = "Done!";
+                    FeedbackCredit.Visible = true;
+                }
+                else
+                {
+                    FeedbackCredit.Text = "Wrong number";
+                    FeedbackCredit.Visible = true;
+                }
+            }
         }
     }
 }

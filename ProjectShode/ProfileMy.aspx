@@ -11,19 +11,19 @@ CodeBehind="ProfileMy.aspx.cs" Inherits="Project_Shode.ProfileMy" %>
         </section>
         <section id="profileResumeFacts">
         <section class = "profileResumeFactsObj">
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/usercontributed.png"></asp:Image>
+            <asp:Image ID="CreditImage" runat="server" ImageUrl="~/Images/usercontributed.png"></asp:Image>
         </section>
         <section class = "profileResumeFactsObj">
-            <asp:Label ID="userCredits" runat="server" Text="xxxxxx"></asp:Label> credits
+            <asp:Label ID="userCredits" runat="server"></asp:Label> credits
          </section>
         <section class = "profileResumeFactsObj">
-            <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/userdevelopments.png"></asp:Image>
+            <asp:Image ID="DevelopImage" runat="server" ImageUrl="~/Images/userdevelopments.png"></asp:Image>
         </section>
         <section class = "profileResumeFactsObj">
             <asp:Label ID="userDevelopments" runat="server" Text="xxxxxx"></asp:Label> developments
         </section>
         <section class = "profileResumeFactsObj">
-            <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/usercontributions.png"></asp:Image>
+            <asp:Image ID="ContrImage" runat="server" ImageUrl="~/Images/usercontributions.png"></asp:Image>
         </section>
         <section class = "profileResumeFactsObj">
             <asp:Label ID="userContributions" runat="server" Text="xxxxxx"></asp:Label> contributions

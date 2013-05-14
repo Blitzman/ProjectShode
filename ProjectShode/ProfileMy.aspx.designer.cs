@@ -8,10 +8,9 @@
 //------------------------------------------------------------------------------
 
 namespace Project_Shode {
-
-
-    public partial class ProfileMy
-    {
+    
+    
+    public partial class ProfileMy {
         
         /// <summary>
         /// Control Username.
@@ -32,13 +31,13 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Image ProfileImage;
         
         /// <summary>
-        /// Control Image1.
+        /// Control CreditImage.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::System.Web.UI.WebControls.Image CreditImage;
         
         /// <summary>
         /// Control userCredits.
@@ -50,13 +49,13 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label userCredits;
         
         /// <summary>
-        /// Control Image2.
+        /// Control DevelopImage.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image2;
+        protected global::System.Web.UI.WebControls.Image DevelopImage;
         
         /// <summary>
         /// Control userDevelopments.
@@ -68,13 +67,13 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label userDevelopments;
         
         /// <summary>
-        /// Control Image3.
+        /// Control ContrImage.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image3;
+        protected global::System.Web.UI.WebControls.Image ContrImage;
         
         /// <summary>
         /// Control userContributions.

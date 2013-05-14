@@ -42,17 +42,18 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
         </section>
 
         <section id="projectOptionsHelp">
-            Give some credits: 
-            <asp:TextBox ID="creditsTextboxProjectProfile" runat="server"></asp:TextBox>
+            <asp:Label ID="GiveLabel" runat="server" Text="Give some credits:"></asp:Label> 
+            <asp:TextBox ID="creditsBox" runat="server" Width="50px"></asp:TextBox>
 
-            <asp:Button ID="sendCredits" runat="server" Text="Contribute!"></asp:Button>
+            <asp:Button ID="sendCredits" runat="server" Text="Contribute!" OnClick="contribute"></asp:Button>
+            <asp:Label ID="FeedbackCredit" runat="server" ForeColor=Red></asp:Label>
 
             <asp:RegularExpressionValidator ID="checkCredtisProfile" runat="server" Display=Static 
-            ErrorMessage="New projects must start with at least 100 credits." ControlToValidate="creditsTextboxProjectProfile" 
+            ErrorMessage="At least 100 credits." ControlToValidate="creditsBox" 
             ValidationExpression="\d{2}\d+"></asp:RegularExpressionValidator>
-
-            <asp:HyperLink id="developProjectProfile" runat="server" NavigateUrl="~/ProjectProfile.aspx">
-            <asp:Image ID="developLinkImage" runat="server" ImageUrl="/Images/bullet.png" /> Develop
+            
+            <asp:Image ID="developLinkImage" runat="server" ImageUrl="/Images/bullet.png" /> 
+            <asp:HyperLink id="developLink" runat="server" NavigateUrl="~/ProjectProfile.aspx" Text="Develop">
             </asp:HyperLink>
 
         </section>

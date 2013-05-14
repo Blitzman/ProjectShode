@@ -11,20 +11,20 @@ CodeBehind="ProfileCompose.aspx.cs" Inherits="Project_Shode.ProfileCompose" %>
                 <asp:Label ID="user" runat="server" Text="Username" CssClass="formLabel"></asp:Label>
             </asp:TableCell>
             <asp:TableCell>
-                </asp:Label><asp:TextBox ID="textuserdest" runat="server"></asp:TextBox>
+                <asp:TextBox ID="textuserdest" runat="server"></asp:TextBox>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
-                <asp:Label ID="Label1" runat="server" Text="Subject" CssClass="formLabel"></asp:Label>
+                <asp:Label ID="SubjectLabel" runat="server" Text="Subject" CssClass="formLabel"></asp:Label>
             </asp:TableCell>
             <asp:TableCell>
-                </asp:Label><asp:TextBox ID="textsubject" runat="server"></asp:TextBox>
+                <asp:TextBox ID="textsubject" runat="server"></asp:TextBox>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
-                <asp:Label ID="Label2" runat="server" Text="Message" CssClass="formLabel"></asp:Label>
+                <asp:Label ID="BodyLabel" runat="server" Text="Message" CssClass="formLabel"></asp:Label>
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox ID="textmessage" runat="server" TextMode="MultiLine" Width="800" Height="200" MaxLength="1000"></asp:TextBox>
