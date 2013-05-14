@@ -440,4 +440,24 @@ h3
     border-color: #FFFFFF;
     height: 30px;
     color: #FFFFFF;
+     
+}
+
+.LogOutbutton
+{
+    cursor:hand;
+    cursor:pointer;
+    background-color: #24242C;
+    border-style:solid;
+    border-width: 1px;
+    border-color: #24242C;
+    height: 30px;
+    color: #585858;  
+}
+
+.LogOutbutton:hover
+{
+    cursor:hand;
+    cursor:pointer;
+    color: #FFFFFF;
 }

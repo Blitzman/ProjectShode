@@ -15,7 +15,7 @@
      <header id="global_header">
         <section class="header_obj">
             <asp:HyperLink ID="UserLink" runat="server" NavigateUrl="~/Profiles.aspx"></asp:HyperLink>
-            <asp:Button ID="LogOutLink" runat="server" onclick="logOut" ></asp:Button>
+            <asp:Button ID="LogOutLink" runat="server" onclick="logOut" CssClass="LogOutbutton"></asp:Button>
             <asp:HyperLink ID="LoginLink" runat="server" NavigateUrl="~/Login.aspx" Text="[Log In |"></asp:HyperLink>
             <asp:HyperLink ID="SignupLink" runat="server" NavigateUrl="~/Signup.aspx" Text=" Sign Up]"></asp:HyperLink>
         </section>
