@@ -15,12 +15,13 @@ namespace Project_Shode
             {
                 GiveLabel.Visible = false;
                 creditsBox.Visible = false;
-                FeedbackCredit.Visible = false;
                 sendCredits.Visible = false;
                 checkCredtisProfile.Visible = false;
                 developLinkImage.Visible = false;
                 developLink.Visible = false;
             }
+
+            FeedbackCredit.Visible = false;
         }
 
         protected void contribute(object sender, EventArgs e)

@@ -64,7 +64,21 @@ namespace ShodeLibrary
             UserDAC userDAC = new UserDAC();
             UserBE otro = userDAC.getUserByNick(nickname);
 
-            return (otro.nickname == nickname && otro.password == password);
+            if (otro.nickname == nickname && otro.password == password)
+            {
+                this.Name = otro.Name;
+                this.LastName = otro.LastName;
+                this.Zipcode = otro.Zipcode;
+                this.Email = otro.Email;
+                this.Address = otro.Address;
+                this.Credit = otro.Credit;
+                this.LastConnection = otro.LastConnection;
+                this.ProfilePicture = otro.ProfilePicture;
+
+                return true;
+            }
+            else
+                return false;
         }
 
         /* ****************************************************************** */

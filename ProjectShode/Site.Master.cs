@@ -32,6 +32,7 @@ namespace Project_Shode
         protected void logOut(object sender, EventArgs e)
         {
             Session.Abandon();
+            Session.RemoveAll();
             Session.Clear();
             Response.Redirect("Login.aspx");
         }
