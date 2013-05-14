@@ -12,7 +12,8 @@ namespace Project_Shode
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(Session["Username"]!=null)
+                Response.Redirect("Profiles.aspx");
         }
 
         protected void logIn(object sender, EventArgs e)
@@ -27,7 +28,11 @@ namespace Project_Shode
             exists = user.verifyUser();
 
             if (exists)
-                Login1.FailureText = "The user exists";
+            {
+                Session["Username"] = user.Nickname;
+                Session.Timeout = 5;
+                Response.Redirect("Default.aspx");
+            }
             else
             {
                 Login1.FailureText = "The user or the password do not match";

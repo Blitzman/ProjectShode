@@ -14,14 +14,13 @@
 
      <header id="global_header">
         <section class="header_obj">
-            [ 
-            <asp:HyperLink ID="LoginLink" runat="server" NavigateUrl="~/Login.aspx">Log In</asp:HyperLink>
-            | 
-            <asp:HyperLink ID="SignupLink" runat="server" NavigateUrl="~/Signup.aspx">Sign Up</asp:HyperLink>
-            ]
+            <asp:HyperLink ID="UserLink" runat="server" NavigateUrl="~/Profiles.aspx"></asp:HyperLink>
+            <asp:Button ID="LogOutLink" runat="server" onclick="logOut" ></asp:Button>
+            <asp:HyperLink ID="LoginLink" runat="server" NavigateUrl="~/Login.aspx" Text="[Log In |"></asp:HyperLink>
+            <asp:HyperLink ID="SignupLink" runat="server" NavigateUrl="~/Signup.aspx" Text=" Sign Up]"></asp:HyperLink>
         </section>
         <section class="header_obj">
-            Log In or Sign Up to enjoy our comunity
+            <asp:Label ID="LogInMotivator" runat="server" Text="Log In or Sign Up to enjoy our comunity"></asp:Label>
         </section>
         <section class = "header_obj">
             <asp:Image ID="Image4" runat="server"></asp:Image>

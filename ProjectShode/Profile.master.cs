@@ -11,7 +11,8 @@ namespace Project_Shode
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Username"] == null)
+                Response.Redirect("Login.aspx");
         }
     }
 }
