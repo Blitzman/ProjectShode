@@ -127,6 +127,7 @@
             <tr>
                 <td align="center" colspan="2" style="color: red">
                     <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
+                    <asp:Label ID="resultLabel" runat="server"></asp:Label>
                 </td>
             </tr>
         </table>

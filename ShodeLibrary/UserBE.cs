@@ -37,10 +37,14 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         /* Methods                                                            */
         /* ****************************************************************** */
-        public void create()
+        public string create()
         {
+            string result = "";
             UserDAC userDAC = new UserDAC();
-            userDAC.insertUser(this);
+
+            result = userDAC.insertUser(this);
+
+            return result;
         }
 
         public void update()

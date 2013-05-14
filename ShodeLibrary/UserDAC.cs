@@ -23,17 +23,31 @@ namespace ShodeLibrary
         /* ****************************************************************** */
 
         //Method that creates a new user of type UserBe
-        public void insertUser(UserBE user)
+        public string insertUser(UserBE user)
         {
+            string result = "User has been succesfully created!";
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("INSERT INTO Users (name, last_name, email, nickname, password, credit)" +
-                "VALUES ('" + user.Name + "','" + user.LastName + "','" + user.Email + "','" + user.Nickname + "','" +
-                user.Password + "', " + user.Credit.ToString() + ")", c);
+            try
+            {
+                SqlCommand com = new SqlCommand("INSERT INTO Users (name, last_name, email, nickname, password, credit)" +
+                    "VALUES ('" + user.Name + "','" + user.LastName + "','" + user.Email + "','" + user.Nickname + "','" +
+                    user.Password + "', " + user.Credit.ToString() + ")", c);
 
-            com.ExecuteNonQuery();
-            c.Close();
+                com.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Message.Contains("PRIMARY KEY"))
+                    result = "ERROR: The email is already registered";
+            }
+            finally
+            {
+                c.Close();
+            }
+
+            return result;
         }
 
         //Method that returns an user of type UserBE

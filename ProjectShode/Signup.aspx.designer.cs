@@ -229,6 +229,15 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Literal ErrorMessage;
         
         /// <summary>
+        /// Control resultLabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label resultLabel;
+        
+        /// <summary>
         /// Control createButton.
         /// </summary>
         /// <remarks>

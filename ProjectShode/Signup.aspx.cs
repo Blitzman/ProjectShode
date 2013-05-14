@@ -29,8 +29,7 @@ namespace Project_Shode
             email = Email.Text;
 
             UserBE usuario = new UserBE(name, lastName, "", "", email, userName, password);
-
-            usuario.create();
+            resultLabel.Text = usuario.create();
         }
     }
 }
