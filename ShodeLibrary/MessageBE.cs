@@ -13,7 +13,22 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         /* Constructors                                                       */
         /* ****************************************************************** */
-        public MessageBE(UserBE sender, UserBE addressee, DateTime date, 
+        public MessageBE()
+        {
+            this.messageDAC = new MessageDAC();
+
+            this.read = false;
+            this.delAddressee = false;
+            this.delSender = false;
+            this.OriginalMessage = null;
+            this.Mcode = 0;
+            this.Sender = null;
+            this.Addressee = null;
+            this.Subject = "";
+            this.Message = "";
+        }
+
+        public MessageBE(UserBE sender, UserBE addressee, DateTime date,
                         string subject, string message)
         {
             this.messageDAC = new MessageDAC();
@@ -22,44 +37,44 @@ namespace ShodeLibrary
             this.delAddressee = false;
             this.delSender = false;
             this.OriginalMessage = null;
-            this.Mcode = "";
-
+            this.Mcode = codes;
+            codes++;
             this.Sender = sender;
             this.Addressee = addressee;
             this.Date = date;
             this.Subject = subject;
             this.Message = message;
         }
-        
+
 
         /* ****************************************************************** */
         /* Methods                                                            */
         /* ****************************************************************** */
 
-         /* Sends a new message */
+        /* Sends a new message */
         public void sendMessage()
         {
             OriginalMessage = null;
-            //Mcode = messageDAC.insertMessage(this);
+            messageDAC.insertMessage(this);
         }
 
         /* Sends a new message replying the one passed as parameter. */
         public void replyMessage(MessageBE Original)
         {
             OriginalMessage = Original;
-            //Mcode = messageDAC.insertMessage(this);
+            messageDAC.insertMessage(this);
         }
 
         /* Removes a message from the list of the specified user. */
         public void removeMessage(UserBE u)
         {
-            if(u == this.Sender)
+            if (u == this.Sender)
             {
                 delSender = messageDAC.deleteMessage(this, u);
             }
-            else if(u == this.Addressee)
+            else if (u == this.Addressee)
             {
-                delAddressee = messageDAC.deleteMessage(this, u);   
+                delAddressee = messageDAC.deleteMessage(this, u);
             }
             else
             {
@@ -111,7 +126,7 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         /* Properties                                                         */
         /* ****************************************************************** */
-        public string code
+        public int code
         {
             get { return Mcode; }
             set { Mcode = value; }
@@ -158,7 +173,7 @@ namespace ShodeLibrary
         }
         public MessageBE OriginalMessage
         {
-            get{ return OriginalMessage; }
+            get { return OriginalMessage; }
             set { OriginalMessage = value; }
         }
 
@@ -166,7 +181,7 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         /* Fields                                                             */
         /* ****************************************************************** */
-        private string Mcode;
+        private int Mcode;
         private UserBE sender;
         private UserBE addressee;
         private DateTime date;
@@ -177,5 +192,7 @@ namespace ShodeLibrary
         private bool delAddressee;
 
         private MessageDAC messageDAC;
+
+        private static int codes = 0;
     }
 }

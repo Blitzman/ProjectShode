@@ -19,3 +19,10 @@ C:\Users\Albert\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\ProjectShod
 C:\Users\Administrador\Documents\GitHub\ProjectShode\ProjectShode\bin\ShodeLibrary.dll
 C:\Users\Administrador\Documents\GitHub\ProjectShode\ProjectShode\bin\ShodeLibrary.pdb
 C:\Users\Administrador\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\ProjectShode.csprojResolveAssemblyReference.cache
+C:\Users\Pablo\Documents\GitHub\ProjectShode\ProjectShode\bin\ProjectShode.dll
+C:\Users\Pablo\Documents\GitHub\ProjectShode\ProjectShode\bin\ProjectShode.pdb
+C:\Users\Pablo\Documents\GitHub\ProjectShode\ProjectShode\bin\ShodeLibrary.dll
+C:\Users\Pablo\Documents\GitHub\ProjectShode\ProjectShode\bin\ShodeLibrary.pdb
+C:\Users\Pablo\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\ProjectShode.csprojResolveAssemblyReference.cache
+C:\Users\Pablo\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\ProjectShode.dll
+C:\Users\Pablo\Documents\GitHub\ProjectShode\ProjectShode\obj\Debug\ProjectShode.pdb

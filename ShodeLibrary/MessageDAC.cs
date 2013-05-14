@@ -16,7 +16,7 @@ namespace ShodeLibrary
 
     	public MessageDAC()
     	{
-            connection = "data source=.\\SQLEXPRESS;IntegratedSecurity=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;UserInstance=true";
+            connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;User Instance=true";
     	}
 
 
@@ -29,21 +29,22 @@ namespace ShodeLibrary
     	{
             SqlConnection c = new SqlConnection(connection);
             c.Open();
-
+            SqlCommand com;
+                
             if (m.OriginalMessage != null)
             {
-                SqlCommand com = new SqlCommand("INSERT INTO Messages (code, subject, body, read, del_send, del_addr, original)" +
-                    "VALUES ('" + m.code + "','" + m.Subject + "','" + m.Message + "','" + m.Read + "','" +
-                    m.DelSender + "','" + m.DelAddressee + "','" + m.OriginalMessage + "')", c);
-                com.ExecuteNonQuery();
+                com = new SqlCommand("INSERT INTO Messages (code, issue, body, isread, deleted_sender, deleted_reader, original)" +
+                    "VALUES ('" + m.code.ToString() + "','" + m.Subject + "','" + m.Message + "','" + m.Read.ToString() + "','" +
+                    m.DelSender.ToString() + "','" + m.DelAddressee.ToString() + "','" + m.OriginalMessage.Email + "')", c);
             }
             else
             {
-                SqlCommand com = new SqlCommand("INSERT INTO Messages (code, subject, body, read, del_send, del_addr, original)" +
-                    "VALUES ('" + m.code + "','" + m.Subject + "','" + m.Message + "','" + m.Read + "','" +
-                    m.DelSender + "','" + m.DelAddressee + "', NULL)", c);
-                com.ExecuteNonQuery();
+                com = new SqlCommand("INSERT INTO Messages (code, issue, body, isread, deleted_sender, deleted_reader, original)" +
+                    "VALUES ('" + m.code.ToString() + "','" + m.Subject + "','" + m.Message + "','" + m.Read.ToString() + "','" +
+                    m.DelSender.ToString() + "','" + m.DelAddressee.ToString() + "', NULL)", c);
             }
+
+            com.ExecuteNonQuery();
             c.Close();
     	}
 
@@ -53,7 +54,61 @@ namespace ShodeLibrary
     	public bool deleteMessage(MessageBE m, UserBE u = null)
     	{
             bool deleted = false;
-            // Do stuff here
+
+            bool delSend = false, delAddr = false;
+            String sender = "", addressee = "";
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("SELECT sender, addressee, 
+                deleted_sender, deleted_reader FROM Messages WHERE code = " + m.code.ToString() + "', 0)", c);
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                sender = dr["sender"].ToString();
+                addressee = dr["addressee"].ToString();
+                delSend = bool.Parse(dr["deleted_sender"].ToString());
+                delAddr = bool.Parse(dr["deleted_reader"].ToString());
+            }
+
+            if (u.Email == sender)
+            {
+                m.DelSender = true;
+                deleted = true;
+
+                if (delAddr == true)
+                {
+                    com = new SqlCommand("DELETE FROM Messages WHERE code = " + m.code.ToString() + "', 0)", c);
+                    com.ExecuteNonQuery();
+                }
+                else
+                {
+                    com = new SqlCommand("UPDATE Messages SET deleted_sender = TRUE WHERE code = " + m.code.ToString() + "', 0)", c);
+                    com.ExecuteNonQuery();
+                }
+            }
+            else if (u.Email == addressee)
+            {
+                m.DelAddressee = true;
+                deleted = true;
+
+                if (delSend == true)
+                {
+                    com = new SqlCommand("DELETE FROM Messages WHERE code = " + m.code.ToString() + "', 0)", c);
+                    com.ExecuteNonQuery();
+                }
+                else
+                {
+                    com = new SqlCommand("UPDATE Messages SET deleted_reader = TRUE WHERE code = " + m.code.ToString() + "', 0)", c);
+                    com.ExecuteNonQuery();
+                }
+            }
+
+            c.Close();
+
             return deleted;
     	}
 
@@ -62,7 +117,20 @@ namespace ShodeLibrary
     	public List<MessageBE> getConversation(MessageBE m)
     	{
             List<MessageBE> messages = new List<MessageBE>();
-            // Do stuff here
+
+            if (m.OriginalMessage != null)
+            {
+                MessageBE message = getMessage(m.code);
+                MessageBE tempM = message.OriginalMessage;
+
+                do
+                {
+                    messages.Add(tempM);
+                    tempM = tempM.OriginalMessage;
+
+                } while (tempM != null);
+            }
+
             return messages;
     	}
 
@@ -71,7 +139,33 @@ namespace ShodeLibrary
     	public List<MessageBE> getMessageDate(DateTime d)
     	{
             List<MessageBE> messages = new List<MessageBE>();
-            // Do stuff here
+            MessageBE tempM = new MessageBE();
+            UserDAC user = new UserDAC();
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+            SqlCommand com = new SqlCommand("SELECT * FROM Messages WHERE date='" + d.ToString() + "'", c);
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                tempM = new MessageBE();
+                tempM.code = int.Parse(dr["code"].ToString());
+                tempM.Sender = user.getUser(dr["sender"].ToString());
+                tempM.Addressee = user.getUser(dr["addressee"].ToString());
+                tempM.Subject = dr["issue"].ToString();
+                tempM.Message = dr["body"].ToString();
+                tempM.Date = DateTime.Parse(dr["date"].ToString());
+                tempM.Read = bool.Parse(dr["isread"].ToString());
+                tempM.DelSender = bool.Parse(dr["deleted_sender"].ToString());
+                tempM.DelAddressee = bool.Parse(dr["deleted_reader"].ToString());
+                tempM.OriginalMessage = getMessage(int.Parse(dr["original"].ToString()));
+
+                messages.Add(tempM);
+            }
+
+            c.Close();
+
             return messages;
     	}
 
@@ -79,16 +173,69 @@ namespace ShodeLibrary
         public List<MessageBE> getAllMessages()
         {
             List<MessageBE> messages = new List<MessageBE>();
-            // Do stuff here
+            MessageBE tempM = new MessageBE();
+            UserDAC user = new UserDAC();
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+            SqlCommand com = new SqlCommand("SELECT * FROM Messages", c);
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                tempM = new MessageBE();
+                tempM.code = int.Parse(dr["code"].ToString());
+                tempM.Sender = user.getUser(dr["sender"].ToString());
+                tempM.Addressee = user.getUser(dr["addressee"].ToString());
+                tempM.Subject = dr["issue"].ToString();
+                tempM.Message = dr["body"].ToString();
+                tempM.Date = DateTime.Parse(dr["date"].ToString());
+                tempM.Read = bool.Parse(dr["isread"].ToString());
+                tempM.DelSender = bool.Parse(dr["deleted_sender"].ToString());
+                tempM.DelAddressee = bool.Parse(dr["deleted_reader"].ToString());
+                tempM.OriginalMessage = getMessage(int.Parse(dr["original"].ToString()));
+
+                messages.Add(tempM);
+            }
+
+            c.Close();
+
             return messages;
         }
 
 
     	/* Gets a single message by its code */
-    	public MessageBE getMessage(string code)
+    	public MessageBE getMessage(int code)
     	{
             MessageBE message = null;
-            // Do stuff here
+
+            if (code == null)
+            {
+                UserDAC user = new UserDAC();
+
+                SqlConnection c = new SqlConnection(connection);
+                c.Open();
+                SqlCommand com = new SqlCommand("SELECT * FROM Messages WHERE code='" + code.ToString() + "'", c);
+
+                SqlDataReader dr = com.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    message.code = int.Parse(dr["code"].ToString());
+                    message.Sender = user.getUser(dr["sender"].ToString());
+                    message.Addressee = user.getUser(dr["addressee"].ToString());
+                    message.Subject = dr["issue"].ToString();
+                    message.Message = dr["body"].ToString();
+                    message.Date = DateTime.Parse(dr["date"].ToString());
+                    message.Read = bool.Parse(dr["isread"].ToString());
+                    message.DelSender = bool.Parse(dr["deleted_sender"].ToString());
+                    message.DelAddressee = bool.Parse(dr["deleted_reader"].ToString());
+                    message.OriginalMessage = getMessage(int.Parse(dr["original"].ToString()));
+                }
+
+                c.Close();
+            }
+
             return message;
     	}
 
@@ -98,7 +245,49 @@ namespace ShodeLibrary
     	public List<MessageBE> getMessages(UserBE sender, UserBE addressee)
     	{
             List<MessageBE> messages = new List<MessageBE>();
-            // Do stuff here
+            if (sender == null && addressee == null)
+            {
+                MessageBE tempM = new MessageBE();
+                UserDAC user = new UserDAC();
+
+                SqlConnection c = new SqlConnection(connection);
+                c.Open();
+                SqlCommand com;
+
+                if (sender == null)
+                {
+                    com = new SqlCommand("SELECT * FROM Messages WHERE addressee='" + addressee.Email + "'", c);
+                }
+                else if (addressee == null)
+                {
+                    com = new SqlCommand("SELECT * FROM Messages WHERE sender='" + sender.Email + "'", c);
+                }
+                else
+                {
+                    com = new SqlCommand("SELECT * FROM Messages WHERE sender='" + sender.Email + "' and addressee='" + addressee.Email + "'", c);
+                }
+                SqlDataReader dr = com.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    tempM = new MessageBE();
+                    tempM.code = int.Parse(dr["code"].ToString());
+                    tempM.Sender = user.getUser(dr["sender"].ToString());
+                    tempM.Addressee = user.getUser(dr["addressee"].ToString());
+                    tempM.Subject = dr["issue"].ToString();
+                    tempM.Message = dr["body"].ToString();
+                    tempM.Date = DateTime.Parse(dr["date"].ToString());
+                    tempM.Read = bool.Parse(dr["isread"].ToString());
+                    tempM.DelSender = bool.Parse(dr["deleted_sender"].ToString());
+                    tempM.DelAddressee = bool.Parse(dr["deleted_reader"].ToString());
+                    tempM.OriginalMessage = getMessage(int.Parse(dr["original"].ToString()));
+
+                    messages.Add(tempM);
+                }
+
+                c.Close();
+            }
+
             return messages;
     	}
 
