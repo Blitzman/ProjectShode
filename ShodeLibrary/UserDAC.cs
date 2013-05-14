@@ -81,8 +81,10 @@ namespace ShodeLibrary
                 user.Email = dr["email"].ToString();
                 user.Nickname = dr["nickname"].ToString();
                 user.Password = dr["password"].ToString();
-                user.Credit = Int32.Parse(dr["credits"].ToString());
+                user.Credit = Int32.Parse(dr["credit"].ToString());
             }
+
+            Console.WriteLine(user.Nickname);
 
             c.Close();
             return user;

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 using ShodeLibrary;
 
 namespace Project_Shode
@@ -23,11 +22,16 @@ namespace Project_Shode
             bool exists = false;
 
             UserBE user = new UserBE();
-
-            exists = user.checkUser();
+            user.Nickname = nick;
+            user.Password = password;
+            exists = user.verifyUser();
 
             if (exists)
-                Response.Redirect("Default.aspx");
+                Login1.FailureText = "The user exists";
+            else
+            {
+                Login1.FailureText = "The user or the password do not match";
+            }
         }
     }
 }

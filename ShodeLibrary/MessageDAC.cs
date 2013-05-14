@@ -35,7 +35,7 @@ namespace ShodeLibrary
             {
                 com = new SqlCommand("INSERT INTO Messages (code, issue, body, isread, deleted_sender, deleted_reader, original)" +
                     "VALUES ('" + m.code.ToString() + "','" + m.Subject + "','" + m.Message + "','" + m.Read.ToString() + "','" +
-                    m.DelSender.ToString() + "','" + m.DelAddressee.ToString() + "','" + m.OriginalMessage.Email + "')", c);
+                    m.DelSender.ToString() + "','" + m.DelAddressee.ToString() + "','" + m.OriginalMessage.code + "')", c);
             }
             else
             {
@@ -61,8 +61,8 @@ namespace ShodeLibrary
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("SELECT sender, addressee, 
-                deleted_sender, deleted_reader FROM Messages WHERE code = " + m.code.ToString() + "', 0)", c);
+            SqlCommand com = new SqlCommand("SELECT sender, addressee, " +
+                "deleted_sender, deleted_reader FROM Messages WHERE code = " + m.code.ToString() + "', 0)", c);
 
             SqlDataReader dr = com.ExecuteReader();
 

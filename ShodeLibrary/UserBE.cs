@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-/*
- * Task performed by Sergiu
- */
 namespace ShodeLibrary
 {
     public class UserBE
@@ -58,15 +55,12 @@ namespace ShodeLibrary
             userDAC.deleteUser(email);
         }
 
-        public bool checkUser()
+        public bool verifyUser()
         {
             UserDAC userDAC = new UserDAC();
             UserBE otro = userDAC.getUserByNick(nickname);
 
-            if (otro.nickname == nickname && otro.password == password)
-                return true;
-            else
-                return false;
+            return (otro.nickname == nickname && otro.password == password);
         }
 
         /* ****************************************************************** */
