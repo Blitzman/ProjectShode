@@ -58,6 +58,17 @@ namespace ShodeLibrary
             userDAC.deleteUser(email);
         }
 
+        public bool checkUser()
+        {
+            UserDAC userDAC = new UserDAC();
+            UserBE otro = userDAC.getUserByNick(nickname);
+
+            if (otro.nickname == nickname && otro.password == password)
+                return true;
+            else
+                return false;
+        }
+
         /* ****************************************************************** */
         /* Properties                                                         */
         /* ****************************************************************** */

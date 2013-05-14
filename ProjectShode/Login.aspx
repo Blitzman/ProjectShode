@@ -21,7 +21,7 @@
             Font-Bold="True"
             ForeColor= "#FFFFFF"
             LoginButtonText="Log In"
-            Font-Names= "Segoe UI"  
+            Font-Names= "Segoe UI" OnLoggingIn="logIn"  
         >
         <LoginButtonStyle CssClass="ButtonLogSign" Width="75px" Font-Bold="True" Font-Names="Segoe UI"/>
 
