@@ -11,8 +11,11 @@ namespace Project_Shode
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Username.Text = Session["Username"].ToString();
-            userCredits.Text = Session["Credit"].ToString();
+            if (Session["Username"]!= null)
+            {
+                Username.Text = Session["Username"].ToString();
+                userCredits.Text = Session["Credit"].ToString();
+            }
         }
     }
 }
