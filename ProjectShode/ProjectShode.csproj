@@ -151,6 +151,7 @@
     </Compile>
     <Compile Include="ProfileCredits.aspx.cs">
       <DependentUpon>ProfileCredits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ProfileCredits.aspx.designer.cs">
       <DependentUpon>ProfileCredits.aspx</DependentUpon>

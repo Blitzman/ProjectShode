@@ -7,19 +7,35 @@
   <section id="searchEngine">
     <asp:Label ID="searchLabelProject" runat="server" Text="Select the categories you want to explore."></asp:Label>
     <section id="searchCategories">
-        <asp:TreeView ID="treeviewCategories" runat="server" ShowCheckBoxes=All NodeStyle-HorizontalPadding=5 
+        <section id="categoriesLeft">
+        <asp:TreeView ID="treeviewCat1" runat="server" ShowCheckBoxes=All NodeStyle-HorizontalPadding=5 
         NodeStyle-VerticalPadding=5 ForeColor="#24242C">
             <Nodes>
-                <asp:TreeNode SelectAction=None Text="1. Category one"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="2. Category two"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="3. Category three"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="4. Category four"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="5. Category five"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="6. Category six"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="7. Category seven"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="8. Category eight"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="Web"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="Educational"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="Investigation"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="Programming Lang"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="Algorithms"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="Mobile Phones"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="Others"></asp:TreeNode>
             </Nodes>
         </asp:TreeView>
+        </section>
+        <section id="categoriesRight">
+        <asp:TreeView ID="treeviewCat2" runat="server" ShowCheckBoxes=All NodeStyle-HorizontalPadding=5 
+        NodeStyle-VerticalPadding=5 ForeColor="#24242C">
+            <Nodes>
+                <asp:TreeNode SelectAction=None Text="C++"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="Java"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="C#"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="Scala"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="Scheme"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="ASP.NET"></asp:TreeNode>
+                <asp:TreeNode SelectAction=None Text="Others"></asp:TreeNode>
+            </Nodes>
+        </asp:TreeView>
+        </section>
+        <div class="clear"></div>      
     </section>
      <asp:Button ID="buttonSearchProjects" runat="server" Text="Search"></asp:Button>   
   </section>
