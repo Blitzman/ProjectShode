@@ -108,7 +108,7 @@
                                     Male/Female:</asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="MaleFemale" Font-Names="Segoe UI" AutoPostBack="True" runat="server">
+                    <asp:DropDownList ID="MaleFemale" Font-Names="Segoe UI" AutoPostBack="False" runat="server">
                         <asp:ListItem Selected="True" Value="--"> -- </asp:ListItem>
                         <asp:ListItem Value="Female"> Female </asp:ListItem>
                         <asp:ListItem Value="Male"> Male </asp:ListItem>

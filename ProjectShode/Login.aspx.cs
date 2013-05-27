@@ -29,17 +29,9 @@ namespace Project_Shode
 
             if (exists)
             {
-                Session["UserNickname"] = user.Nickname;
-                Session["UserName"] = user.Name;
-                Session["UserLastname"] = user.LastName;
-                Session["UserAddress"] = user.Address;
-                Session["UserZipcode"] = user.Zipcode;
-                Session["UserEmail"] = user.Email;
-                Session["UserCredit"] = user.Credit;
-                Session["UserLastcon"] = user.LastConnection;
-                Session["UserProfpict"] = user.ProfilePicture;
-
-                //HttpCookie userCookie = new HttpCookie("UserNickname", user.Nickname);
+                HttpCookie userCookie = new HttpCookie("UserNickname", user.Nickname);
+                userCookie.Expires = DateTime.Now.AddMonths(2);
+                Response.Cookies.Add(userCookie);
 
                 Session.Timeout = 5;
                 Response.Redirect("Default.aspx");

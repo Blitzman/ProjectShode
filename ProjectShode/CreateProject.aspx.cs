@@ -54,11 +54,8 @@ namespace Project_Shode
             {
                 String tittle = tittleProjectTextbox.Text;
                 String description = descriptionTextbox.Text;
-                UserBE creator = new UserBE(Session["UserName"].ToString(),
-                    Session["UserLastname"].ToString(), Session["UserAddress"].ToString(),
-                    Session["UserZipcode"].ToString(), Session["UserEmail"].ToString(),
-                    Session["UserNickname"].ToString(), "security");
-                creator.Password = creator.getUserByNick().Password;
+                UserBE user1 = new UserBE("", "", "", "", "", Session["UserNickname"].ToString(), "");
+                UserBE creator = new UserBE(user1.getUserByNick());
                 String code = "111";
                 DateTime creation = DateTime.Now;
                 DateTime expires = DateTime.MinValue;

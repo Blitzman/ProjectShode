@@ -42,6 +42,9 @@ namespace ShodeLibrary
             this.zipcode = user.zipcode;
             this.email = user.email;
             this.nickname = user.nickname;
+            this.credit = user.credit;
+            this.lastConnection = user.lastConnection;
+            this.profilePicture = user.profilePicture;
             this.password = user.password;
         }
 

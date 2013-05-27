@@ -5,14 +5,21 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using ShodeLibrary;
+
 namespace Project_Shode
 {
     public partial class SiteMaster : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Username"] != null)
+            HttpCookie userCookie = Request.Cookies["UserNickname"];
+
+            if (userCookie != null)
             {
+                if (Session["Username"] == null)
+                    loadCookie(userCookie);
+
                 UserLink.Text = "Welcome, " + Session["Username"].ToString() + " |";
                 LogOutLink.Text = "Log Out";
                 LoginLink.Visible = false;
@@ -21,12 +28,28 @@ namespace Project_Shode
             }
             else
             {
-            UserLink.Visible = false;
-            LogOutLink.Visible = false;
-            SignupLink.Visible = true;
-            LoginLink.Visible = true;
-            LogInMotivator.Visible = true;
+                UserLink.Visible = false;
+                LogOutLink.Visible = false;
+                SignupLink.Visible = true;
+                LoginLink.Visible = true;
+                LogInMotivator.Visible = true;
             }
+        }
+        
+        protected void loadCookie(HttpCookie userCookie)
+        {
+            UserBE user1 = new UserBE("", "", "", "", "", userCookie.Value, "");
+            UserBE user = new UserBE(user1.getUserByNick());
+
+            Session["UserNickname"] = user.Nickname;
+            Session["UserName"] = user.Name;
+            Session["UserLastname"] = user.LastName;
+            Session["UserAddress"] = user.Address;
+            Session["UserZipcode"] = user.Zipcode;
+            Session["UserEmail"] = user.Email;
+            Session["UserCredit"] = user.Credit;
+            Session["UserLastcon"] = user.LastConnection;
+            Session["UserProfpict"] = user.ProfilePicture;
         }
 
         protected void logOut(object sender, EventArgs e)
@@ -34,6 +57,11 @@ namespace Project_Shode
             Session.Abandon();
             Session.RemoveAll();
             Session.Clear();
+
+            HttpCookie userOut = new HttpCookie("UserNickname");
+            userOut.Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies.Add(userOut);
+
             Response.Redirect("Login.aspx");
         }
     }

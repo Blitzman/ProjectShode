@@ -11,3 +11,4 @@ C:\Users\Albert\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrar
 C:\Users\Administrador\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.pdb
 C:\Users\Administrador\Documents\GitHub\ProjectShode\ShodeLibrary\bin\Debug\ShodeLibrary.dll
 C:\Users\Administrador\Documents\GitHub\ProjectShode\ShodeLibrary\bin\Debug\ShodeLibrary.pdb
+C:\Users\Administrador\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.csprojResolveAssemblyReference.cache

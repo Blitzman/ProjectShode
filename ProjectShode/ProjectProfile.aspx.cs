@@ -28,7 +28,7 @@ namespace Project_Shode
         {
             if (creditsBox.Text.Length > 2)
             {
-                if (Int32.Parse(creditsBox.Text) <= Int32.Parse(Session["Credit"].ToString()))
+                if (float.Parse(creditsBox.Text) <= float.Parse(Session["USerCredit"].ToString()))
                 {
                     FeedbackCredit.Text = "Done!";
                     FeedbackCredit.Visible = true;
