@@ -81,6 +81,12 @@ namespace ShodeLibrary
                 return false;
         }
 
+        public UserBE getUserByNick()
+        {
+            UserDAC userDAC = new UserDAC();
+            return userDAC.getUserByNick(nickname);
+        }
+
         /* ****************************************************************** */
         /* Properties                                                         */
         /* ****************************************************************** */
@@ -129,7 +135,7 @@ namespace ShodeLibrary
             get { return lastConnection; }
             set { lastConnection = value; }
         }
-        public int Credit
+        public float Credit
         {
             get { return credit; }
             set { credit = value; }
@@ -147,6 +153,6 @@ namespace ShodeLibrary
         private string profilePicture;
         private string password;
         private DateTime lastConnection;
-        private int credit;
+        private float credit;
     }
 }

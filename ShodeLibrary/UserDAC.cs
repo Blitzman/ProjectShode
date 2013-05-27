@@ -69,7 +69,7 @@ namespace ShodeLibrary
                 user.Email = dr["email"].ToString();
                 user.Nickname = dr["nickname"].ToString();
                 user.Password = dr["password"].ToString();
-                user.Credit = Int32.Parse(dr["credits"].ToString());
+                user.Credit = Int32.Parse(dr["credit"].ToString());
             }
 
             c.Close();
@@ -124,7 +124,7 @@ namespace ShodeLibrary
                 user.Email = dr["email"].ToString();
                 user.Nickname = dr["nickname"].ToString();
                 user.Password = dr["password"].ToString();
-                user.Credit = Int32.Parse(dr["credits"].ToString());
+                user.Credit = Int32.Parse(dr["credit"].ToString());
                 users.Add(user);
             }
 
@@ -141,7 +141,7 @@ namespace ShodeLibrary
             SqlCommand com = new SqlCommand("UPDATE Users " +
                 "SET name='" + updatedUser.Name + "', last_name='" + updatedUser.LastName + "'," +
                 " email='" + updatedUser.Email + "', nickname='" + updatedUser.Nickname + "'," +
-                " password='" + updatedUser.Password + "', credits=" + updatedUser.Credit.ToString() +
+                " password='" + updatedUser.Password + "', credit=" + updatedUser.Credit.ToString() +
                 " WHERE email='" + updatedUser.Email + "'", c);
 
             com.ExecuteNonQuery();

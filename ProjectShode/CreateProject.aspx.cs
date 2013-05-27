@@ -42,7 +42,7 @@ namespace Project_Shode
                 descriptionFeedback.Text = "";
 
             if (creditsTextboxProject.Text.Length == 0 ||
-                Int32.Parse(creditsTextboxProject.Text) > Int32.Parse(Session["UserCredit"].ToString()))
+                float.Parse(creditsTextboxProject.Text) > float.Parse(Session["UserCredit"].ToString()))
             {
                 creditsFeedback.Visible = true;
                 correct = false;
@@ -58,20 +58,25 @@ namespace Project_Shode
                     Session["UserLastname"].ToString(), Session["UserAddress"].ToString(),
                     Session["UserZipcode"].ToString(), Session["UserEmail"].ToString(),
                     Session["UserNickname"].ToString(), "security");
-                String code = tittleProjectTextbox.Text + "0001";
+                creator.Password = creator.getUserByNick().Password;
+                String code = "111";
                 DateTime creation = DateTime.Now;
                 DateTime expires = DateTime.MinValue;
-                float credit = Int32.Parse(creditsTextboxProject.Text);
+                float credit = float.Parse(creditsTextboxProject.Text);
                 DateTime version = DateTime.Now;
                 String gitDir = "There";
-
+                
+                //Update the UserBE credits and also the Sessión value.
                 String currentCredits = Session["UserCredit"].ToString();
-                Session["UserCredit"]=Int32.Parse(currentCredits)-credit; //Update Session UserCredit.
+                Session["UserCredit"]=float.Parse(currentCredits)-credit;
+                creator.Credit = float.Parse(currentCredits)-credit;
+                creator.update();
 
                 ProjectBE crProject = new ProjectBE(tittle, description, creator, code,
                     creation, expires, credit, version, gitDir);
 
-                crProject.create();
+                sendProject.Text = creator.Credit.ToString();
+                //crProject.create();
             }
         }
     }
