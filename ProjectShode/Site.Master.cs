@@ -17,10 +17,10 @@ namespace Project_Shode
 
             if (userCookie != null)
             {
-                if (Session["Username"] == null)
+                if (Session["UserName"] == null)
                     loadCookie(userCookie);
 
-                UserLink.Text = "Welcome, " + Session["Username"].ToString() + " |";
+                UserLink.Text = "Welcome, " + Session["UserNickname"].ToString() + " |";
                 LogOutLink.Text = "Log Out";
                 LoginLink.Visible = false;
                 SignupLink.Visible = false;
