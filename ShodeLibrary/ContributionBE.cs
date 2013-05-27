@@ -40,19 +40,19 @@ namespace ShodeLibrary
         public void create()
         {
             ContributionDAC contributionDAC = new ContributionDAC();
-            contributionDAC.insertContribution(this);
+            contributionDAC.insert(this);
         }
 
         public void update()
         {
             ContributionDAC contributionDAC = new ContributionDAC();
-            contributionDAC.updateContribution(this);
+            contributionDAC.update(this);
         }
 
         public void delete()
         {
             ContributionDAC contributionDAC = new ContributionDAC();
-            contributionDAC.deleteContribution(this);
+            contributionDAC.delete(this);
         }
 
         /* ****************************************************************** */

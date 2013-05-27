@@ -24,15 +24,16 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         public string insert(DevelopmentBE development)
         {
-            string result = "User has been succesfully created!";
+            string result = "The development has been succesfully added!";
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
             try
             {
-                SqlCommand com = new SqlCommand("INSERT INTO contributions (project, usr, date, amount) " +
+                SqlCommand com = new SqlCommand("INSERT INTO developments (project, usr, date, gitbranch, ups) " +
                     "VALUES ('" + development.Project.Code + "','" + development.User.Email +
-                    "','" + development.Date.ToString("dd/mm/yyyy") + "'," + development.Ups.ToString() + ")", c);
+                    "','" + development.Date.ToString("dd/mm/yyyy") + "','" + development.GitBranch + 
+                    "'," + development.Ups.ToString() + ")", c);
 
                 com.ExecuteNonQuery();
             }
@@ -54,9 +55,10 @@ namespace ShodeLibrary
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("UPDATE contributions " +
+            SqlCommand com = new SqlCommand("UPDATE developments " +
                 "SET project='" + development.Project.Code + "', usr='" + development.User.Email +
-                "', date='" + development.Date.ToString("dd/mm/yyyy") + "', amount=" + development.Ups.ToString(), c);
+                "', date='" + development.Date.ToString("dd/mm/yyyy") + "', gitbranch='" + development.GitBranch + 
+                "', ups=" + development.Ups.ToString(), c);
 
             com.ExecuteNonQuery();
             c.Close();
@@ -67,7 +69,7 @@ namespace ShodeLibrary
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("DELETE FROM contributions WHERE " +
+            SqlCommand com = new SqlCommand("DELETE FROM developments WHERE " +
                 "project='" + development.Project.Code + "' AND usr='" + development.User.Email +
                 "' AND date='" + development.Date.ToString("dd/mm/yyyy") + "'", c);
 

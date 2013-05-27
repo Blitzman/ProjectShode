@@ -22,33 +22,57 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         /* Methods                                                            */
         /* ****************************************************************** */
-        public void insertContribution(ContributionBE contribution)
+        public string insert(ContributionBE contribution)
         {
-            //Do stuff
+            string result = "The contribution has been succesfully added!";
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            try
+            {
+                SqlCommand com = new SqlCommand("INSERT INTO contributions (project, usr, date, amount) " +
+                    "VALUES ('" + contribution.Project.Code + "','" + contribution.Contributor.Email +
+                    "','" + contribution.Date.ToString("dd/mm/yyyy") + "'," + contribution.Amount.ToString() + ")", c);
+
+                com.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                if (ex.Message.Contains("PRIMARY KEY"))
+                    result = "ERROR: A contribution has already been made today for that project.";
+            }
+            finally
+            {
+                c.Close();
+            }
+
+            return result;
         }
 
-        public void deleteContribution(ContributionBE contribution)
+        public void update(ContributionBE contribution)
         {
-            //Do stuff
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("UPDATE contributions " +
+                "SET project='" + contribution.Project.Code + "', usr='" + contribution.Contributor.Email +
+                "', date='" + contribution.Date.ToString("dd/mm/yyyy") + "', amount=" + contribution.Amount.ToString(), c);
+
+            com.ExecuteNonQuery();
+            c.Close();
         }
 
-        public void updateContribution(ContributionBE contribution)
+        public void delete(ContributionBE contribution)
         {
-            //Do stuff
-        }
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
 
-        public List<ContributionBE> getContributionsByProject(string projectCode)
-        {
-            List<ContributionBE> contributions = new List<ContributionBE>();
-            //Do stuff
-            return contributions;
-        }
+            SqlCommand com = new SqlCommand("DELETE FROM contributions WHERE " +
+                "project='" + contribution.Project.Code + "' AND usr='" + contribution.Contributor.Email +
+                "' AND date='" + contribution.Date.ToString("dd/mm/yyyy") + "'", c);
 
-        public List<ContributionBE> getContributionsByContributor(string contributorMail)
-        {
-            List<ContributionBE> contributions = new List<ContributionBE>();
-            //Do stuff
-            return contributions;
+            com.ExecuteNonQuery();
+            c.Close();
         }
 
         /* ****************************************************************** */
