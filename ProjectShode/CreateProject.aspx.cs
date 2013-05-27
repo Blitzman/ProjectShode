@@ -75,8 +75,7 @@ namespace Project_Shode
                 ProjectBE crProject = new ProjectBE(tittle, description, creator, code,
                     creation, expires, credit, version, gitDir);
 
-                sendProject.Text = creator.Credit.ToString();
-                //crProject.create();
+                crProject.create();
             }
         }
     }

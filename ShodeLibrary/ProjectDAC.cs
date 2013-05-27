@@ -40,9 +40,9 @@ namespace ShodeLibrary
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("INSERT INTO projects (code, title, description, deadline, creation_date, state, total_bank, last_partition, gitdir, creator)" +
-                " VALUES ('" + code + "','" + project.Title + "','" + project.Description + "','" + project.ExpirationDate.ToString() + "','" + project.CreationDate.ToString() + "'," +
-                project.State + ", " + project.Credit + ",'" + project.LastVersion.ToString() + "','" + project.GitDir + "','" + project.Creator.Email + "')", c);
+            SqlCommand com = new SqlCommand("INSERT INTO projects (code, title, description, deadline, creation_date, state, total_bank, last_partition, partition_bank, gitdir, creator)" +
+                "VALUES ('" + code + "','" + project.Title + "','" + project.Description + "','" + project.ExpirationDate.ToString("dd/mm/yyyy") + "','" +
+                project.CreationDate.ToString("dd/mm/yyyy") + "'," + "1" + "," + project.Credit + ",'" + project.LastVersion.ToString("dd/mm/yyyy") + "'," + project.Credit + ",'" + project.GitDir + "','" + project.Creator.Email + "')", c);
 
             com.ExecuteNonQuery();
             c.Close();
