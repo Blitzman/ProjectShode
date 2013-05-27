@@ -1,0 +1,47 @@
+CREATE TABLE users (
+name VARCHAR(32) NOT NULL,
+last_name VARCHAR(32) NOT NULL,
+email VARCHAR(64),
+nickname VARCHAR(32) NOT NULL,
+password VARCHAR(16) NOT NULL,
+credit INT NOT NULL,
+CONSTRAINT pk_users PRIMARY KEY (email))
+
+CREATE TABLE projects (
+code INT,
+title VARCHAR(64) NOT NULL,
+description VARCHAR(1000) NOT NULL,
+deadline DATETIME NOT NULL,
+creation_date DATETIME NOT NULL,
+state INT NOT NULL,
+total_bank INT NOT NULL,
+last_partition DATETIME NOT NULL,
+partition_bank INT NOT NULL,
+gitdir VARCHAR(128),
+creator VARCHAR(64),
+CONSTRAINT pk_projects PRIMARY KEY (code),
+CONSTRAINT fk_creator FOREIGN KEY (creator) REFERENCES users(email))
+
+CREATE TABLE message (
+code INT,
+date DATETIME NOT NULL,
+issue VARCHAR(32) NOT NULL,
+body VARCHAR(1000) NOT NULL,
+isread INT NOT NULL,
+deleted_sender INT NOT NULL,
+deleted_reader INT NOT NULL,
+sender VARCHAR(64),
+addressee VARCHAR(64),
+CONSTRAINT pk_message PRIMARY KEY (code),
+CONSTRAINT fk_sender FOREIGN KEY (sender) REFERENCES users(email),
+CONSTRAINT fk_addresse FOREIGN KEY (addressee) REFERENCES users(email))
+
+CREATE TABLE news (
+code INT,
+title VARCHAR(32) NOT NULL,
+content VARCHAR(256) NOT NULL,
+public_date DATETIME NOT NULL,
+creator VARCHAR(64),
+CONSTRAINT pk_news PRIMARY KEY (code),
+CONSTRAINT fk_creator_news FOREIGN KEY (creator) REFERENCES users(email))
+

@@ -32,12 +32,12 @@ namespace Project_Shode
                 Session["Username"] = user.Nickname;
                 Session["Name"] = user.Name;
                 Session["Lastname"] = user.LastName;
-                Session["Address"]=user.Address;
-                Session["Zipcode"]=user.Zipcode;
+                Session["Address"] = user.Address;
+                Session["Zipcode"] = user.Zipcode;
                 Session["Email"] = user.Email;
                 Session["Credit"] = user.Credit;
-                Session["Lastcon"]=user.LastConnection;
-                Session["Profpict"]=user.ProfilePicture;
+                Session["Lastcon"] = user.LastConnection;
+                Session["Profpict"] = user.ProfilePicture;
 
                 Session.Timeout = 5;
                 Response.Redirect("Default.aspx");

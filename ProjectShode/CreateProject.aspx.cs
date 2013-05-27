@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using ShodeLibrary;
+
 namespace Project_Shode
 {
     public partial class CreateProject : System.Web.UI.Page
@@ -49,7 +51,26 @@ namespace Project_Shode
                 creditsFeedback.Text = "";
 
             if (correct)
-                creditsFeedback.Text = "Everything ok";
+            {
+                String tittle = tittleProjectTextbox.Text;
+                String description = descriptionTextbox.Text;
+                UserBE creator = new UserBE(Session["Name"].ToString(),
+                    Session["Lastname"].ToString(), Session["Address"].ToString(),
+                    Session["Zipcode"].ToString(), Session["Email"].ToString(),
+                    Session["Username"].ToString(), "security");
+                String code = tittleProjectTextbox.Text + "0001";
+                DateTime creation = DateTime.Now;
+                DateTime expires = DateTime.MinValue;
+                float credit = Int32.Parse(creditsTextboxProject.Text);
+                DateTime version = DateTime.Now;
+                String gitDir = "There";
+
+
+                ProjectBE crProject = new ProjectBE(tittle, description, creator, code,
+                    creation, expires, credit, version, gitDir);
+
+                crProject.create();
+            }
         }
     }
 }
