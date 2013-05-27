@@ -10,7 +10,7 @@
         <asp:Button ID="buttonSearchProjects" runat="server" Text="Search" OnClick="startSearch"></asp:Button>
     </section>
     
-    <section id"test">
+    <section id"searchLabelHere">
         <asp:Label ID="searchError" runat="server" ForeColor="Red" Text="Incorrect seaching string" Visible="false"></asp:Label>
     </section>
     <asp:Label ID="searchLabelProject" runat="server" Text="Select the categories you want to explore."></asp:Label>
@@ -61,7 +61,8 @@
         </section>
 
         <asp:GridView ID="gridResults" runat="server" CellPadding="5" CellSpacing="5" ForeColor="White"
-         BackColor="#24242C" Width="600px" AllowPaging="true" PageSize="8" PagerSettings-Mode="NextPrevious">
+         BackColor="#24242C" Width="600px" AllowPaging="true" PageSize="2" PagerSettings-Mode="NumericFirstLast"
+         OnPageIndexChanging="resultsPageChanging">
         </asp:GridView>
 
 

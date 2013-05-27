@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 using System.Data;
 using System.Data.Common;
@@ -16,15 +17,16 @@ namespace Project_Shode
 {
     public partial class Projects : System.Web.UI.Page
     {
+        DataSet d = new DataSet();
+        static String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+        static SqlConnection c = new SqlConnection(s);
+        SqlDataAdapter da = new SqlDataAdapter("Select title as Tittle, creator as Creator," +
+            " creation_date as StartedOn, total_bank as Total, state as State from projects", c);
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                DataSet d = new DataSet();
-                String s = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;User Instance=true";
-                SqlConnection c = new SqlConnection(s);
-                SqlDataAdapter da = new SqlDataAdapter("Select title as Tittle, creator as Creator,"+
-                    " creation_date as StartedOn, total_bank as Total, state as State from projects", c);
                 da.Fill(d, "projects");
 
                 gridResults.DataSource = d;
@@ -45,6 +47,14 @@ namespace Project_Shode
             {
                 searchError.Visible = false;
             }
+        }
+
+        protected void resultsPageChanging(object sender, GridViewPageEventArgs e)
+        {
+            da.Fill(d, "projects");
+            gridResults.PageIndex = e.NewPageIndex;
+            gridResults.DataSource = d;
+            gridResults.DataBind();
         }
     }
 }
