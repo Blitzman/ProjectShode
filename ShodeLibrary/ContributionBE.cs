@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-/*
- * Task performed by Albert García
- */
 namespace ShodeLibrary
 {
     public class ContributionBE
@@ -15,19 +12,26 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         public ContributionBE()
         {
-            contributor = null;
-            project = null;
+            contributor = new UserBE();
+            project = new ProjectBE();
             amount = 0.0f;
-            date = new DateTime();
+            date = DateTime.Now;
         }
 
-        public ContributionBE(UserBE contributor, ProjectBE project,
-                                float amount, DateTime date)
+        public ContributionBE(UserBE contributor, ProjectBE project, float amount, DateTime date)
         {
             this.contributor = contributor;
             this.project = project;
             this.amount = amount;
             this.date = date;
+        }
+
+        public ContributionBE(ContributionBE contribution)
+        {
+            this.contributor = contribution.contributor;
+            this.project = contribution.project;
+            this.amount = contribution.amount;
+            this.date = contribution.date;
         }
 
         /* ****************************************************************** */

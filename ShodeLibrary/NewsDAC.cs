@@ -76,7 +76,7 @@ namespace ShodeLibrary
             return newsitems;
         }
 
-        public List<NewsBE> getNewsByTopic(TopicBE author)
+        public List<NewsBE> getNewsByTopic(DevelopmentBE author)
         {
             List<NewsBE> newsitems = new List<NewsBE>();
             // Do stuff here

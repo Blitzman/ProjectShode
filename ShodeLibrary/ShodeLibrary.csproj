@@ -53,8 +53,8 @@
     <Compile Include="ProjectBE.cs" />
     <Compile Include="ProjectDAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TopicBE.cs" />
-    <Compile Include="TopicDAC.cs" />
+    <Compile Include="DevelopmentBE.cs" />
+    <Compile Include="DevelopmentDAC.cs" />
     <Compile Include="UserBE.cs" />
     <Compile Include="UserDAC.cs" />
   </ItemGroup>

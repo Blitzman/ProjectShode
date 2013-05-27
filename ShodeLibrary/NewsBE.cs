@@ -19,7 +19,7 @@ namespace ShodeLibrary
         private UserBE author;
         private string code;
         private DateTime publicationDate;
-        private TopicBE topic;
+        private DevelopmentBE topic;
         private ProjectBE project;
 
         /* ****************************************************************** */
@@ -32,13 +32,13 @@ namespace ShodeLibrary
             author = new UserBE();
             code = "";
             publicationDate = new DateTime();
-            topic = new TopicBE();
+            topic = new DevelopmentBE();
             project = new ProjectBE();
         }
 
         public NewsBE(string title, string content,
                             UserBE author, DateTime publicationDate,
-                            TopicBE topic, ProjectBE project)
+                            DevelopmentBE topic, ProjectBE project)
         {
             code = generateCode();
 
@@ -108,7 +108,7 @@ namespace ShodeLibrary
             get { return publicationDate; }
             set { publicationDate = value; }
         }
-        public TopicBE Topic
+        public DevelopmentBE Topic
         {
             get { return topic; }
             set { topic = value; }
