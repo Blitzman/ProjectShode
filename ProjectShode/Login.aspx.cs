@@ -33,7 +33,6 @@ namespace Project_Shode
                 userCookie.Expires = DateTime.Now.AddMonths(2);
                 Response.Cookies.Add(userCookie);
 
-                Session.Timeout = 5;
                 Response.Redirect("Default.aspx");
             }
             else
