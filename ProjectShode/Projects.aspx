@@ -62,7 +62,7 @@
 
         <asp:GridView ID="gridResults" runat="server" CellPadding="5" CellSpacing="5" ForeColor="White"
          BackColor="#24242C" Width="600px" AllowPaging="true" PageSize="2" PagerSettings-Mode="NumericFirstLast"
-         OnPageIndexChanging="resultsPageChanging">
+         OnPageIndexChanging="resultsPageChanging" EmptyDataText="No projects were found">
         </asp:GridView>
 
 
