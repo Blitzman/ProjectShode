@@ -13,7 +13,7 @@ namespace Project_Shode
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Username"] == null)
+            if (Session["UserNickname"] == null)
                 Response.Redirect("Login.aspx");
             else
             {
@@ -42,7 +42,7 @@ namespace Project_Shode
                 descriptionFeedback.Text = "";
 
             if (creditsTextboxProject.Text.Length == 0 ||
-                Int32.Parse(creditsTextboxProject.Text) > Int32.Parse(Session["Credit"].ToString()))
+                Int32.Parse(creditsTextboxProject.Text) > Int32.Parse(Session["UserCredit"].ToString()))
             {
                 creditsFeedback.Visible = true;
                 correct = false;
@@ -54,10 +54,10 @@ namespace Project_Shode
             {
                 String tittle = tittleProjectTextbox.Text;
                 String description = descriptionTextbox.Text;
-                UserBE creator = new UserBE(Session["Name"].ToString(),
-                    Session["Lastname"].ToString(), Session["Address"].ToString(),
-                    Session["Zipcode"].ToString(), Session["Email"].ToString(),
-                    Session["Username"].ToString(), "security");
+                UserBE creator = new UserBE(Session["UserName"].ToString(),
+                    Session["UserLastname"].ToString(), Session["UserAddress"].ToString(),
+                    Session["UserZipcode"].ToString(), Session["UserEmail"].ToString(),
+                    Session["UserNickname"].ToString(), "security");
                 String code = tittleProjectTextbox.Text + "0001";
                 DateTime creation = DateTime.Now;
                 DateTime expires = DateTime.MinValue;
@@ -65,6 +65,8 @@ namespace Project_Shode
                 DateTime version = DateTime.Now;
                 String gitDir = "There";
 
+                String currentCredits = Session["UserCredit"].ToString();
+                Session["UserCredit"]=Int32.Parse(currentCredits)-credit; //Update Session UserCredit.
 
                 ProjectBE crProject = new ProjectBE(tittle, description, creator, code,
                     creation, expires, credit, version, gitDir);
