@@ -16,8 +16,7 @@ namespace ShodeLibrary
         public ProjectDAC()
         {
             // Get the connection from a fixed source
-            //connection = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ConnectionString;
-            connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;User Instance=true";
+            connection = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
         }
 
         /* ****************************************************************** */

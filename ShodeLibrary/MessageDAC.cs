@@ -16,7 +16,8 @@ namespace ShodeLibrary
 
     	public MessageDAC()
     	{
-            connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;User Instance=true";
+            // Gets the string connection from a unique location
+            connection = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
     	}
 
 

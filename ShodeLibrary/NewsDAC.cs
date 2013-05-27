@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.Configuration;
 
 /*
  * Task performed by Liesbeth
@@ -22,6 +25,7 @@ namespace ShodeLibrary
         public NewsDAC()
         {
             // Gets the string connection from a unique location
+            connection = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
         }
 
         /* ****************************************************************** */

@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.Configuration;
 
-/*
- * Task performed by Brayan
- */
 namespace ShodeLibrary {
     public class CommentDAC {
     	/*
     	 * Default constructor.
     	 */
-    	public CommentDAC () {
-
+    	public CommentDAC () 
+        {
+            // Gets the string connection from a unique location
+            connection = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
     	}
 
     	/*

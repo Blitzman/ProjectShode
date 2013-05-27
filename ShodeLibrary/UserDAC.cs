@@ -15,7 +15,7 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         public UserDAC()
         {
-            connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;User Instance=true";
+            connection = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
         }
 
         /* ****************************************************************** */

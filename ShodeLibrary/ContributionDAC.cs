@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.OleDb;
+using System.Data.SqlClient;
+using System.Configuration;
 
-/*
- * Task performed by Albert García
- */
 namespace ShodeLibrary
 {
     public class ContributionDAC
@@ -15,7 +15,8 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         public ContributionDAC()
         {
-            // Get the connection from a fixed source
+            // Gets the string connection from a unique location
+            connection = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
         }
 
         /* ****************************************************************** */
