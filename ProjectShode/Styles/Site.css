@@ -373,6 +373,11 @@ h3
     float: left;
 }
 
+#entrySearch
+{
+    margin-bottom:20px;
+}
+
 #searchResults
 {
     float: left;

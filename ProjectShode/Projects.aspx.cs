@@ -11,9 +11,20 @@ namespace Project_Shode
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserNickname"] == null)
-            {
+         
+        }
 
+        protected void startSearch(object sender, EventArgs e)
+        {
+            String search = searchTextbox.Text;
+
+            if (search.Length == 0 || search.Contains('='))
+            {
+                searchError.Visible = true;
+            }
+            else
+            {
+                searchError.Visible = false;
             }
         }
     }

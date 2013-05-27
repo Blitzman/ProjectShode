@@ -28,6 +28,7 @@ namespace Project_Shode
 
             user.Credit += credits;
             user.update();
+            Session["UserCredit"] = user.Credit;
 
             user = user.getUserByNick();
             labelCredits.Text = credits.ToString() + " Credits Added! Now you have " + user.Credit.ToString() + " credits!";
