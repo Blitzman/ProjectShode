@@ -34,6 +34,17 @@ namespace ShodeLibrary
             this.password = password;
         }
 
+        public UserBE(UserBE user)
+        {
+            this.name = user.name;
+            this.lastName = user.lastName;
+            this.address = user.address;
+            this.zipcode = user.zipcode;
+            this.email = user.email;
+            this.nickname = user.nickname;
+            this.password = user.password;
+        }
+
         /* ****************************************************************** */
         /* Methods                                                            */
         /* ****************************************************************** */
