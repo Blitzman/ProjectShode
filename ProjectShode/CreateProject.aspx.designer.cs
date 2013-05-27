@@ -40,6 +40,15 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.TextBox tittleProjectTextbox;
         
         /// <summary>
+        /// Control tittleFeedback.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label tittleFeedback;
+        
+        /// <summary>
         /// Control descriptionLabel.
         /// </summary>
         /// <remarks>
@@ -49,13 +58,22 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label descriptionLabel;
         
         /// <summary>
-        /// Control descriptcionTextbox.
+        /// Control descriptionTextbox.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox descriptcionTextbox;
+        protected global::System.Web.UI.WebControls.TextBox descriptionTextbox;
+        
+        /// <summary>
+        /// Control descriptionFeedback.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label descriptionFeedback;
         
         /// <summary>
         /// Control categoriesLabel.
@@ -110,6 +128,15 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator checkCredtis;
+        
+        /// <summary>
+        /// Control creditsFeedback.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label creditsFeedback;
         
         /// <summary>
         /// Control sendProject.
