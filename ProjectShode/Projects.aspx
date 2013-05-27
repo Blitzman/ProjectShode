@@ -11,7 +11,7 @@
     </section>
     
     <section id"test">
-    <asp:Label ID="searchError" runat="server" ForeColor="Red" Text="Incorrect seaching string" Visible="false"></asp:Label>
+        <asp:Label ID="searchError" runat="server" ForeColor="Red" Text="Incorrect seaching string" Visible="false"></asp:Label>
     </section>
     <asp:Label ID="searchLabelProject" runat="server" Text="Select the categories you want to explore."></asp:Label>
     
@@ -46,9 +46,9 @@
             </section>
             <div class="clear"></div>      
         </section>   
-      </section>
+   </section>
   
-      <section id="searchResults">
+   <section id="searchResults">
         <section id="searchTopLabels">
             <section id="resultsLabel">
                 <asp:Label ID="projectsResultsLabel" runat="server" Text="Results" Font-Bold=true ></asp:Label>
@@ -60,38 +60,11 @@
             <div class="clear"></div>
         </section>
 
-        <asp:Table ID="searchProjects" runat="server" BackColor="White" CellPadding="5" CellSpacing="5" ForeColor="White">
-             <asp:TableRow Width="600px">
-                <asp:TableCell BackColor="#24242C" Height="125" Width="125">
-                 <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/ProjectProfile.aspx" ForeColor="White">
-                    Cientific Calculator
-                 </asp:HyperLink> 
-                </asp:TableCell>
-                <asp:TableCell BackColor="#24242C" Height="125" Width="125">
-                    Some other wierd project.
-                </asp:TableCell>
-                <asp:TableCell BackColor="#24242C" Height="125" Width="125">
-                    Some other wierd project.
-                </asp:TableCell>
-                <asp:TableCell BackColor="#24242C" Height="125" Width="125">
-                    Some other wierd project.
-                </asp:TableCell>
-            </asp:TableRow>
-             <asp:TableRow>
-                <asp:TableCell BackColor="#24242C" Height="125" Width="125">
-                    Some other wierd project.
-                </asp:TableCell>
-                <asp:TableCell BackColor="#24242C" Height="125" Width="125">
-                    Some other wierd project.
-                </asp:TableCell>
-                <asp:TableCell BackColor="#24242C" Height="125" Width="125">
-                    Some other wierd project.
-                </asp:TableCell>
-                <asp:TableCell BackColor="#24242C" Height="125" Width="125">
-                    Some other wierd project.
-                </asp:TableCell>
-            </asp:TableRow>
-        </asp:Table>
+        <asp:GridView ID="gridResults" runat="server" CellPadding="5" CellSpacing="5" ForeColor="White"
+         BackColor="#24242C" Width="600px" AllowPaging="true" PageSize="8" PagerSettings-Mode="NextPrevious">
+        </asp:GridView>
+
+
   </section>
   <div class=clear></div>
 </asp:Content>
