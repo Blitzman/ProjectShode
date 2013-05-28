@@ -13,5 +13,16 @@ namespace Project_Shode
         {
 
         }
+        protected void TimerTweet_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime.Now.ToLongTimeString();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }
