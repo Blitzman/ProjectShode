@@ -39,7 +39,7 @@ namespace ShodeLibrary
         /// <summary>
         /// Contribution Insertion.
         /// Inserts the given contribution in the database building the adequate
-        /// quer and handling the possible SQL errors that can occur when performing
+        /// query and handling the possible SQL errors that can occur when performing
         /// the query. 
         /// </summary>
         /// <param name="contribution">The contribution to be inserted.</param>

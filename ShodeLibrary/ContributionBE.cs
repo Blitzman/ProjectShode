@@ -7,7 +7,7 @@ namespace ShodeLibrary
 {
     /// <summary>
     /// This is the business entity of the contributions. This class allows a single
-    /// user to perform CRUD operations by communicating with the determined
+    /// contribution to perform CRUD operations by communicating with the determined
     /// data access component for the contribution.
     /// </summary>
     public class ContributionBE
