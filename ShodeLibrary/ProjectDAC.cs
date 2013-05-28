@@ -22,16 +22,18 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         /* Methods                                                            */
         /* ****************************************************************** */
-        public string insertProject(ProjectBE project)
+        public string insert(ProjectBE project)
         {
             string result = "The project has been created!";
 
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("INSERT INTO projects (title, description, deadline, creation_date, state, total_bank, last_partition, partition_bank, gitdir, creator)" +
-                "VALUES ('" + project.Title + "','" + project.Description + "','" + project.ExpirationDate.ToString("dd/mm/yyyy") + "','" +
-                project.CreationDate.ToString("dd/mm/yyyy") + "'," + "1" + "," + project.Credit + ",'" + project.LastVersion.ToString("dd/mm/yyyy") + "'," + project.Credit + ",'" + project.GitDir + "','" + project.Creator.Email + "')", c);
+            SqlCommand com = new SqlCommand("INSERT INTO projects (title, description, deadline," +
+                "creation_date, state, total_bank, last_partition, partition_bank, gitdir, creator)" +
+                "VALUES ('" + project.Title + "','" + project.Description + "','" + project.ExpirationDate.ToString("dd/MM/yyyy") + "','" +
+                project.CreationDate.ToString("dd/MM/yyyy") + "'," + "1" + "," + project.Credit + ",'" + project.LastVersion.ToString("dd/MM/yyyy") + 
+                "'," + project.Credit + ",'" + project.GitDir + "','" + project.Creator.Email + "')", c);
 
             com.ExecuteNonQuery();
             c.Close();
@@ -52,7 +54,7 @@ namespace ShodeLibrary
 
             while (dr.Read())
             {
-                project.Code = dr["code"].ToString();
+                project.Code = Int32.Parse(dr["code"].ToString());
                 project.Title = dr["title"].ToString();
                 project.Description = dr["description"].ToString();
                 //project.ExpirationDate DEALING WITH DATETIMES
@@ -117,13 +119,13 @@ namespace ShodeLibrary
             return projects;
         }
 
-        public void updateProject(ProjectBE project)
+        public void update(ProjectBE project)
         {
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
             SqlCommand com = new SqlCommand("UPDATE projects " +
-                "SET code='" + project.Code + "', title='" + project.Title + "', description='" + project.Description +
+                "SET code=" + project.Code.ToString() + ", title='" + project.Title + "', description='" + project.Description +
                 "', state=" + project.State + ", total_bank=" + project.Credit + ", gitdir='" + project.GitDir + "', creator='" + project.Creator.Email + "' " +
                 " WHERE code='" + project.Code + "'", c);
 
@@ -131,12 +133,12 @@ namespace ShodeLibrary
             c.Close();
         }
 
-        public void deleteProject(string code)
+        public void delete(int code)
         {
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("DELETE FROM projects WHERE code ='" + code + "'", c);
+            SqlCommand com = new SqlCommand("DELETE FROM projects WHERE code =" + code.ToString() + "", c);
 
             com.ExecuteNonQuery();
             c.Close();

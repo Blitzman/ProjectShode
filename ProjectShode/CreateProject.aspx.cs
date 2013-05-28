@@ -56,7 +56,7 @@ namespace Project_Shode
                 String description = descriptionTextbox.Text;
                 UserBE user1 = new UserBE("", "", "", "", "", Session["UserNickname"].ToString(), "");
                 UserBE creator = new UserBE(user1.getUserByNick());
-                String code = "111";
+                int code = -1;
                 DateTime creation = DateTime.Now;
                 DateTime expires = DateTime.MinValue;
                 float credit = float.Parse(creditsTextboxProject.Text);

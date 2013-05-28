@@ -17,7 +17,7 @@ namespace ShodeLibrary
             title = "";
             description = "";
             creator = null;
-            code = "";
+            code = -1;
             creationDate = new DateTime();
             expirationDate = new DateTime();
             state = ProjectState.Closed;
@@ -27,12 +27,12 @@ namespace ShodeLibrary
         }
 
         public ProjectBE(string title, string description,
-                            UserBE creator, string code,
+                            UserBE creator, int code,
                             DateTime creationDate, DateTime expirationDate,
                             float credit, DateTime lastVersion,
                             string gitDir) 
         {
-            this.code = generateCode();
+            this.code = code;
             this.state = ProjectState.Active;
 
             this.title = title;
@@ -51,31 +51,29 @@ namespace ShodeLibrary
         public void create ()
         {
             ProjectDAC projectDAC = new ProjectDAC();
-            projectDAC.insertProject(this);
+            projectDAC.insert(this);
         }
 
         public void update ()
         {
             ProjectDAC projectDAC = new ProjectDAC();
-            projectDAC.updateProject(this);
+            projectDAC.update(this);
         }
 
         public void delete()
         {
             ProjectDAC projectDAC = new ProjectDAC();
-            projectDAC.deleteProject(code);
-        }
-
-        private static string generateCode()
-        {
-            string newCode = "";
-            // Randomize the code generation based on the DDBB
-            return newCode;
+            projectDAC.delete(code);
         }
 
         /* ****************************************************************** */
         /* Properties                                                         */
         /* ****************************************************************** */
+        public int Code
+        {
+            get { return code; }
+            set { code = value; }
+        }
         public string Title
         {
             get { return title; }
@@ -90,11 +88,6 @@ namespace ShodeLibrary
         {
             get { return creator; }
             set { creator = value; }
-        }
-        public string Code
-        {
-            get { return code; }
-            set { code = value; }
         }
         public DateTime CreationDate
         {
@@ -130,10 +123,10 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         /* Fields                                                             */
         /* ****************************************************************** */
+        private int code;
         string title;
         private string description;
         private UserBE creator;
-        private string code;
         private DateTime creationDate;
         private DateTime expirationDate;
         private ProjectState state;
