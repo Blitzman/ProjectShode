@@ -1,3 +1,9 @@
+DROP TABLE message
+DROP TABLE news
+DROP TABLE contributions
+DROP TABLE projects
+DROP TABLE users
+
 CREATE TABLE users (
 name VARCHAR(32) NOT NULL,
 last_name VARCHAR(32) NOT NULL,
@@ -5,10 +11,11 @@ email VARCHAR(64),
 nickname VARCHAR(32) NOT NULL,
 password VARCHAR(16) NOT NULL,
 credit FLOAT NOT NULL,
-CONSTRAINT pk_users PRIMARY KEY (email))
+CONSTRAINT pk_users PRIMARY KEY (email),
+CONSTRAINT altk_users UNIQUE (nickname))
 
 CREATE TABLE projects (
-code INT,
+code INT IDENTITY,
 title VARCHAR(64) NOT NULL,
 description VARCHAR(1000) NOT NULL,
 deadline VARCHAR(11) NOT NULL,
@@ -17,12 +24,13 @@ state INT NOT NULL,
 total_bank FLOAT NOT NULL,
 last_partition VARCHAR(11) NOT NULL,
 partition_bank FLOAT NOT NULL,
-gitdir VARCHAR(128),
-creator VARCHAR(64),
+gitdir VARCHAR(128) NOT NULL,
+creator VARCHAR(64) NOT NULL,
 CONSTRAINT pk_projects PRIMARY KEY (code),
-CONSTRAINT fk_creator FOREIGN KEY (creator) REFERENCES users(email))
+CONSTRAINT fk_creator FOREIGN KEY (creator) REFERENCES users(email) ON DELETE CASCADE)
 
 CREATE TABLE message (
+convers_code INT NOT NULL,
 code INT,
 date VARCHAR(11) NOT NULL,
 issue VARCHAR(32) NOT NULL,
@@ -30,11 +38,11 @@ body VARCHAR(1000) NOT NULL,
 isread INT NOT NULL,
 deleted_sender INT NOT NULL,
 deleted_reader INT NOT NULL,
-sender VARCHAR(64),
-addressee VARCHAR(64),
+sender VARCHAR(64) NOT NULL,
+addressee VARCHAR(64) NOT NULL,
 CONSTRAINT pk_message PRIMARY KEY (code),
-CONSTRAINT fk_sender FOREIGN KEY (sender) REFERENCES users(email),
-CONSTRAINT fk_addresse FOREIGN KEY (addressee) REFERENCES users(email))
+CONSTRAINT fk_sender FOREIGN KEY (sender) REFERENCES users(email) ON DELETE NO ACTION,
+CONSTRAINT fk_addresse FOREIGN KEY (addressee) REFERENCES users(email) ON DELETE CASCADE)
 
 CREATE TABLE news (
 code INT,
@@ -43,7 +51,7 @@ content VARCHAR(256) NOT NULL,
 public_date VARCHAR(11) NOT NULL,
 creator VARCHAR(64),
 CONSTRAINT pk_news PRIMARY KEY (code),
-CONSTRAINT fk_creator_news FOREIGN KEY (creator) REFERENCES users(email))
+CONSTRAINT fk_creator_news FOREIGN KEY (creator) REFERENCES users(email) ON DELETE CASCADE)
 
 CREATE TABLE contributions (
 project INT,
@@ -51,8 +59,8 @@ usr VARCHAR(64),
 date VARCHAR(11),
 amount FLOAT NOT NULL,
 CONSTRAINT pk_contributions PRIMARY KEY(project, usr, date),
-CONSTRAINT fk_contributors_project FOREIGN KEY (project) REFERENCES projects(code),
-CONSTRAINT fk_contributors_user FOREIGN KEY (usr) REFERENCES users(email))
+CONSTRAINT fk_contributors_project FOREIGN KEY (project) REFERENCES projects(code) ON DELETE CASCADE,
+CONSTRAINT fk_contributors_user FOREIGN KEY (usr) REFERENCES users(email) ON DELETE NO ACTION)
 
 CREATE TABLE developments (
 project INT,
@@ -61,5 +69,5 @@ date VARCHAR(11),
 gitbranch VARCHAR(128) NOT NULL,
 ups INT NOT NULL,
 CONSTRAINT pk_developments PRIMARY KEY(project, usr, date),
-CONSTRAINT fk_developments_project FOREIGN KEY (project) REFERENCES projects(code),
-CONSTRAINT fk_developments_user FOREIGN KEY (usr) REFERENCES users(email))
+CONSTRAINT fk_developments_project FOREIGN KEY (project) REFERENCES projects(code) ON DELETE CASCADE,
+CONSTRAINT fk_developments_user FOREIGN KEY (usr) REFERENCES users(email) ON DELETE NO ACTION)
