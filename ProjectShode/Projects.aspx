@@ -6,7 +6,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContentProject">
   <section id="searchEngine">
     <section id="entrySearch">
-        <asp:TextBox ID="searchTextbox" runat="server" Height="20px" Width="180px"></asp:TextBox>
+        <asp:TextBox ID="searchTextbox" runat="server" Height="20px" Width="180px" MaxLength=30></asp:TextBox>
         <asp:Button ID="buttonSearchProjects" runat="server" Text="Search" CssClass="ButtonShode" OnClick="startSearch"></asp:Button>
     </section>
     
@@ -53,9 +53,10 @@
             <section id="resultsLabel">
                 <asp:Label ID="projectsResultsLabel" runat="server" Text="Results" Font-Bold=true ></asp:Label>
             </section>
-            <section id="moreResultsLink">
-                <asp:HyperLink ID="projectsMoreResults" runat="server" Font-Bold=true NavigateUrl="~/Projects.aspx"
-                 ForeColor="#24242C">More results</asp:HyperLink>
+            <section id="mostPopularLink">
+                <asp:Image ID="mostStartImage" runat="server" ImageUrl="~/Images/star2.png" ImageAlign=Top />
+                <asp:Button ID="searchPopular" runat="server" Font-Bold=true CssClass="ButtonShode"
+                 OnClick="searchMostPopular" Text="Most Popular Projects"></asp:button>
             </section>
             <div class="clear"></div>
         </section>

@@ -15,7 +15,6 @@
        <asp:Menu ID="Menu1" runat="server" Orientation="vertical">
              <Items>
                  <asp:MenuItem Text="Explore projects" Value="About" ImageUrl="~/Images/search.png" NavigateUrl="Projects.aspx"></asp:MenuItem>
-                 <asp:MenuItem Text="Most popular" Value="About" ImageUrl="~/Images/star2.png" NavigateUrl="Projects.aspx"></asp:MenuItem>
                  <asp:MenuItem Text="Start a new project" Value="About" ImageUrl="~/Images/new2.png" NavigateUrl="CreateProject.aspx"></asp:MenuItem>
              </Items>
        </asp:Menu>

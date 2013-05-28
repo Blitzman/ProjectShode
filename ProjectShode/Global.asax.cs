@@ -9,6 +9,20 @@ namespace Project_Shode
 {
     public class Global : System.Web.HttpApplication
     {
+        public static String search = "";
+        public static String day = DateTime.Today.Day.ToString();
+
+        public string Search
+        {
+            get { return search; }
+            set { search = value; }
+        }
+
+        public string Day
+        {
+            get { return day; }
+            set { day = value; }
+        }
 
         void Application_Start(object sender, EventArgs e)
         {
