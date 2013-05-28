@@ -23,7 +23,7 @@ namespace ShodeLibrary
         /* ****************************************************************** */
 
         //Method that creates a new user of type UserBe
-        public string insertUser(UserBE user)
+        public string insert(UserBE user)
         {
             string result = "User has been succesfully created!";
             SqlConnection c = new SqlConnection(connection);
@@ -40,7 +40,11 @@ namespace ShodeLibrary
             catch (SqlException ex)
             {
                 if (ex.Message.Contains("PRIMARY KEY"))
-                    result = "ERROR: The email is already registered";
+                    result = "ERROR: The email is already registered.";
+                else if (ex.Message.Contains("UNIQUE KEY"))
+                    result = "ERROR: The username is already registered.";
+                else
+                    result = "ERROR: An error occurred, try again later.";
             }
             finally
             {
@@ -77,7 +81,7 @@ namespace ShodeLibrary
         }
 
         //Getter for the user using his nickname
-        public UserBE getUserByNick(String nickname)
+        public UserBE getByNick(String nickname)
         {
             UserBE user = new UserBE();
 
@@ -133,7 +137,7 @@ namespace ShodeLibrary
             return users;
         }
 
-        public void updateUser(UserBE updatedUser)
+        public void update(UserBE updatedUser)
         {
             SqlConnection c = new SqlConnection(connection);
             c.Open();
@@ -148,7 +152,7 @@ namespace ShodeLibrary
             c.Close();
         }
 
-        public void deleteUser(string email)
+        public void delete(string email)
         {
             SqlConnection c = new SqlConnection(connection);
             c.Open();

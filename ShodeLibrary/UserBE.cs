@@ -56,7 +56,7 @@ namespace ShodeLibrary
             string result = "";
             UserDAC userDAC = new UserDAC();
 
-            result = userDAC.insertUser(this);
+            result = userDAC.insert(this);
 
             return result;
         }
@@ -64,19 +64,19 @@ namespace ShodeLibrary
         public void update()
         {
             UserDAC userDAC = new UserDAC();
-            userDAC.updateUser(this);
+            userDAC.update(this);
         }
 
         public void delete()
         {
             UserDAC userDAC = new UserDAC();
-            userDAC.deleteUser(email);
+            userDAC.delete(email);
         }
 
         public bool verifyUser()
         {
             UserDAC userDAC = new UserDAC();
-            UserBE otro = userDAC.getUserByNick(nickname);
+            UserBE otro = userDAC.getByNick(nickname);
 
             if (otro.nickname == nickname && otro.password == password)
             {
@@ -98,7 +98,7 @@ namespace ShodeLibrary
         public UserBE getUserByNick()
         {
             UserDAC userDAC = new UserDAC();
-            return userDAC.getUserByNick(nickname);
+            return userDAC.getByNick(nickname);
         }
 
         /* ****************************************************************** */
