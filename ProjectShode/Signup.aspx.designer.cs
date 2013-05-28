@@ -103,6 +103,15 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label PasswordLabel;
         
         /// <summary>
+        /// Control ToolkitScriptManager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
         /// Control Password.
         /// </summary>
         /// <remarks>
@@ -110,6 +119,15 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Password;
+        
+        /// <summary>
+        /// Control PasswordStrength1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.PasswordStrength PasswordStrength1;
         
         /// <summary>
         /// Control PasswordRequired.

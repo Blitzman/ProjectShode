@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="Shode | Sign Up" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Signup.aspx.cs" Inherits="Project_Shode.Signup" %>
 
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
@@ -59,7 +61,21 @@
                                     Password:</asp:Label>
                 </td>
                 <td>
+                   <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
                     <asp:TextBox ID="Password" runat="server" CssClass="TextBoxLogSign" TextMode="Password"></asp:TextBox>
+                    <asp:PasswordStrength ID="PasswordStrength1" 
+                    runat="server" 
+                    TargetControlID="Password" 
+                    RequiresUpperAndLowerCaseCharacters="true"
+                    MinimumNumericCharacters="1" 
+                    MinimumSymbolCharacters="1" 
+                    MinimumUpperCaseCharacters="1" 
+                    PreferredPasswordLength="8"
+                    DisplayPosition="RightSide" 
+                    StrengthIndicatorType="Text"
+                    TextStrengthDescriptions="Very Poor;Weak;Average;Strong;Excellent"
+                     TextStrengthDescriptionStyles="colorPass1;colorPass2;colorPass3;colorPass4;colorPass5"
+                    CalculationWeightings="50;15;15;20" ></asp:PasswordStrength>
                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
                         ForeColor="#C36464" ErrorMessage="Password is required." ToolTip="Password is required."
                         ValidationGroup="CreateUserWizard1">Password is required</asp:RequiredFieldValidator>
