@@ -22,31 +22,21 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         /* Methods                                                            */
         /* ****************************************************************** */
-        private static int GenerateCode()
-        {
-            codeGenerated++;
-            return codeGenerated;
-        }
-        private static void RevokeCode()
-        {
-            codeGenerated--;
-        }
-
         public string insertProject(ProjectBE project)
         {
-            string code = GenerateCode().ToString();
+            string result = "The project has been created!";
 
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("INSERT INTO projects (code, title, description, deadline, creation_date, state, total_bank, last_partition, partition_bank, gitdir, creator)" +
-                "VALUES ('" + code + "','" + project.Title + "','" + project.Description + "','" + project.ExpirationDate.ToString("dd/mm/yyyy") + "','" +
+            SqlCommand com = new SqlCommand("INSERT INTO projects (title, description, deadline, creation_date, state, total_bank, last_partition, partition_bank, gitdir, creator)" +
+                "VALUES ('" + project.Title + "','" + project.Description + "','" + project.ExpirationDate.ToString("dd/mm/yyyy") + "','" +
                 project.CreationDate.ToString("dd/mm/yyyy") + "'," + "1" + "," + project.Credit + ",'" + project.LastVersion.ToString("dd/mm/yyyy") + "'," + project.Credit + ",'" + project.GitDir + "','" + project.Creator.Email + "')", c);
 
             com.ExecuteNonQuery();
             c.Close();
 
-            return code;
+            return result;
         }
 
         public ProjectBE getProject(string code)
@@ -156,6 +146,5 @@ namespace ShodeLibrary
         /* Fields                                                             */
         /* ****************************************************************** */
          private String connection;
-         private static int codeGenerated = 0;
     }
 }
