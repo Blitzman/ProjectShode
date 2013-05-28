@@ -31,6 +31,15 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label tittleProjectLabel;
         
         /// <summary>
+        /// Control ToolkitScriptManager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
         /// Control tittleProjectTextbox.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tittleProjectTextbox;
+        
+        /// <summary>
+        /// Control tittleProjectTextbox_TextBoxWatermarkExtender.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TextBoxWatermarkExtender tittleProjectTextbox_TextBoxWatermarkExtender;
         
         /// <summary>
         /// Control tittleFeedback.
@@ -65,6 +83,15 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox descriptionTextbox;
+        
+        /// <summary>
+        /// Control descriptionTextbox_TextBoxWatermarkExtender.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TextBoxWatermarkExtender descriptionTextbox_TextBoxWatermarkExtender;
         
         /// <summary>
         /// Control descriptionFeedback.
@@ -119,6 +146,15 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox creditsTextboxProject;
+        
+        /// <summary>
+        /// Control creditsTextboxProject_TextBoxWatermarkExtender.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.TextBoxWatermarkExtender creditsTextboxProject_TextBoxWatermarkExtender;
         
         /// <summary>
         /// Control checkCredtis.
