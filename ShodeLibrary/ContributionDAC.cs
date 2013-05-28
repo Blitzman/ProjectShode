@@ -49,6 +49,49 @@ namespace ShodeLibrary
             return result;
         }
 
+        public int getTotalAmountInContributions()
+        {
+            int amount = 0;
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            // Change this!!!
+            SqlCommand com = new SqlCommand("SELECT count(*) total FROM contributions", c);
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                amount = Int32.Parse(dr["total"].ToString());
+            }
+
+            c.Close();
+
+            return amount;
+        }
+
+        public int getTotalContributions()
+        {
+            int contributionCount = 0;
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("SELECT count(*) total FROM contributions", c);
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                contributionCount = Int32.Parse(dr["total"].ToString());
+            }
+
+            c.Close();
+
+            return contributionCount;
+        }
+
         public void update(ContributionBE contribution)
         {
             SqlConnection c = new SqlConnection(connection);

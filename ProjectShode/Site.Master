@@ -33,15 +33,21 @@
             <asp:Image ID="ImagenX" runat="server"></asp:Image>
             <asp:Image ID="CreditsImage" runat="server" ImageUrl="~/Images/regalito.png"></asp:Image>
         </section>
-        <section class = "header_obj">xxxxxx credits in projects</section>
+        <section class = "header_obj">
+            <asp:Label ID="totalCredits" runat="server" Text="xxxxxx"></asp:Label> credits in 
+            <asp:Label ID="totalProjects" runat="server" Text="xxxxxx"></asp:Label> projects</section>
         <section class = "header_obj">
             <asp:Image ID="DevelopersImage" runat="server" ImageUrl="~/Images/flecha_abajo.png"></asp:Image>
         </section>
-        <section class = "header_obj">xxxxxx developers</section>
+        <section class = "header_obj">
+            <asp:Label ID="totalDevelopments" runat="server" Text="xxxxxx"></asp:Label> developments </section>
+        </section>
         <section class = "header_obj">
             <asp:Image ID="ContributorsImage" runat="server" ImageUrl="~/Images/flecha_arriba.png"></asp:Image>
         </section>
-        <section class = "header_obj">xxxxxxx contributors</section>
+        <section class = "header_obj">
+            <asp:Label ID="totalContributions" runat="server" Text="xxxxxx"></asp:Label> contributions </section>
+        </section>
         <div class="clear"></div>
     </header>
 

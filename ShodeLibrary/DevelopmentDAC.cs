@@ -50,6 +50,27 @@ namespace ShodeLibrary
             return result;
         }
 
+        public int getTotalDevelopments()
+        {
+            int developmentsCount = 0;
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("SELECT count(*) total FROM developments", c);
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                developmentsCount = Int32.Parse(dr["total"].ToString());
+            }
+
+            c.Close();
+
+            return developmentsCount;
+        }
+
         public void update(DevelopmentBE development)
         {
             SqlConnection c = new SqlConnection(connection);

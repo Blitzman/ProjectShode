@@ -41,6 +41,27 @@ namespace ShodeLibrary
             return result;
         }
 
+        public int getTotalProjects()
+        {
+            int projectCount = 0;
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("SELECT count(*) total FROM projects", c);
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                projectCount = Int32.Parse(dr["total"].ToString());
+            }
+
+            c.Close();
+
+            return projectCount;
+        }
+
         public ProjectBE getProject(string code)
         {
             ProjectBE project = new ProjectBE();

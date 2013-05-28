@@ -36,6 +36,14 @@ namespace Project_Shode
                 LoginLink.Visible = true;
                 LogInMotivator.Visible = true;
             }
+
+            ProjectDAC projects = new ProjectDAC();
+            totalProjects.Text = projects.getTotalProjects().ToString();
+            DevelopmentDAC developments = new DevelopmentDAC();
+            totalDevelopments.Text = developments.getTotalDevelopments().ToString();
+            ContributionDAC contributions = new ContributionDAC();
+            totalContributions.Text = contributions.getTotalContributions().ToString();
+            totalCredits.Text = contributions.getTotalAmountInContributions().ToString();
         }
 
         protected void loadCookie(HttpCookie userCookie)

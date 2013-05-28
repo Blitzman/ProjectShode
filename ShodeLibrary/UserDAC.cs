@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.Data.Common;
+using System.Data.SqlTypes;
 using System.Configuration;
+
 
 namespace ShodeLibrary
 {
@@ -109,32 +113,25 @@ namespace ShodeLibrary
         }
 
         //Getter for all the users.
-        public List<UserBE> getAllUsers()
+        public int getUserCount()
         {
-            List<UserBE> users = new List<UserBE>();
+            int userCount = 0;
 
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("SELECT * FROM Users", c);
+            SqlCommand com = new SqlCommand("SELECT count(*) total FROM users", c);
 
             SqlDataReader dr = com.ExecuteReader();
 
             while (dr.Read())
             {
-                UserBE user = new UserBE();
-                user.Name = dr["name"].ToString();
-                user.LastName = dr["last_name"].ToString();
-                user.Email = dr["email"].ToString();
-                user.Nickname = dr["nickname"].ToString();
-                user.Password = dr["password"].ToString();
-                user.Credit = Int32.Parse(dr["credit"].ToString());
-                users.Add(user);
+                userCount = Int32.Parse(dr["total"].ToString());
             }
 
             c.Close();
 
-            return users;
+            return userCount;
         }
 
         public void update(UserBE updatedUser)
