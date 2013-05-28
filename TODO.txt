@@ -1,0 +1,6 @@
+- Handle database (no-sql) exception, handle all exceptions.
+- Credits should be INT not FLOATS.
+- Use of LINQ.
+- Report.
+- Adjust CSS to fit Twitter box.
+- Comment the rest of the files.

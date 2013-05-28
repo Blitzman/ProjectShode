@@ -148,8 +148,8 @@ namespace ShodeLibrary
         }
 
         /// <summary>
-        /// User Recovery.
-        /// Recovers an user from the database using the current user nickname.
+        /// User Retrieval.
+        /// Retrieves an user from the database using the current user nickname.
         /// </summary>
         /// <returns>The full user recovered from the DB.</returns>
         public UserBE getUserByNick()
