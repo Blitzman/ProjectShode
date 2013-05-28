@@ -62,7 +62,7 @@ namespace ShodeLibrary
             return projectCount;
         }
 
-        public ProjectBE getProject(string code)
+        public ProjectBE getProject(int code)
         {
             ProjectBE project = new ProjectBE();
 
@@ -78,8 +78,8 @@ namespace ShodeLibrary
                 project.Code = Int32.Parse(dr["code"].ToString());
                 project.Title = dr["title"].ToString();
                 project.Description = dr["description"].ToString();
-                //project.ExpirationDate DEALING WITH DATETIMES
-                //more datetimes
+                project.CreationDate = DateTime.ParseExact(dr["creation_date"].ToString(), "dd/MM/yyyy", null);
+                project.ExpirationDate = DateTime.ParseExact(dr["deadline"].ToString(), "dd/MM/yyyy", null);
                 project.State = (ProjectState)Int32.Parse(dr["state"].ToString());
                 project.Credit = Int32.Parse(dr["total_bank"].ToString());
                 project.GitDir = dr["gitdir"].ToString();

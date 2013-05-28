@@ -4,20 +4,12 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentProject" runat="server">
     <section id="projectProfile">
-        <section id="projectProfileTittle"
-            <asp:Label ID="profileTittleLabel" runat="server" Text="Cientific Calculator" 
-            Font-Size=X-Large Font-Underline=true Height=50></asp:Label>
+        <section id="projectProfileTittle">
+            <asp:Label ID="profileTittleLabel" runat="server" Font-Size=X-Large Font-Underline=true Height=50></asp:Label>
         </section>
 
-        <section id="project
-            <asp:Label ID="projectProfileDescription" runat="server" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            Phasellus interdum sagittis auctor. Nunc bibendum nisl vitae massa sagittis consectetur. 
-            Aliquam vitae lorem sit amet eros dictum gravida suscipit vitae sem. 
-            Vestibulum dictum lectus a felis pharetra vehicula. Proin ac justo id est mattis placerat vitae sed metus.
-            Nulla gravida cursus dolor, vel ornare magna commodo vitae. Maecenas quis arcu at tortor fringilla laoreet. 
-            Donec lectus tortor, fermentum et tristique sit amet, feugiat aliquet nisi. 
-            Aliquam convallis mollis mi, at vulputate felis mattis at. Proin aliquam suscipit nunc, 
-            porta tempus neque facilisis sit amet."></asp:Label>
+        <section id="project>
+            <asp:Label ID="projectProfileDescription" runat="server"></asp:Label>
         </section>
 
         <section id="projectProfileStatistics">
@@ -25,17 +17,17 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
 
             <section class="projectProfileStat">
                 Idea by
-                <asp:Label ID="projectProfileLabelUser" runat="server" Text="Yayan"></asp:Label>
+                <asp:Label ID="projectProfileLabelUser" runat="server"></asp:Label>
             </section>
             <section class="projectProfileStat">
                 Started on
-                <asp:Label ID="projectProfileLabelDate" runat="server" Text="May 24th, 2105"></asp:Label>
+                <asp:Label ID="projectProfileLabelDate" runat="server"></asp:Label>
             </section>
             <section class="projectProfileStat">
-                <asp:Label ID="projectProfileLabelState" runat="server" Text="Under development"></asp:Label>
+                <asp:Label ID="projectProfileLabelState" runat="server"></asp:Label>
             </section>
             <section class="projectProfileStat">
-                <asp:Label ID="projectProfileLabelCredits" runat="server" Text="3150"></asp:Label>
+                <asp:Label ID="projectProfileLabelCredits" runat="server"></asp:Label>
                  credits have been acumulated
             </section>
             <div class=clear></div>

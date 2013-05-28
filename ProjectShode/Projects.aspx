@@ -65,7 +65,10 @@
          OnPageIndexChanging="resultsPageChanging" EmptyDataText="No projects were found" AutoGenerateColumns="false">
 
              <Columns>
-                <asp:HyperLinkField DataTextField="title" HeaderText="Title" NavigateUrl="~/ProjectProfile.aspx" Target="_blank"/>
+                <asp:BoundField DataField="code" HeaderText="Code" />
+                <asp:HyperLinkField DataTextField="title" HeaderText="Title" Target="_self"
+                  DataNavigateUrlFields="title, code" 
+                  DataNavigateUrlFormatString="~/ProjectProfile.aspx?ProTitle={0}&Code={1}"/>
                 <asp:BoundField DataField="creator" HeaderText="Creator" />
                 <asp:BoundField DataField="creation_date" HeaderText="StartedOn"/>
                 <asp:BoundField DataField="total_bank" HeaderText="Total" />                

@@ -66,6 +66,12 @@ namespace ShodeLibrary
             projectDAC.delete(code);
         }
 
+        public ProjectBE getByCode()
+        {
+            ProjectDAC dac = new ProjectDAC();
+            return dac.getProject(this.code);
+        }
+
         /* ****************************************************************** */
         /* Properties                                                         */
         /* ****************************************************************** */

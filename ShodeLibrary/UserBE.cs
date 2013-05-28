@@ -158,6 +158,17 @@ namespace ShodeLibrary
             return userDAC.getByNick(nickname);
         }
 
+        /// <summary>
+        /// User Retrieval.
+        /// Retrieves an user from the database using the current user email.
+        /// </summary>
+        /// <returns>The full user recovered from the DB.</returns>
+        public UserBE getUserByEmail()
+        {
+            UserDAC userDAC = new UserDAC();
+            return userDAC.getUser(this.Email);
+        }
+
         // /////////////////////////////////////////////////////////////////////
         // Properties //////////////////////////////////////////////////////////
         // /////////////////////////////////////////////////////////////////////

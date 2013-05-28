@@ -26,7 +26,7 @@ namespace Project_Shode
                 DataSet d = new DataSet();
                 String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
                 SqlConnection c = new SqlConnection(s);
-                SqlDataAdapter da = new SqlDataAdapter("Select title, creator, " +
+                SqlDataAdapter da = new SqlDataAdapter("Select code, title, creator, " +
                     " creation_date, total_bank, state from projects", c);
                 da.Fill(d, "projects");
 
@@ -52,7 +52,7 @@ namespace Project_Shode
                 DataSet d = new DataSet();
                 String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
                 SqlConnection c = new SqlConnection(s);
-                SqlDataAdapter da = new SqlDataAdapter("Select title, creator, " +
+                SqlDataAdapter da = new SqlDataAdapter("Select code, title, creator, " +
                     " creation_date, total_bank, state from projects " +
                     " where title like '%" + search + "%'", c);
                 da.Fill(d, "projects");
@@ -71,13 +71,13 @@ namespace Project_Shode
 
             if (!searching)
             {
-                da = new SqlDataAdapter("Select title, creator, " +
+                da = new SqlDataAdapter("Select code, title, creator, " +
                     " creation_date, total_bank, state from projects", c);
             }
             else
             {
                 String search = searchTextbox.Text;
-                da = new SqlDataAdapter("Select title, creator, " +
+                da = new SqlDataAdapter("Select code, title, creator, " +
                     " creation_date, total_bank, state from projects " +
                     " where title like '%" + search + "%'", c);
             }
