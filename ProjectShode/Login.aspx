@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Shode | Login" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Login.aspx.cs" Inherits="Project_Shode.Login" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -23,7 +23,7 @@
             LoginButtonText="Log In"
             Font-Names= "Segoe UI" OnLoggingIn="logIn"  
         >
-        <LoginButtonStyle CssClass="ButtonLogSign" Width="75px" Font-Bold="True" Font-Names="Segoe UI"/>
+        <LoginButtonStyle CssClass="ButtonShode" Width="75px" Font-Bold="True" Font-Names="Segoe UI"/>
 
         <TextBoxStyle CssClass="TextBoxLogSign"/>
         <TitleTextStyle ForeColor="#24242C" />

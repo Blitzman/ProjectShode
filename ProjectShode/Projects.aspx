@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Explore projects" Language="C#" MasterPageFile="~/Project.master" AutoEventWireup="true"
+﻿<%@ Page Title="Shode | Explore projects" Language="C#" MasterPageFile="~/Project.master" AutoEventWireup="true"
     CodeBehind="Projects.aspx.cs" Inherits="Project_Shode.Projects" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContentProject">
@@ -6,8 +6,8 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContentProject">
   <section id="searchEngine">
     <section id="entrySearch">
-        <asp:TextBox ID="searchTextbox" runat="server"></asp:TextBox>
-        <asp:Button ID="buttonSearchProjects" runat="server" Text="Search" OnClick="startSearch"></asp:Button>
+        <asp:TextBox ID="searchTextbox" runat="server" Height="20px" Width="180px"></asp:TextBox>
+        <asp:Button ID="buttonSearchProjects" runat="server" Text="Search" CssClass="ButtonShode" OnClick="startSearch"></asp:Button>
     </section>
     
     <section id"searchLabelHere">

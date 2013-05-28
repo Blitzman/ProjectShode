@@ -1,20 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Profile.master" AutoEventWireup="true" 
+﻿<%@ Page Title="Shode | Inbox Messages" Language="C#" MasterPageFile="~/Profile.master" AutoEventWireup="true" 
 CodeBehind="ProfileMessages.aspx.cs" Inherits="Project_Shode.ProfileMessages" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentProfile" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentProfile" runat="server">
 <asp:Label ID="Messages" runat="server" Text="Inbox" CssClass="contentTitle"></asp:Label>
     <section id="profileSection">
-        <asp:BulletedList ID="PrivateMessages"
-                DisplayMode="Text"
-                runat="server" BulletStyle="Disc">
-        <%-- The bulleted list items will be introduced by coding, however this is a good example to show. --%>
-        <asp:ListItem Value="[NEW] [dd/mm/yy] (xxxxx xxxxxx xxxxx) yyyyy yyyyyy yyyyy [View] [Delete] [Answer]"></asp:ListItem>
-        <asp:ListItem Value="[dd/mm/yy] (xxxxx xxxxxx xxxxx) yyyyy yyyyyy yyyyy [View] [Delete] [Answer]"></asp:ListItem>
-        <asp:ListItem Value="[dd/mm/yy] (xxxxx xxxxxx xxxxx) yyyyy yyyyyy yyyyy [View] [Delete] [Answer]"></asp:ListItem>
-        <asp:ListItem Value="[dd/mm/yy] (xxxxx xxxxxx xxxxx) yyyyy yyyyyy yyyyy [View] [Delete] [Answer]"></asp:ListItem>
-        <asp:ListItem Value="[dd/mm/yy] (xxxxx xxxxxx xxxxx) yyyyy yyyyyy yyyyy [View] [Delete] [Answer]"></asp:ListItem>
-        <asp:ListItem Value="[dd/mm/yy] (xxxxx xxxxxx xxxxx) yyyyy yyyyyy yyyyy [View] [Delete] [Answer]"></asp:ListItem>
-        </asp:BulletedList>
+        <asp:GridView ID="gridResults" runat="server" CellPadding="5" CellSpacing="5" ForeColor="White"
+         BackColor="#24242C" Width="600px" AllowPaging="true" PageSize="20" PagerSettings-Mode="NumericFirstLast"
+         OnPageIndexChanging="resultsPageChanging" EmptyDataText="You don't have received messages!">
+        </asp:GridView>
     </section>
 </asp:Content>

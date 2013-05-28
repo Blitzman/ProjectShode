@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Registrarse" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Shode | Register" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Register.aspx.cs" Inherits="Project_Shode.Account.Register" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">

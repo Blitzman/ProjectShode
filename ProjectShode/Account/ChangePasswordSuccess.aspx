@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Cambiar contraseña" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Shode | Change Password" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="ChangePasswordSuccess.aspx.cs" Inherits="Project_Shode.Account.ChangePasswordSuccess" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">

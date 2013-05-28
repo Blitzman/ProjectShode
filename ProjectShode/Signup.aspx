@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Shode - Sign Up" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Shode | Sign Up" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Signup.aspx.cs" Inherits="Project_Shode.Signup" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -132,5 +132,5 @@
             </tr>
         </table>
     </p>
-        <asp:Button ID="createButton" runat="server" CssClass="ButtonLogSign" Text="Create User" OnClick="createUserClick" />
+        <asp:Button ID="createButton" runat="server" CssClass="ButtonShode" Text="Create User" OnClick="createUserClick" />
 </asp:Content>

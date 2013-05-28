@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Profile.master" AutoEventWireup="true" 
+﻿<%@ Page Title="Shode | Fovourite Projects" Language="C#" MasterPageFile="~/Profile.master" AutoEventWireup="true" 
 CodeBehind="ProfileFavourites.aspx.cs" Inherits="Project_Shode.ProfileFavourites" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContentProfile" runat="server">
 </asp:Content>

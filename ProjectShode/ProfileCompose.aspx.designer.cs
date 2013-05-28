@@ -49,13 +49,22 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.TextBox textuserdest;
         
         /// <summary>
-        /// Control Label1.
+        /// Control userFeedback.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label userFeedback;
+        
+        /// <summary>
+        /// Control SubjectLabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SubjectLabel;
         
         /// <summary>
         /// Control textsubject.
@@ -67,13 +76,22 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.TextBox textsubject;
         
         /// <summary>
-        /// Control Label2.
+        /// Control subjectFeedback.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label subjectFeedback;
+        
+        /// <summary>
+        /// Control BodyLabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label BodyLabel;
         
         /// <summary>
         /// Control textmessage.
@@ -92,5 +110,14 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button sendButton;
+        
+        /// <summary>
+        /// Control messageFeedback.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label messageFeedback;
     }
 }

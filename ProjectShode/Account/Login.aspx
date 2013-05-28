@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Iniciar sesión" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Shode | Log In" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Login.aspx.cs" Inherits="Project_Shode.Account.Login" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">

@@ -20,8 +20,6 @@ namespace ShodeLibrary
             this.read = false;
             this.delAddressee = false;
             this.delSender = false;
-            this.OriginalMessage = null;
-            this.Mcode = 0;
             this.Sender = null;
             this.Addressee = null;
             this.Subject = "";
@@ -36,9 +34,6 @@ namespace ShodeLibrary
             this.read = false;
             this.delAddressee = false;
             this.delSender = false;
-            this.OriginalMessage = null;
-            this.Mcode = codes;
-            codes++;
             this.Sender = sender;
             this.Addressee = addressee;
             this.Date = date;
@@ -54,14 +49,16 @@ namespace ShodeLibrary
         /* Sends a new message */
         public void sendMessage()
         {
-            OriginalMessage = null;
+            this.Mcode = generateCode();
+            //this.conversCode = generateConversCode();
             messageDAC.insertMessage(this);
         }
 
         /* Sends a new message replying the one passed as parameter. */
         public void replyMessage(MessageBE Original)
         {
-            OriginalMessage = Original;
+            this.Mcode = generateCode();
+            //this.conversCode = Original.ConversCode;
             messageDAC.insertMessage(this);
         }
 
@@ -109,17 +106,22 @@ namespace ShodeLibrary
         }
 
         /* Show the messages received by the user passed as parameter */
-        public void showReceivedMessages(UserBE u)
+        public List<MessageBE> showReceivedMessages(UserBE u)
         {
-            messageDAC.getMessages(null, u);
-
-            //Show the MessageBE array returned by getMessages.
+            return messageDAC.getMessages(null, u);
         }
 
-        private static string generateCode()
+        private static int generateCode()
         {
-            string newCode = "";
-            //Randomize a new message code
+            int newCode = MessageDAC.getCodeDB("code");
+
+            return newCode;
+        }
+
+        private static int generateConversCode()
+        {
+            int newCode = MessageDAC.getCodeDB("convers_code");
+
             return newCode;
         }
 
@@ -171,10 +173,10 @@ namespace ShodeLibrary
             get { return delAddressee; }
             set { delAddressee = value; }
         }
-        public MessageBE OriginalMessage
+        public int ConversCode
         {
-            get { return OriginalMessage; }
-            set { OriginalMessage = value; }
+            get { return conversCode; }
+            set { conversCode = value; }
         }
 
 
@@ -190,9 +192,8 @@ namespace ShodeLibrary
         private bool read;
         private bool delSender;
         private bool delAddressee;
+        private int conversCode;
 
         private MessageDAC messageDAC;
-
-        private static int codes = 0;
     }
 }
