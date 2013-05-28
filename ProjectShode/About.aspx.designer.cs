@@ -10,6 +10,6 @@
 namespace Project_Shode {
     
     
-    public partial class Contact {
+    public partial class About {
     }
 }

@@ -20,11 +20,13 @@ namespace Project_Shode
                 if (Session["UserName"] == null)
                     loadCookie(userCookie);
 
-                UserLink.Text = "Welcome, " + Session["UserNickname"].ToString() + " |";
+                UserLink.Text = "Welcome, " + Session["UserNickname"].ToString();
                 LogOutLink.Text = "Log Out";
                 LoginLink.Visible = false;
                 SignupLink.Visible = false;
                 LogInMotivator.Visible = false;
+                OpenCorchete.Visible = false;
+                CloseCorchete.Visible = false;
             }
             else
             {
@@ -35,7 +37,7 @@ namespace Project_Shode
                 LogInMotivator.Visible = true;
             }
         }
-        
+
         protected void loadCookie(HttpCookie userCookie)
         {
             UserBE user1 = new UserBE("", "", "", "", "", userCookie.Value, "");

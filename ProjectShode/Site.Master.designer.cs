@@ -13,6 +13,15 @@ namespace Project_Shode {
     public partial class SiteMaster {
         
         /// <summary>
+        /// Control Head1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+        
+        /// <summary>
         /// Control HeadContent.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
+        
+        /// <summary>
+        /// Control Form1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
         /// Control UserLink.
@@ -31,13 +49,13 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.HyperLink UserLink;
         
         /// <summary>
-        /// Control LogOutLink.
+        /// Control OpenCorchete.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LogOutLink;
+        protected global::System.Web.UI.WebControls.HyperLink OpenCorchete;
         
         /// <summary>
         /// Control LoginLink.
@@ -49,6 +67,15 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.HyperLink LoginLink;
         
         /// <summary>
+        /// Control Separator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink Separator;
+        
+        /// <summary>
         /// Control SignupLink.
         /// </summary>
         /// <remarks>
@@ -56,6 +83,24 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink SignupLink;
+        
+        /// <summary>
+        /// Control CloseCorchete.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink CloseCorchete;
+        
+        /// <summary>
+        /// Control LogOutLink.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button LogOutLink;
         
         /// <summary>
         /// Control LogInMotivator.

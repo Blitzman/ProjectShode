@@ -95,39 +95,24 @@ h3
     opacity: 1.0;
 }
 
-#menu {
-    float: left;
-}
-
-#menu ul {
+.menu 
+{
     text-decoration: none;
-}
-
-#menu ul li{
-    display: inline;
-    margin-left: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 8px;
     font-size: 18px;
     font-weight: lighter;
+    color: #909090;
     text-shadow: 1px 2px 1px #EEE;
+    opacity: 0.6;
 }
 
-    #menu ul li a {
-        opacity: 0.4;
-        text-decoration: none;
-        color: #909090;
-    }
-    #menu ul li img {
-        margin-right: 5px;
-        margin-bottom: -5px;
-    }
-    #menu ul li a:hover {
+.menu:hover {
     color: #000;
     opacity: 1.0;
     text-shadow: 1px 2px 4px #DDD;
 }
-    #menu ul li img:hover {
-        opacity: 1.0;
-    }
 
 .clear {
     clear: both;
