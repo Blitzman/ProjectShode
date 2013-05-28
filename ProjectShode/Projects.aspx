@@ -62,7 +62,16 @@
 
         <asp:GridView ID="gridResults" runat="server" CellPadding="5" CellSpacing="5" ForeColor="White"
          BackColor="#24242C" Width="600px" AllowPaging="true" PageSize="2" PagerSettings-Mode="NumericFirstLast"
-         OnPageIndexChanging="resultsPageChanging" EmptyDataText="No projects were found">
+         OnPageIndexChanging="resultsPageChanging" EmptyDataText="No projects were found" AutoGenerateColumns="false">
+
+             <Columns>
+                <asp:HyperLinkField DataTextField="title" HeaderText="Title" NavigateUrl="~/ProjectProfile.aspx" Target="_blank"/>
+                <asp:BoundField DataField="creator" HeaderText="Creator" />
+                <asp:BoundField DataField="creation_date" HeaderText="StartedOn"/>
+                <asp:BoundField DataField="total_bank" HeaderText="Total" />                
+                <asp:BoundField DataField="state" HeaderText="State" />
+             </Columns>
+
         </asp:GridView>
 
 

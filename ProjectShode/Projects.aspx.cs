@@ -26,8 +26,8 @@ namespace Project_Shode
                 DataSet d = new DataSet();
                 String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
                 SqlConnection c = new SqlConnection(s);
-                SqlDataAdapter da = new SqlDataAdapter("Select title as Tittle, creator as Creator," +
-                    " creation_date as StartedOn, total_bank as Total, state as State from projects", c);
+                SqlDataAdapter da = new SqlDataAdapter("Select title, creator, " +
+                    " creation_date, total_bank, state from projects", c);
                 da.Fill(d, "projects");
 
                 gridResults.DataSource = d;
@@ -52,8 +52,8 @@ namespace Project_Shode
                 DataSet d = new DataSet();
                 String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
                 SqlConnection c = new SqlConnection(s);
-                SqlDataAdapter da = new SqlDataAdapter("Select title as Title, creator as Creator," +
-                    " creation_date as StartedOn, total_bank as Total, state as State from projects " +
+                SqlDataAdapter da = new SqlDataAdapter("Select title, creator, " +
+                    " creation_date, total_bank, state from projects " +
                     " where title like '%" + search + "%'", c);
                 da.Fill(d, "projects");
 
@@ -71,14 +71,14 @@ namespace Project_Shode
 
             if (!searching)
             {
-                da = new SqlDataAdapter("Select title as Tittle, creator as Creator," +
-                    " creation_date as StartedOn, total_bank as Total, state as State from projects", c);
+                da = new SqlDataAdapter("Select title, creator, " +
+                    " creation_date, total_bank, state from projects", c);
             }
             else
             {
                 String search = searchTextbox.Text;
-                da = new SqlDataAdapter("Select title as Title, creator as Creator," +
-                    " creation_date as StartedOn, total_bank as Total, state as State from projects " +
+                da = new SqlDataAdapter("Select title, creator, " +
+                    " creation_date, total_bank, state from projects " +
                     " where title like '%" + search + "%'", c);
             }
 
