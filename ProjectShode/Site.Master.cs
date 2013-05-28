@@ -54,11 +54,8 @@ namespace Project_Shode
             Session["UserNickname"] = user.Nickname;
             Session["UserName"] = user.Name;
             Session["UserLastname"] = user.LastName;
-            Session["UserAddress"] = user.Address;
-            Session["UserZipcode"] = user.Zipcode;
             Session["UserEmail"] = user.Email;
             Session["UserCredit"] = user.Credit;
-            Session["UserLastcon"] = user.LastConnection;
             Session["UserProfpict"] = user.ProfilePicture;
         }
 
