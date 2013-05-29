@@ -74,6 +74,7 @@
     <Content Include="ProfileMy.aspx" />
     <Content Include="ProjectProfile.aspx" />
     <Content Include="Projects.aspx" />
+    <Content Include="Scripts\FileUploader.js" />
     <Content Include="Signup.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -261,6 +262,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

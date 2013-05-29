@@ -118,6 +118,39 @@
                     </asp:DropDownList>
                 </td>
             </tr>
+
+            <script type = "text/javascript">
+                function uploadComplete(sender) {
+                    $get("<%=lblMesg.ClientID%>").style.color = "green";
+                    $get("<%=lblMesg.ClientID%>").innerHTML = "File Uploaded Successfully";
+                }
+
+                function uploadError(sender) {
+                    $get("<%=lblMesg.ClientID%>").style.color = "red";
+                    $get("<%=lblMesg.ClientID%>").innerHTML = "File upload failed.";
+                }
+            </script>
+            <%--File Upload--%>
+            <tr>
+                <td align="right">
+                    <asp:Label ID="Label1" runat="server" Text="Photo"></asp:Label>
+                </td>
+                <td>
+                
+
+                <asp:AsyncFileUpload OnClientUploadError="uploadError" 
+                                    OnClientUploadComplete="uploadComplete" runat="server"
+                                    ID="AsyncFileUpload1" Width="400px" UploaderStyle="Modern"
+                                    CompleteBackColor = "White"
+                                    UploadingBackColor="#CCFFFF"  ThrobberID="imgLoader" 
+                                    OnUploadedComplete = "FileUploadComplete"
+                                                                                    />
+                </td>
+                <td>
+                <asp:Label ID="lblMesg" runat="server" Text=""></asp:Label>
+                </td>
+                 
+            </tr>
             <%--Password checker--%>
             <tr>
                 <td align="center" colspan="2">
