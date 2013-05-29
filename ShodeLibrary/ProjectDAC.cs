@@ -167,8 +167,8 @@ namespace ShodeLibrary
             c.Open();
 
             SqlCommand com = new SqlCommand("UPDATE projects " +
-                "SET code=" + project.Code.ToString() + ", title='" + project.Title + "', description='" + project.Description +
-                "', state=" + project.State + ", total_bank=" + project.Credit + ", gitdir='" + project.GitDir + "', creator='" + project.Creator.Email + "' " +
+                "SET title='" + project.Title + "', description='" + project.Description +
+                "', state=1" + ", total_bank=" + project.Credit + ", gitdir='" + project.GitDir + "', creator='" + project.Creator.Email + "' " +
                 " WHERE code='" + project.Code + "'", c);
 
             com.ExecuteNonQuery();

@@ -73,5 +73,6 @@
     </section>
 
     <asp:Button ID="sendProject" runat="server" Text="Send" CssClass="ButtonShode" OnClick="create_Project"></asp:Button>
+    <asp:Label ID="creationFeedback" runat="server"></asp:Label>
   </section>
 </asp:Content>

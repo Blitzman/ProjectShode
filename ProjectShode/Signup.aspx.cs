@@ -45,7 +45,5 @@ namespace Project_Shode
                 AsyncFileUpload1.SaveAs(Server.MapPath("Uploads/") + usuario.Nickname + "_pict.jpg");
             }
         }
-
-        
     }
 }

@@ -21,6 +21,7 @@ namespace Project_Shode
         {
             if (!Page.IsPostBack)
             {
+                Global.search = "";
                 DataSet d = new DataSet();
                 String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
                 SqlConnection c = new SqlConnection(s);
@@ -81,7 +82,6 @@ namespace Project_Shode
                 da = new SqlDataAdapter("Select code, title, creator, " +
                 " creation_date, total_bank, state from projects " +
                 " where total_bank >=(select 0.9*max(total_bank) from projects)", c);
-                da.Fill(d, "projects");
             }
             else
             {

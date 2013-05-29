@@ -58,6 +58,15 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator NameRequired;
         
         /// <summary>
+        /// Control NameCorrectness.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator NameCorrectness;
+        
+        /// <summary>
         /// Control LastNameLabel.
         /// </summary>
         /// <remarks>
@@ -85,6 +94,15 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator LastNameRequired;
         
         /// <summary>
+        /// Control LastNameCorrectness.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator LastNameCorrectness;
+        
+        /// <summary>
         /// Control UserNameLabel.
         /// </summary>
         /// <remarks>
@@ -110,6 +128,15 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator UserNameRequired;
+        
+        /// <summary>
+        /// Control UserNameCorrectness.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator UserNameCorrectness;
         
         /// <summary>
         /// Control PasswordLabel.

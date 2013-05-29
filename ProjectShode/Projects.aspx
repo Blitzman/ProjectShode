@@ -68,7 +68,7 @@
              <Columns>
                 <asp:BoundField DataField="code" HeaderText="Code" />
                 <asp:HyperLinkField DataTextField="title" HeaderText="Title" Target="_self"
-                  DataNavigateUrlFields="title, code" 
+                  DataNavigateUrlFields="title, code" ItemStyle-ForeColor="White" ControlStyle-ForeColor="White"
                   DataNavigateUrlFormatString="~/ProjectProfile.aspx?ProTitle={0}&Code={1}"/>
                 <asp:BoundField DataField="creator" HeaderText="Creator" />
                 <asp:BoundField DataField="creation_date" HeaderText="StartedOn"/>

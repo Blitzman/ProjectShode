@@ -30,6 +30,8 @@
                     <asp:TextBox ID="Name" runat="server" CssClass="TextBoxLogSign" MaxLength="32"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="NameRequired" runat="server" ControlToValidate="Name"
                         ForeColor="#C36464" ErrorMessage="Name is required." ToolTip="Name is required."></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="NameCorrectness" runat="server" ControlToValidate="Name"
+                        ForeColor="#C36464" ErrorMessage="Name format is incorrect." ValidationExpression="\S[A-z]+"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <%--Last Name--%>
@@ -41,6 +43,8 @@
                     <asp:TextBox ID="LastName" runat="server" CssClass="TextBoxLogSign" MaxLength="32"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="LastNameRequired" runat="server" ControlToValidate="LastName"
                         ForeColor="#C36464" ErrorMessage="Last Name is required." ToolTip="Last Name is required."></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="LastNameCorrectness" runat="server" ControlToValidate="LastName"
+                        ForeColor="#C36464" ErrorMessage="Last Name format is incorrect." ValidationExpression="\S[A-z]+"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <%--User Name--%>
@@ -52,6 +56,8 @@
                     <asp:TextBox ID="UserNameBox" runat="server" CssClass="TextBoxLogSign" MaxLength="32"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserNameBox"
                         ForeColor="#C36464" ErrorMessage="User Name is required." ToolTip="User Name is required."></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="UserNameCorrectness" runat="server" ControlToValidate="UserNameBox"
+                        ForeColor="#C36464" ErrorMessage="User Name format is incorrect." ValidationExpression="\w[0-9A-z]+"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <%--Password--%>
@@ -101,7 +107,7 @@
                     <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email"
                         ForeColor="#C36464" ErrorMessage="E-mail is required." ToolTip="E-mail is required."></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="EmailCorrect" runat="server" ControlToValidate="Email"
-                        ForeColor="#C36464" ErrorMessage="Incorrect Email" 
+                        ForeColor="#C36464" ErrorMessage="Incorrect Email Format: user@comp.dom" 
                         ValidationExpression="\S+@\S+\.\S+"></asp:RegularExpressionValidator>
                 </td>
             </tr>
@@ -112,7 +118,7 @@
                 </td>
                 <td>
                     <asp:DropDownList ID="MaleFemale" Font-Names="Segoe UI" AutoPostBack="False" runat="server">
-                        <asp:ListItem Selected="True" Value="--"> -- </asp:ListItem>
+                        <asp:ListItem Selected="True" Value="--" Text="--"></asp:ListItem>
                         <asp:ListItem Value="Female" Text="Female"></asp:ListItem>
                         <asp:ListItem Value="Male" Text="Male"></asp:ListItem>
                     </asp:DropDownList>

@@ -53,8 +53,7 @@ namespace Project_Shode
             projectProfileLabelUser.Text = usuario.Nickname;
             projectProfileLabelDate.Text = project.CreationDate.ToString();
             projectProfileLabelState.Text = project.State.ToString();
-            //projectProfileLabelCredits.Text = project.Credit.toString();
-            projectProfileLabelCredits.Text = "TODO";
+            projectProfileLabelCredits.Text = project.Credit.ToString();
         }
 
         protected void contribute(object sender, EventArgs e)
@@ -63,12 +62,26 @@ namespace Project_Shode
             {
                 if (float.Parse(creditsBox.Text) <= float.Parse(Session["USerCredit"].ToString()))
                 {
+                    //Get the query string parameters.
+                    string projectTitle = Request.QueryString["ProTitle"].ToString();
+                    int projectCode = Int32.Parse(Request.QueryString["Code"].ToString());
+
+                    //Create a project and look for the one we are being asked.
+                    ProjectBE project = new ProjectBE();
+                    project.Code = projectCode;
+                    project = project.getByCode();
+
+                    project.Credit = project.Credit + Int32.Parse(creditsBox.Text);
+
+                    project.update();
+
                     FeedbackCredit.Text = "Done!";
+                    projectProfileLabelCredits.Text = project.Credit.ToString();
                     FeedbackCredit.Visible = true;
                 }
                 else
                 {
-                    FeedbackCredit.Text = "Wrong number";
+                    FeedbackCredit.Text = "Wrong quantity.";
                     FeedbackCredit.Visible = true;
                 }
             }

@@ -73,6 +73,9 @@ namespace Project_Shode
                     creation, expires, credit, version, gitDir);
 
                 crProject.create();
+
+                creationFeedback.Text = "Project created successfully!";
+                creationFeedback.ForeColor = System.Drawing.Color.Green;
             }
         }
     }
