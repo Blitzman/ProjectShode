@@ -4,3 +4,8 @@
 - Report.
 - Adjust CSS to fit Twitter box.
 - Comment the rest of the files.
+- Categories and project comments.
+- Name, LastName and UserName expression validator.
+- Gender requirement at sign up
+- Email notification
+- Change results 'Creator' column: Nickname instead of email.
