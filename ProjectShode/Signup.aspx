@@ -24,45 +24,44 @@
             <%--Name--%>
             <tr>
                 <td align="right">
-                    <asp:Label ID="NameLabel" runat="server">
-                                    Name:</asp:Label>
+                    <asp:Label ID="NameLabel" runat="server" Text="Name:" AssociatedControlID="Name"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="Name" runat="server" CssClass="TextBoxLogSign"></asp:TextBox>
+                    <asp:TextBox ID="Name" runat="server" CssClass="TextBoxLogSign" MaxLength="32"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="NameRequired" runat="server" ControlToValidate="Name"
+                        ForeColor="#C36464" ErrorMessage="Name is required." ToolTip="Name is required."></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <%--Last Name--%>
             <tr>
                 <td align="right">
-                    <asp:Label ID="LastNameLabel" runat="server">
-                                    Last Name:</asp:Label>
+                    <asp:Label ID="LastNameLabel" runat="server" Text="Last Name:" AssociatedControlID="LastName"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="LastName" runat="server" CssClass="TextBoxLogSign"></asp:TextBox>
+                    <asp:TextBox ID="LastName" runat="server" CssClass="TextBoxLogSign" MaxLength="32"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="LastNameRequired" runat="server" ControlToValidate="LastName"
+                        ForeColor="#C36464" ErrorMessage="Last Name is required." ToolTip="Last Name is required."></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <%--User Name--%>
             <tr>
                 <td align="right">
-                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserNameBox">
-                                    User Name:</asp:Label>
+                    <asp:Label ID="UserNameLabel" runat="server" Text="User Name:" AssociatedControlID="UserNameBox"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="UserNameBox" runat="server" CssClass="TextBoxLogSign"></asp:TextBox>
+                    <asp:TextBox ID="UserNameBox" runat="server" CssClass="TextBoxLogSign" MaxLength="32"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserNameBox"
-                        ForeColor="#C36464" ErrorMessage="User Name is required." ToolTip="User Name is required."
-                        ValidationGroup="CreateUserWizard1">User name is required</asp:RequiredFieldValidator>
+                        ForeColor="#C36464" ErrorMessage="User Name is required." ToolTip="User Name is required."></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <%--Password--%>
             <tr>
                 <td align="right">
-                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">
-                                    Password:</asp:Label>
+                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password" Text="Password"></asp:Label>
                 </td>
                 <td>
                    <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
-                    <asp:TextBox ID="Password" runat="server" CssClass="TextBoxLogSign" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="Password" runat="server" CssClass="TextBoxLogSign" TextMode="Password" MaxLength="16"></asp:TextBox>
                     <asp:PasswordStrength ID="PasswordStrength1" 
                     runat="server" 
                     TargetControlID="Password" 
@@ -77,57 +76,45 @@
                      TextStrengthDescriptionStyles="colorPass1;colorPass2;colorPass3;colorPass4;colorPass5"
                     CalculationWeightings="50;15;15;20" ></asp:PasswordStrength>
                     <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password"
-                        ForeColor="#C36464" ErrorMessage="Password is required." ToolTip="Password is required."
-                        ValidationGroup="CreateUserWizard1">Password is required</asp:RequiredFieldValidator>
+                        ForeColor="#C36464" ErrorMessage="Password is required." ToolTip="Password is required."></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <%--Confirm Password--%>
             <tr>
                 <td align="right">
-                    <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword">
-                                    Confirm Password:</asp:Label>
+                    <asp:Label ID="ConfirmPasswordLabel" runat="server" AssociatedControlID="ConfirmPassword"
+                     Text="Confirm Password"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="ConfirmPassword" runat="server" CssClass="TextBoxLogSign" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="ConfirmPassword" runat="server" CssClass="TextBoxLogSign" TextMode="Password" MaxLength="16"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="ConfirmPasswordRequired" runat="server" ControlToValidate="ConfirmPassword"
-                        ForeColor="#C36464" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required."
-                        ValidationGroup="CreateUserWizard1">You must confirm the password</asp:RequiredFieldValidator>
+                        ForeColor="#C36464" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required."></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <%--Email--%>
             <tr>
                 <td align="right">
-                    <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">
-                                    E-mail:</asp:Label>
+                    <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email" Text="Email"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="Email" runat="server" CssClass="TextBoxLogSign"></asp:TextBox>
+                    <asp:TextBox ID="Email" runat="server" CssClass="TextBoxLogSign" MaxLength="64"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email"
-                        ForeColor="#C36464" ErrorMessage="E-mail is required." ToolTip="E-mail is required."
-                        ValidationGroup="CreateUserWizard1">Email is required</asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <%--Suporting Email--%>
-            <tr>
-                <td align="right">
-                    <asp:Label ID="OpEmailLabel" runat="server">
-                                    Additional E-mail:</asp:Label>
-                </td>
-                <td>
-                    <asp:TextBox ID="OpEmail" runat="server" CssClass="TextBoxLogSign"></asp:TextBox>
+                        ForeColor="#C36464" ErrorMessage="E-mail is required." ToolTip="E-mail is required."></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="EmailCorrect" runat="server" ControlToValidate="Email"
+                        ForeColor="#C36464" ErrorMessage="Incorrect Email" 
+                        ValidationExpression="\S+@\S+\.\S+"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <%--Man or Woman--%>
             <tr>
                 <td align="right">
-                    <asp:Label ID="LabelGender" runat="server">
-                                    Male/Female:</asp:Label>
+                    <asp:Label ID="LabelGender" runat="server" Text="Male/Female"></asp:Label>
                 </td>
                 <td>
                     <asp:DropDownList ID="MaleFemale" Font-Names="Segoe UI" AutoPostBack="False" runat="server">
                         <asp:ListItem Selected="True" Value="--"> -- </asp:ListItem>
-                        <asp:ListItem Value="Female"> Female </asp:ListItem>
-                        <asp:ListItem Value="Male"> Male </asp:ListItem>
+                        <asp:ListItem Value="Female" Text="Female"></asp:ListItem>
+                        <asp:ListItem Value="Male" Text="Male"></asp:ListItem>
                     </asp:DropDownList>
                 </td>
             </tr>
@@ -136,7 +123,7 @@
                 <td align="center" colspan="2">
                     <asp:CompareValidator ID="PasswordCompare" runat="server" ControlToCompare="Password"
                         ControlToValidate="ConfirmPassword" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match."
-                        ForeColor="#C36464" ValidationGroup="CreateUserWizard1"></asp:CompareValidator>
+                        ForeColor="#C36464"></asp:CompareValidator>
                 </td>
             </tr>
             <%--Error message if passwords don't match--%>

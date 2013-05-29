@@ -49,6 +49,15 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.TextBox Name;
         
         /// <summary>
+        /// Control NameRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NameRequired;
+        
+        /// <summary>
         /// Control LastNameLabel.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,15 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox LastName;
+        
+        /// <summary>
+        /// Control LastNameRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator LastNameRequired;
         
         /// <summary>
         /// Control UserNameLabel.
@@ -193,22 +211,13 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequired;
         
         /// <summary>
-        /// Control OpEmailLabel.
+        /// Control EmailCorrect.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label OpEmailLabel;
-        
-        /// <summary>
-        /// Control OpEmail.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox OpEmail;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailCorrect;
         
         /// <summary>
         /// Control LabelGender.
@@ -227,6 +236,15 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList MaleFemale;
+        
+        /// <summary>
+        /// Control GenderRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator GenderRequired;
         
         /// <summary>
         /// Control PasswordCompare.

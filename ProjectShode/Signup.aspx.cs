@@ -20,13 +20,14 @@ namespace Project_Shode
         protected void createUserClick(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            String name="", lastName="", userName="", password="", email="";
+            String name = "", lastName = "", userName = "", password = "", email = "", gender = "";
 
             name = Name.Text;
             lastName = LastName.Text;
             userName = UserNameBox.Text;
             password = Password.Text;
             email = Email.Text;
+            gender = MaleFemale.SelectedValue.ToString();
 
             UserBE usuario = new UserBE(name, lastName, "", "", email, userName, password);
             resultLabel.Text = usuario.create();
