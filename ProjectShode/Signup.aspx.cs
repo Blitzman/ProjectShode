@@ -24,12 +24,6 @@ namespace Project_Shode
                 Response.Redirect("Profiles.aspx");     
         }
 
-        protected void FileUploadComplete(object sender, EventArgs e)
-        {
-            string filename = System.IO.Path.GetFileName(AsyncFileUpload1.FileName);
-            AsyncFileUpload1.SaveAs(Server.MapPath("Uploads/") + filename);
-        }
-
         protected void createUserClick(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
@@ -44,6 +38,12 @@ namespace Project_Shode
 
             UserBE usuario = new UserBE(name, lastName, " ", " ", email, userName, password);
             resultLabel.Text = usuario.create();
+
+            if (resultLabel.Text == "The user has been succesfully created!")
+            {
+                string filename = System.IO.Path.GetFileName(AsyncFileUpload1.FileName);
+                AsyncFileUpload1.SaveAs(Server.MapPath("Uploads/") + usuario.Nickname + "_pict.jpg");
+            }
         }
 
         

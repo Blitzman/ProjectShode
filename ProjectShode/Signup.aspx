@@ -138,13 +138,10 @@
                 <td>
                 
 
-                <asp:AsyncFileUpload OnClientUploadError="uploadError" 
-                                    OnClientUploadComplete="uploadComplete" runat="server"
+                <asp:AsyncFileUpload OnClientUploadError="uploadError" runat="server"
                                     ID="AsyncFileUpload1" Width="400px" UploaderStyle="Modern"
                                     CompleteBackColor = "White"
-                                    UploadingBackColor="#CCFFFF"  ThrobberID="imgLoader" 
-                                    OnUploadedComplete = "FileUploadComplete"
-                                                                                    />
+                                    UploadingBackColor="#CCFFFF" ThrobberID="imgLoader" />
                 </td>
                 <td>
                 <asp:Label ID="lblMesg" runat="server" Text=""></asp:Label>
