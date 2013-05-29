@@ -18,8 +18,10 @@ namespace Project_Shode
             else
             {
                 userFeedback.Visible = false;
+                existsFeedback.Visible = false;
                 subjectFeedback.Visible = false;
                 messageFeedback.Visible = false;
+                lengthFeedback.Visible = false;
             }
         }
 
@@ -32,6 +34,17 @@ namespace Project_Shode
                 userFeedback.Visible = true;
                 correct = false;
             }
+            else
+            {
+                UserBE user1 = new UserBE("", "", "", "", "", textuserdest.Text, "");
+                UserBE dest = new UserBE(user1.getUserByNick());
+
+                if (dest.Email == "")
+                {
+                    correct = false;
+                    existsFeedback.Visible = true;
+                }
+            }
 
             if (textsubject.Text.Length == 0)
             {
@@ -42,6 +55,12 @@ namespace Project_Shode
             if (textmessage.Text.Length == 0)
             {
                 messageFeedback.Visible = true;
+                correct = false;
+            }
+            else if (textmessage.Text.Length > 1000)
+            {
+                lengthFeedback.Visible = true;
+                lengthFeedback.Text = "The message is too long! Delete " + (textmessage.Text.Length - 1000).ToString() + " characters.";
                 correct = false;
             }
             if (correct)
@@ -59,7 +78,7 @@ namespace Project_Shode
                 MessageBE sndMessage = new MessageBE(sender1, addressee, date, subject, message);
 
                 sndMessage.sendMessage();
-                Response.Redirect("ProfileMessages.aspx");
+                Response.Redirect("ProfileMessages.aspx?Box=Out");
             }
         }
     }

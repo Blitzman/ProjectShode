@@ -27,16 +27,16 @@ namespace ShodeLibrary
         /* Inserts a new message */
         public void insertMessage(MessageBE m)
         {
-            int read = 0;       if (m.Read) read = 1;
-            int delSend = 0;    if (m.DelSender) delSend = 1;
-            int delAddr = 0;    if (m.DelAddressee) delAddr = 1;
+            int read = 0; if (m.Read) read = 1;
+            int delSend = 0; if (m.DelSender) delSend = 1;
+            int delAddr = 0; if (m.DelAddressee) delAddr = 1;
 
             SqlConnection c = new SqlConnection(connection);
             c.Open();
             SqlCommand com;
-            com = new SqlCommand("INSERT INTO message (code, issue, body, sender, addressee, date, isread, deleted_sender, deleted_reader)" +
+            com = new SqlCommand("INSERT INTO message (code, issue, body, sender, addressee, date, isread, deleted_sender, deleted_reader, convers_code)" +
                 "VALUES ('" + m.code.ToString() + "','" + m.Subject + "','" + m.Message + "','" + m.Sender.Email + "','" + m.Addressee.Email +
-                "','" + m.Date.ToString("dd/mm/yyyy") + "','" + read + "','" + delSend + "','" + delAddr + "')", c);
+                "','" + m.Date.ToString("dd/MM/yyyy") + "','" + read + "','" + delSend + "','" + delAddr + "','" + m.ConversCode.ToString() + "')", c);
 
             com.ExecuteNonQuery();
             c.Close();
@@ -50,13 +50,16 @@ namespace ShodeLibrary
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("SELECT MAX(" + codeType + ") AS code FROM message", c);
+            SqlCommand com = new SqlCommand("SELECT COUNT(*) AS n, MAX(" + codeType + ") AS code FROM message", c);
 
             SqlDataReader dr = com.ExecuteReader();
 
             while (dr.Read())
             {
-                newCode = int.Parse(dr["code"].ToString());
+                if (dr["n"].ToString() != "0")
+                {
+                    newCode = int.Parse(dr["code"].ToString());
+                }
             }
 
             newCode++;
@@ -65,18 +68,34 @@ namespace ShodeLibrary
 
         /* Deletes the message for the specified user. If both users have
          * deleted it, it is removed from database. */
+        public bool readMessage(MessageBE m)
+        {
+            bool read = false;
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("UPDATE message SET isread = 1 WHERE code = " + m.code.ToString(), c);
+            com.ExecuteNonQuery();
+
+            c.Close();
+            return read;
+        }
+
+        /* Deletes the message for the specified user. If both users have
+         * deleted it, it is removed from database. */
         public bool deleteMessage(MessageBE m, UserBE u = null)
         {
             bool deleted = false;
 
-            bool delSend = false, delAddr = false;
+            bool delSend = false, delAddre = false;
+            int delSnd = 0, delAddr = 0;
             String sender = "", addressee = "";
 
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
             SqlCommand com = new SqlCommand("SELECT sender, addressee, " +
-                "deleted_sender, deleted_reader FROM message WHERE code = " + m.code.ToString() + "', 0)", c);
+                "deleted_sender, deleted_reader FROM message WHERE code = " + m.code.ToString(), c);
 
             SqlDataReader dr = com.ExecuteReader();
 
@@ -84,43 +103,45 @@ namespace ShodeLibrary
             {
                 sender = dr["sender"].ToString();
                 addressee = dr["addressee"].ToString();
-                delSend = bool.Parse(dr["deleted_sender"].ToString());
-                delAddr = bool.Parse(dr["deleted_reader"].ToString());
+                delSnd = int.Parse(dr["deleted_sender"].ToString());
+                delAddr = int.Parse(dr["deleted_reader"].ToString());
             }
+
+            dr.Close();
+
+            if (delSnd == 1) delSend = true;
+            if (delAddr == 1) delAddre = true;
 
             if (u.Email == sender)
             {
                 m.DelSender = true;
                 deleted = true;
 
-                if (delAddr == true)
+                if (delAddre == true)
                 {
-                    com = new SqlCommand("DELETE FROM message WHERE code = " + m.code.ToString() + "', 0)", c);
-                    com.ExecuteNonQuery();
+                    com = new SqlCommand("DELETE FROM message WHERE code = " + m.code.ToString(), c);
                 }
                 else
                 {
-                    com = new SqlCommand("UPDATE Messages SET deleted_sender = TRUE WHERE code = " + m.code.ToString() + "', 0)", c);
-                    com.ExecuteNonQuery();
+                    com = new SqlCommand("UPDATE message SET deleted_sender = 1 WHERE code = " + m.code.ToString(), c);
                 }
+                com.ExecuteNonQuery();
             }
-            else if (u.Email == addressee)
+            if (u.Email == addressee)
             {
                 m.DelAddressee = true;
                 deleted = true;
 
                 if (delSend == true)
                 {
-                    com = new SqlCommand("DELETE FROM message WHERE code = " + m.code.ToString() + "', 0)", c);
-                    com.ExecuteNonQuery();
+                    com = new SqlCommand("DELETE FROM message WHERE code = " + m.code.ToString(), c);
                 }
                 else
                 {
-                    com = new SqlCommand("UPDATE Messages SET deleted_reader = TRUE WHERE code = " + m.code.ToString() + "', 0)", c);
-                    com.ExecuteNonQuery();
+                    com = new SqlCommand("UPDATE message SET deleted_reader = 1 WHERE code = " + m.code.ToString(), c);
                 }
+                com.ExecuteNonQuery();
             }
-
             c.Close();
 
             return deleted;
@@ -219,36 +240,41 @@ namespace ShodeLibrary
 
 
         /* Gets a single message by its code */
-        public MessageBE getMessage(int code)
+        public static MessageBE getMessage(int code)
         {
-            MessageBE message = null;
+            MessageBE message = new MessageBE();
 
-            if (code == null)
+            UserDAC user = new UserDAC();
+            int read = 0, delSnd = 0, delAddr = 0;
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+            SqlCommand com = new SqlCommand("SELECT * FROM message WHERE code= " + code.ToString(), c);
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
             {
-                UserDAC user = new UserDAC();
-
-                SqlConnection c = new SqlConnection(connection);
-                c.Open();
-                SqlCommand com = new SqlCommand("SELECT * FROM message WHERE code='" + code.ToString() + "'", c);
-
-                SqlDataReader dr = com.ExecuteReader();
-
-                while (dr.Read())
-                {
-                    message.code = int.Parse(dr["code"].ToString());
-                    message.Sender = user.getUser(dr["sender"].ToString());
-                    message.Addressee = user.getUser(dr["addressee"].ToString());
-                    message.Subject = dr["issue"].ToString();
-                    message.Message = dr["body"].ToString();
-                    message.Date = DateTime.Parse(dr["date"].ToString());
-                    message.Read = bool.Parse(dr["isread"].ToString());
-                    message.DelSender = bool.Parse(dr["deleted_sender"].ToString());
-                    message.DelAddressee = bool.Parse(dr["deleted_reader"].ToString());
-                    //message.OriginalMessage = getMessage(int.Parse(dr["original"].ToString()));
-                }
-
-                c.Close();
+                message.code = int.Parse(dr["code"].ToString());
+                message.Sender = user.getUser(dr["sender"].ToString());
+                message.Addressee = user.getUser(dr["addressee"].ToString());
+                message.Subject = dr["issue"].ToString();
+                message.Message = dr["body"].ToString();
+                message.Date = DateTime.Parse(dr["date"].ToString());
+                read = int.Parse(dr["isread"].ToString());
+                delSnd = int.Parse(dr["deleted_sender"].ToString());
+                delAddr = int.Parse(dr["deleted_reader"].ToString());
+                message.ConversCode = int.Parse(dr["convers_code"].ToString());
             }
+
+            message.Read = false;
+            message.DelSender = false;
+            message.DelAddressee = false;
+            if (read == 1) message.Read = true;
+            if (delSnd == 1) message.DelSender = true;
+            if (delAddr == 1) message.DelAddressee = true;
+
+            c.Close();
 
             return message;
         }

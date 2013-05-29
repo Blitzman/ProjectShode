@@ -15,6 +15,7 @@ CodeBehind="ProfileCompose.aspx.cs" Inherits="Project_Shode.ProfileCompose" %>
             </asp:TableCell>
             <asp:TableCell>
                 <asp:Label ID="userFeedback" runat="server" ForeColor="Red" Text="Destination user missing!"></asp:Label>
+                <asp:Label ID="existsFeedback" runat="server" ForeColor="Red" Text="Destination user doesn't exist!"></asp:Label>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -43,7 +44,8 @@ CodeBehind="ProfileCompose.aspx.cs" Inherits="Project_Shode.ProfileCompose" %>
                 <asp:Button ID="sendButton" runat="server" Text="Send" CssClass="ButtonShode" OnClick="send_Message"></asp:Button>
             </asp:TableCell>
             <asp:TableCell>
-                <asp:Label ID="messageFeedback" runat="server" ForeColor="Red" Text="You may write some description!"></asp:Label>
+                <asp:Label ID="messageFeedback" runat="server" ForeColor="Red" Text="You have not written any message!"></asp:Label>
+                <asp:Label ID="lengthFeedback" runat="server" ForeColor="Red" Text="The message is too long!"></asp:Label>
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>

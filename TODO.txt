@@ -9,3 +9,4 @@
 - Gender requirement at sign up
 - Email notification
 - Change results 'Creator' column: Nickname instead of email.
+- Augment varchar digits in Message so that time also fits.

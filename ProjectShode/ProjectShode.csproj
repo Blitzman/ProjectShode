@@ -64,6 +64,7 @@
     </Content>
     <Content Include="CreateProject.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Message.aspx" />
     <Content Include="ProfileCredits.aspx" />
     <Content Include="Profiles.aspx" />
     <Content Include="ProfileCompose.aspx" />
@@ -152,6 +153,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Message.aspx.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Message.aspx.designer.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProfileCredits.aspx.cs">
       <DependentUpon>ProfileCredits.aspx</DependentUpon>

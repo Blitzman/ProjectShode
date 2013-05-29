@@ -50,7 +50,7 @@ namespace ShodeLibrary
         public void sendMessage()
         {
             this.Mcode = generateCode();
-            //this.conversCode = generateConversCode();
+            this.conversCode = generateConversCode();
             messageDAC.insertMessage(this);
         }
 
@@ -58,24 +58,32 @@ namespace ShodeLibrary
         public void replyMessage(MessageBE Original)
         {
             this.Mcode = generateCode();
-            //this.conversCode = Original.ConversCode;
+            this.conversCode = Original.ConversCode;
             messageDAC.insertMessage(this);
         }
 
         /* Removes a message from the list of the specified user. */
         public void removeMessage(UserBE u)
         {
-            if (u == this.Sender)
+            if (this.Sender != null && this.Addressee != null)
             {
-                delSender = messageDAC.deleteMessage(this, u);
-            }
-            else if (u == this.Addressee)
-            {
-                delAddressee = messageDAC.deleteMessage(this, u);
-            }
-            else
-            {
-                //Error message or exception.
+                if (u.Email == this.Sender.Email && u.Email == this.Addressee.Email)
+                {
+                    delSender = messageDAC.deleteMessage(this, u);
+                    delAddressee = delSender;
+                }
+                else if (u.Email == this.Sender.Email)
+                {
+                    delSender = messageDAC.deleteMessage(this, u);
+                }
+                else if (u.Email == this.Addressee.Email)
+                {
+                    delAddressee = messageDAC.deleteMessage(this, u);
+                }
+                else
+                {
+                    //Error
+                }
             }
         }
 
@@ -83,9 +91,11 @@ namespace ShodeLibrary
         /* Opens a message and tags it as read. */
         public void openMessage()
         {
-            read = true;
-
-            //Show the message.
+            if (!this.Read)
+            {
+                MessageDAC aux = new MessageDAC();
+                Read = aux.readMessage(this);
+            }
         }
 
         /* Shows all the message chain made by replying */
