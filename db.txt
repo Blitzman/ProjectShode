@@ -1,6 +1,8 @@
 DROP TABLE message
+DROP TABLE comments
 DROP TABLE news
 DROP TABLE contributions
+DROP TABLE developments
 DROP TABLE projects
 DROP TABLE users
 
@@ -32,7 +34,7 @@ CONSTRAINT fk_creator FOREIGN KEY (creator) REFERENCES users(email) ON DELETE CA
 CREATE TABLE message (
 convers_code INT NOT NULL,
 code INT,
-date VARCHAR(11) NOT NULL,
+date VARCHAR(20) NOT NULL,
 issue VARCHAR(32) NOT NULL,
 body VARCHAR(1000) NOT NULL,
 isread INT NOT NULL,
@@ -71,3 +73,12 @@ ups INT NOT NULL,
 CONSTRAINT pk_developments PRIMARY KEY(project, usr, date),
 CONSTRAINT fk_developments_project FOREIGN KEY (project) REFERENCES projects(code) ON DELETE CASCADE,
 CONSTRAINT fk_developments_user FOREIGN KEY (usr) REFERENCES users(email) ON DELETE NO ACTION)
+
+CREATE TABLE comments (
+project INT,
+usr VARCHAR(64),
+date VARCHAR(20),
+comment VARCHAR(140) NOT NULL,
+CONSTRAINT pk_comments PRIMARY KEY (project, usr, date),
+CONSTRAINT fk_comments_project FOREIGN KEY (project) REFERENCES projects(code) ON DELETE CASCADE,
+CONSTRAINT fk_comments_user FOREIGN KEY (usr) REFERENCES users(email) ON DELETE NO ACTION)
