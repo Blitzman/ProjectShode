@@ -39,11 +39,11 @@ namespace Project_Shode
 
             ProjectDAC projects = new ProjectDAC();
             totalProjects.Text = projects.getTotalProjects().ToString();
+            totalCredits.Text = projects.getTotalCreditsInProjects().ToString();
             DevelopmentDAC developments = new DevelopmentDAC();
             totalDevelopments.Text = developments.getTotalDevelopments().ToString();
             ContributionDAC contributions = new ContributionDAC();
             totalContributions.Text = contributions.getTotalContributions().ToString();
-            totalCredits.Text = contributions.getTotalAmountInContributions().ToString();
         }
 
         protected void loadCookie(HttpCookie userCookie)

@@ -91,6 +91,27 @@ namespace ShodeLibrary
             return project;
         }
 
+        public int getTotalCreditsInProjects()
+        {
+            int amount = 0;
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("SELECT sum(total_bank) total FROM projects", c);
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                amount = Int32.Parse(dr["total"].ToString());
+            }
+
+            c.Close();
+
+            return amount;
+        }
+
         public List<ProjectBE> getAllProjects ()
         {
             List<ProjectBE> projects = new List<ProjectBE>();
