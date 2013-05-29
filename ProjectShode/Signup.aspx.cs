@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data;
-using System.Linq;
 using System.Web.Security;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls.WebParts;
@@ -39,7 +38,7 @@ namespace Project_Shode
             UserBE usuario = new UserBE(name, lastName, " ", " ", email, userName, password);
             resultLabel.Text = usuario.create();
 
-            if (resultLabel.Text == "The user has been succesfully created!")
+            if (resultLabel.Text == "The user has been succesfully created!" && AsyncFileUpload1.FileName!="")
             {
                 string filename = System.IO.Path.GetFileName(AsyncFileUpload1.FileName);
                 AsyncFileUpload1.SaveAs(Server.MapPath("Uploads/") + usuario.Nickname + "_pict.jpg");

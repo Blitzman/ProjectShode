@@ -118,10 +118,12 @@
                 </td>
                 <td>
                     <asp:DropDownList ID="MaleFemale" Font-Names="Segoe UI" AutoPostBack="False" runat="server">
-                        <asp:ListItem Selected="True" Value="--" Text="--"></asp:ListItem>
+                        <asp:ListItem Selected="True" Value="--Select--">--Select--</asp:ListItem>
                         <asp:ListItem Value="Female" Text="Female"></asp:ListItem>
                         <asp:ListItem Value="Male" Text="Male"></asp:ListItem>
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="GenderRquired" runat="server" InitialValue="--Select--" ForeColor="#C36464"
+                     ControlToValidate="MaleFemale" ErrorMessage="Select one please."></asp:RequiredFieldValidator>
                 </td>
             </tr>
 

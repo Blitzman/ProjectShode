@@ -15,6 +15,8 @@ namespace Project_Shode
             {
                 Username.Text = Session["UserNickname"].ToString();
                 userCredits.Text = Session["UserCredit"].ToString();
+
+                ProfileImage.ImageUrl = "/Uploads/" + Session["UserNickname"].ToString() + "_pict.jpg";
             }
         }
     }

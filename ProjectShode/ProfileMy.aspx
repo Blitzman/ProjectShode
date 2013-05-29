@@ -7,7 +7,7 @@ CodeBehind="ProfileMy.aspx.cs" Inherits="Project_Shode.ProfileMy" %>
 
     <section id="profileResume">
         <section id="profileResumeImage">
-            <asp:Image ID="ProfileImage" runat="server"></asp:Image>
+            <asp:Image ID="ProfileImage" runat="server" Height=100px Width=100px></asp:Image>
         </section>
         <section id="profileResumeFacts">
         <section class = "profileResumeFactsObj">
