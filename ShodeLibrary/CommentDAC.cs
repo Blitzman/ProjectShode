@@ -20,17 +20,23 @@ namespace ShodeLibrary {
     	/*
     	 * Creation in the DB of a comment.
     	 */
-    	public string createComment (CommentBE comment) {
-    		string code="";
+    	public void insertComment (CommentBE comment) {
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+            SqlCommand com;
+            com = new SqlCommand("Insert into comments (project, usr, date, comment)" +
+                "values ('" + comment.Project.Code + "', '" + comment.Writer.Email + "', '" +
+                comment.Date.ToString("G") + "', '" + comment.Content + "')", c);
 
-    		return code;
+            com.ExecuteNonQuery();
+            c.Close();
     	}
 
     	/*
     	 * It returns a comment given a code. If the code
     	 * does not exist an empty comment will be returned.
     	 */
-    	public CommentBE getComment (string code) {
+    	public CommentBE getComment () {
     		CommentBE comment = new CommentBE();
 
     		return comment;
@@ -95,7 +101,7 @@ namespace ShodeLibrary {
     	/*
     	 * Delete the given comment.
     	 */
-    	public void deleteComment (string code) {
+    	public void deleteComment (CommentBE comment) {
 
     	}
 

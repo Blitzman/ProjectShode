@@ -104,7 +104,8 @@ namespace ShodeLibrary
 
             while (dr.Read())
             {
-                amount = Int32.Parse(dr["total"].ToString());
+                if(dr["total"].ToString()!="")
+                    amount = Int32.Parse(dr["total"].ToString());
             }
 
             c.Close();

@@ -391,6 +391,16 @@ h3
     margin-left: 35px;
 }
 
+#leftOptions
+{
+    float:left;
+}
+
+#rightOptions
+{
+    float:right;
+}
+
 #projectProfile
 {
     border-bottom: 4px solid #24242C;  
@@ -399,9 +409,9 @@ h3
 
 .projectComment
 {
-    border:1px solid #24242c;
-    background-color:#c0c0c0;
-    margin-bottom:5px;
+    border-color:White;
+    border-style: solid;
+    border-bottom-width: 5px
 }
 
 .authorName

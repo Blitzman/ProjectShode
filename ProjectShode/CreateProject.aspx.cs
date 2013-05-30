@@ -17,8 +17,6 @@ namespace Project_Shode
                 Response.Redirect("Login.aspx");
             else
             {
-                tittleFeedback.Visible = false;
-                descriptionFeedback.Visible = false;
                 creditsFeedback.Visible = false;
             }
         }
@@ -26,20 +24,6 @@ namespace Project_Shode
         protected void create_Project(object sender, EventArgs e)
         {
             bool correct = true;
-
-            if (tittleProjectTextbox.Text.Length == 0)
-            {
-                tittleFeedback.Visible = true;
-                correct = false;
-            }
-
-            if (descriptionTextbox.Text.Length == 0)
-            {
-                descriptionFeedback.Visible = true;
-                correct = false;
-            }
-            else
-                descriptionFeedback.Text = "";
 
             if (creditsTextboxProject.Text.Length == 0 ||
                 float.Parse(creditsTextboxProject.Text) > float.Parse(Session["UserCredit"].ToString()))

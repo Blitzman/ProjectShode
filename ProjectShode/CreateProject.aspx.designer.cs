@@ -58,13 +58,22 @@ namespace Project_Shode {
         protected global::AjaxControlToolkit.TextBoxWatermarkExtender tittleProjectTextbox_TextBoxWatermarkExtender;
         
         /// <summary>
-        /// Control tittleFeedback.
+        /// Control tittleRequired.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label tittleFeedback;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator tittleRequired;
+        
+        /// <summary>
+        /// Control tittleCorrectness.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator tittleCorrectness;
         
         /// <summary>
         /// Control descriptionLabel.
@@ -94,13 +103,22 @@ namespace Project_Shode {
         protected global::AjaxControlToolkit.TextBoxWatermarkExtender descriptionTextbox_TextBoxWatermarkExtender;
         
         /// <summary>
-        /// Control descriptionFeedback.
+        /// Control maxlengthDescription.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label descriptionFeedback;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator maxlengthDescription;
+        
+        /// <summary>
+        /// Control descriptionRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator descriptionRequired;
         
         /// <summary>
         /// Control categoriesLabel.

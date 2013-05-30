@@ -12,27 +12,35 @@
     <section class="boxesProject">
         <asp:Label ID="tittleProjectLabel" runat="server" Text="Label">Tittle:</asp:Label>
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
-        <asp:TextBox ID="tittleProjectTextbox" runat="server" MaxLength=30 
+        <asp:TextBox ID="tittleProjectTextbox" runat="server" MaxLength=64 
         Width=400px CssClass=TextBoxLogSign></asp:TextBox>
          <asp:TextBoxWatermarkExtender ID="tittleProjectTextbox_TextBoxWatermarkExtender" 
         runat="server" Enabled="True" TargetControlID="tittleProjectTextbox" 
         WatermarkCssClass="TextBoxLogSign" 
         WatermarkText="Being creative will catch developers attention.">
     </asp:TextBoxWatermarkExtender>
-         <asp:Label ID="tittleFeedback" runat="server" ForeColor="Red" Text="Give it a name!"></asp:Label>
+         <asp:RequiredFieldValidator ID="tittleRequired" runat="server" ControlToValidate="tittleProjectTextbox"
+         ErrorMessage="Tittle is required"></asp:RequiredFieldValidator>
+         <asp:RegularExpressionValidator ID="tittleCorrectness" runat="server" ControlToValidate="tittleProjectTextbox"
+         ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_:,.\s]{1,64}" 
+         ErrorMessage="Title is not correct. Max: 64"></asp:RegularExpressionValidator>
     </section>
     
     <asp:Label ID="descriptionLabel" runat="server" Text="Label">Description:</asp:Label>
     <section class="boxesProject">
-        <asp:TextBox ID="descriptionTextbox" runat="server" MaxLength=1500 
+        <asp:TextBox ID="descriptionTextbox" runat="server" MaxLength=1000 
         TextMode="MultiLine" Font-Names="Segoe UI"
-        Wrap=true Width=700px Height=300px></asp:TextBox>
+        Wrap=true Width=600px Height=300px></asp:TextBox>
          <asp:TextBoxWatermarkExtender ID="descriptionTextbox_TextBoxWatermarkExtender" 
         runat="server" Enabled="True" TargetControlID="descriptionTextbox" 
         WatermarkCssClass="Segou UI" 
         WatermarkText="Write a description of what the program should do.">
     </asp:TextBoxWatermarkExtender>
-         <asp:Label ID="descriptionFeedback" runat="server" ForeColor="Red" Text="Describe it!"></asp:Label>
+         <asp:RegularExpressionValidator ID="maxlengthDescription" runat="server" ControlToValidate="descriptionTextbox"
+          ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_:,.\s]{1,1000}" 
+          ErrorMessage="Description is not correct. Max: 1000."></asp:RegularExpressionValidator>
+         <asp:RequiredFieldValidator ID="descriptionRequired" runat="server" ControlToValidate="descriptionTextbox"
+         ErrorMessage="Description is required"></asp:RequiredFieldValidator>
     </section>
     
     <asp:Label ID="categoriesLabel" runat="server" Text="Select the categories your project fits:"></asp:Label>

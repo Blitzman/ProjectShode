@@ -34,100 +34,63 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
         </section>
 
         <section id="projectOptionsHelp">
-            <asp:Label ID="GiveLabel" runat="server" Text="Give some credits:"></asp:Label> 
-            <asp:TextBox ID="creditsBox" runat="server" Width="50px"></asp:TextBox>
+            <section id="leftOptions">
+                <asp:Label ID="GiveLabel" runat="server" Text="Give some credits:"></asp:Label> 
+                <asp:TextBox ID="creditsBox" runat="server" Width="50px" BorderStyle="Groove"
+                ValidationGroup="creditsValidation"></asp:TextBox>
 
-            <asp:Button ID="sendCredits" runat="server" Text="Contribute!" OnClick="contribute"></asp:Button>
-            <asp:Label ID="FeedbackCredit" runat="server" ForeColor=Red></asp:Label>
+                <asp:Button ID="sendCredits" runat="server" Text="Contribute!" OnClick="contribute"
+                ValidationGroup="creditsValidation" CssClass=ButtonShode></asp:Button>
+                <asp:Label ID="FeedbackCredit" runat="server" ForeColor=Red></asp:Label>
 
-            <asp:RegularExpressionValidator ID="checkCredtisProfile" runat="server" Display=Static 
-            ErrorMessage="At least 100 credits." ControlToValidate="creditsBox" 
-            ValidationExpression="\d{2}\d+"></asp:RegularExpressionValidator>
-            
-            <asp:Image ID="developLinkImage" runat="server" ImageUrl="/Images/bullet.png" /> 
-            <asp:HyperLink id="developLink" runat="server" NavigateUrl="~/ProjectProfile.aspx" Text="Develop">
-            </asp:HyperLink>
-
+                <asp:RegularExpressionValidator ID="checkCredtisProfile" runat="server" Display=Static 
+                ErrorMessage="At least 100 credits." ControlToValidate="creditsBox" 
+                ValidationExpression="\d{2}\d+" ValidationGroup="creditsValidation"></asp:RegularExpressionValidator>
+            </section>
+            <section id="rightOptions">
+                <asp:Image ID="developLinkImage" runat="server" ImageUrl="/Images/bullet.png" /> 
+                <asp:HyperLink id="developLink" runat="server" NavigateUrl="~/ProjectProfile.aspx" Text="Develop">
+                </asp:HyperLink>
+            </section>
+            <div id="clear" class="clear"></div>
         </section>
     </section>
 
     <section id="projectComments">
         <h3>Project comments</h3>
-    
-        <section class="projectComment">
-            <asp:Label ID="Label1" class="authorName" runat="server" Text="Pepito" Font-Italic=true></asp:Label>
-            <section id="oneProjectText">
-                <asp:Label ID="Label2" class="authorContent" runat="server" Text="Text Text Text Text Text Text Text"></asp:Label>
-            </section>
-        </section>
-        <section class="projectComment">
-            <asp:Label ID="Label3" class="authorName" runat="server" Text="Leti" Font-Italic=true></asp:Label>
-            <section id="twoProjectText">
-                <asp:Label ID="Label4" class="authorContent" runat="server" Text="Text Text Text Text Text Text Text Text Text Text"></asp:Label>
-            </section>
-        </section>
-        <section class="projectComment">
-            <asp:Label ID="Label5" class="authorName" runat="server" Text="Andres" Font-Italic=true></asp:Label>
-            <section id="threeProjectText">
-                <asp:Label ID="Label6" class="authorContent" runat="server" Text="Text :D"></asp:Label>
-            </section>
-        </section>
-        <section class="projectComment">
-            <asp:Label ID="Label7" class="authorName" runat="server" Text="Odersky" Font-Italic=true></asp:Label>
-            <section id="fourProjectText">
-                <asp:Label ID="Label8" class="authorContent" runat="server" Text="Donec lectus tortor, fermentum et tristique sit amet, feugiat aliquet nisi. 
-                Aliquam convallis mollis mi, at vulputate felis mattis at. Proin aliquam suscipit nunc, 
-                porta tempus neque facilisis sit amet"></asp:Label>
-            </section>
-        </section>
-        <section class="projectComment">
-            <asp:Label ID="Label9" class="authorName" runat="server" Text="Petro" Font-Italic=true></asp:Label>
-            <section id="fiveProjectText">
-                <asp:Label ID="Label10" class="authorContent" runat="server" Text="Donec lectus tortor, fermentum et tristique sit amet, feugiat aliquet nisi. 
-                Aliquam convallis mollis mi, at vulputate felis mattis at. Proin aliquam suscipit nunc, 
-                porta tempus neque facilisis sit amet"></asp:Label>
-            </section>
-        </section>
-        <section class="projectComment">
-            <asp:Label ID="Label11" class="authorName" runat="server" Text="Andrea" Font-Italic=true></asp:Label>
-            <section id="sixProjectText">
-                <asp:Label ID="Label12" class="authorContent" runat="server" Text="Donec lectus tortor, fermentum et tristique sit amet, feugiat aliquet nisi. 
-                Aliquam convallis mollis mi, at vulputate felis mattis at. Proin aliquam suscipit nunc, 
-                porta tempus neque facilisis sit amet"></asp:Label>
-            </section>
-        </section>
-        <section class="projectComment">
-            <asp:Label ID="Label13" class="authorName" runat="server" Text="Murk" Font-Italic=true></asp:Label>
-            <section id="sevenProjectText">
-                <asp:Label ID="Label14" class="authorContent" runat="server" Text="Donec lectus tortor, fermentum et tristique sit amet, feugiat aliquet nisi. 
-                Aliquam convallis mollis mi, at vulputate felis mattis at."></asp:Label>
-            </section>
-        </section>
-        <section class="projectComment">
-            <asp:Label ID="Label15" class="authorName" runat="server" Text="Yu" Font-Italic=true></asp:Label>
-            <section id="eightProjectText">
-                <asp:Label ID="Label16" class="authorContent" runat="server" Text="Donec lectus tortor, fermentum et tristique sit amet, feugiat aliquet nisi. 
-                Aliquam convallis mollis mi, at vulputate felis mattis at."></asp:Label>
-            </section>
-        </section>
-        <section class="projectComment">
-            <asp:Label ID="Label17" class="authorName" runat="server" Text="Niko" Font-Italic=true></asp:Label>
-            <section id="nineProjectText">
-                <asp:Label ID="Label18" class="authorContent" runat="server" Text="Text Text Text Text."></asp:Label>
-            </section>
-        </section>
-        <section class="projectComment">
-            <asp:Label ID="Label19" class="authorName" runat="server" Text="Heio" Font-Italic=true></asp:Label>
-            <section id="tenProjectText">
-                <asp:Label ID="Label20" class="authorContent" runat="server" Text="Text Text Text Text."></asp:Label>
-            </section>
-        </section>
-    </section>
+
+        <asp:GridView ID="gridComments" runat="server" CellPadding="10" CellSpacing="50" ForeColor="#24242C"
+             BackColor="#c0c0c0" Width="900px" AllowPaging="true" PageSize="10" PagerSettings-Mode="NumericFirstLast"
+             EmptyDataText="This project has no comments yet." AutoGenerateColumns="false" ShowHeader="false" 
+             AlternatingRowStyle-BackColor="#24242C" AlternatingRowStyle-ForeColor="#FFFFFF" 
+             AlternatingRowStyle-VerticalAlign="Bottom" GridLines=Horizontal RowStyle-CssClass=projectComment
+             OnPageIndexChanging="pageChanging">
+
+                 <Columns>
+                    <asp:BoundField DataField="usr" HeaderText="Author" ItemStyle-Font-Italic="true" 
+                    ItemStyle-Width=100px ItemStyle-VerticalAlign="Top" ItemStyle-Font-Underline="true"/>
+                    <asp:BoundField DataField="comment" HeaderText="Comment" ItemStyle-Width=720px/>
+                    <asp:BoundField DataField="date" HeaderText="Commented On" 
+                    ItemStyle-Width=80px/>
+                 </Columns>
+
+         </asp:GridView>
+     </section>
+
     <section id="writeProjectComment">
         <asp:Label id="commentProjectLabel" runat="server" Text="Write a comment."></asp:Label>
+
         <section id="commentProjectContent">
-            <asp:TextBox ID="commentProjectText" runat="server" TextMode="MultiLine" Width="800" Height="200" MaxLength="500"></asp:TextBox>
-            <asp:Button ID="sendCommentProject" runat="server" Text="Send"></asp:Button>
+            <asp:TextBox ID="commentProjectText" runat="server" TextMode="MultiLine" Width="835" 
+            Height="100" MaxLength="140" BorderStyle=Groove ValidationGroup="commentValidation"></asp:TextBox>
+            <asp:Button ID="sendCommentProject" runat="server" Text="Send" ValidationGroup="commentValidation"
+            CssClass=ButtonShode OnClick="uploadComment"></asp:Button>
         </section>
+
+        <asp:RequiredFieldValidator ID="commentTextRequired" runat="server" ControlToValidate="commentProjectText"
+        ErrorMessage="Write something!" ValidationGroup="commentValidation"></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="commentCorrectness" runat="server" ControlToValidate="commentProjectText"
+        ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_:,.\s.]{1,140}" 
+        ErrorMessage="Message length is not correct. Max: 140." ValidationGroup="commentValidation"></asp:RegularExpressionValidator>
     </section>
 </asp:Content>
