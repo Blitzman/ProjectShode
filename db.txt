@@ -11,7 +11,7 @@ name VARCHAR(32) NOT NULL,
 last_name VARCHAR(32) NOT NULL,
 email VARCHAR(64),
 nickname VARCHAR(32) NOT NULL,
-password VARCHAR(16) NOT NULL,
+password VARCHAR(32) NOT NULL,
 credit INT NOT NULL,
 CONSTRAINT pk_users PRIMARY KEY (email),
 CONSTRAINT altk_users UNIQUE (nickname))
