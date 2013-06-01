@@ -1,0 +1,87 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Project_Shode.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="Form1" runat="server">
+
+     <header id="global_header">
+        <section class="header_obj">
+            <asp:HyperLink ID="UserLink" runat="server" NavigateUrl="~/Profiles.aspx"></asp:HyperLink>
+
+            <asp:HyperLink ID="OpenCorchete" runat="server" Text="["> </asp:HyperLink>
+            <asp:HyperLink ID="LoginLink" runat="server" NavigateUrl="~/Login.aspx" Text="Log In"></asp:HyperLink>
+
+            <asp:HyperLink ID="Separator" runat="server" Text=" | "> </asp:HyperLink>
+
+            <asp:HyperLink ID="SignupLink" runat="server" NavigateUrl="~/Signup.aspx" Text="Sign Up"></asp:HyperLink>
+            <asp:HyperLink ID="CloseCorchete" runat="server" Text="]"> </asp:HyperLink>
+
+            <asp:Button ID="LogOutLink" runat="server" onclick="logOut" CssClass="LogOutbutton"></asp:Button>
+        </section>
+        <section class="header_obj">
+            <asp:Label ID="LogInMotivator" runat="server" Text="Log In or Sign Up to enjoy our comunity"></asp:Label>
+        </section>
+        <section class = "header_obj">
+            <asp:Image ID="ImagenX" runat="server"></asp:Image>
+            <asp:Image ID="CreditsImage" runat="server" ImageUrl="~/Images/regalito.png"></asp:Image>
+        </section>
+        <section class = "header_obj">
+            <asp:Label ID="totalCredits" runat="server" Text="xxxxxx"></asp:Label> credits in 
+            <asp:Label ID="totalProjects" runat="server" Text="xxxxxx"></asp:Label> projects</section>
+        <section class = "header_obj">
+            <asp:Image ID="DevelopersImage" runat="server" ImageUrl="~/Images/flecha_abajo.png"></asp:Image>
+        </section>
+        <section class = "header_obj">
+            <asp:Label ID="totalDevelopments" runat="server" Text="xxxxxx"></asp:Label> developments </section>
+        </section>
+        <section class = "header_obj">
+            <asp:Image ID="ContributorsImage" runat="server" ImageUrl="~/Images/flecha_arriba.png"></asp:Image>
+        </section>
+        <section class = "header_obj">
+            <asp:Label ID="totalContributions" runat="server" Text="xxxxxx"></asp:Label> contributions </section>
+        </section>
+        <div class="clear"></div>
+    </header>
+
+    <section id="global_section">
+        <section id="menu_bar">
+            <section id="logo">
+                <asp:HyperLink ID="LogoLink" runat="server" NavigateUrl="~/Default.aspx">
+                    <asp:Image ID="Logo" runat="server" ImageUrl="~/Images/logo.png"></asp:Image>
+                 </asp:HyperLink>
+            </section>
+            <section id="menu">
+                <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+                    <LevelMenuItemStyles>
+                        <asp:MenuItemStyle CssClass="menu"/>
+                    </LevelMenuItemStyles>
+                    <Items>
+                        <asp:MenuItem Text="What is Shode?" Value="About" ImageUrl="~/Images/questionmark.png" NavigateUrl="About.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Projects" Value="About" ImageUrl="~/Images/search.png" NavigateUrl="Projects.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Profile" Value="About" ImageUrl="~/Images/settings.png" NavigateUrl="Profiles.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="Contact" Value="About" ImageUrl="~/Images/i.png" NavigateUrl="Contact.aspx"></asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </section>
+            <div class="clear"></div>
+            <section id="barrita"></section>
+        </section>
+        <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+    </section>
+
+    <footer id="global_footer">
+        <asp:Label ID="FooterLabel" runat="server" Text="Shode &#169 2013"></asp:Label>
+    </footer>
+
+    </form>
+</body>
+</html>
+
