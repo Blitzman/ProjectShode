@@ -64,7 +64,7 @@ namespace ShodeLibrary
                 usr.Value = contribution.Contributor.Email;
                 SqlParameter date = new SqlParameter();
                 date.ParameterName = "@date";
-                date.Value = contribution.Date.ToString("dd/MM/yyyy");
+                date.Value = contribution.Date.ToString("G");
                 SqlParameter amount = new SqlParameter();
                 amount.ParameterName = "@amount";
                 amount.Value = contribution.Amount.ToString();

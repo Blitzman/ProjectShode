@@ -6,9 +6,6 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Configuration;
 
-/*
- * Task performed by Liesbeth
- */
 namespace ShodeLibrary
 {
     public class NewsDAC
