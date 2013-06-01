@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/*
+ * Task performed by Liesbeth
+ */
 namespace ShodeLibrary
 {
 
@@ -14,7 +17,7 @@ namespace ShodeLibrary
         private string title;
         private string content;
         private UserBE author;
-        private int code;
+        private string code;
         private DateTime publicationDate;
         private DevelopmentBE topic;
         private ProjectBE project;
@@ -27,17 +30,18 @@ namespace ShodeLibrary
             title = "";
             content = "";
             author = new UserBE();
-            code = -1;
+            code = "";
             publicationDate = new DateTime();
             topic = new DevelopmentBE();
             project = new ProjectBE();
         }
 
-        public NewsBE(string title, string content, int code,
+        public NewsBE(string title, string content,
                             UserBE author, DateTime publicationDate,
                             DevelopmentBE topic, ProjectBE project)
         {
-            this.code = code; 
+            code = generateCode();
+
             this.title = title;
             this.content = content;
             this.author = author;
@@ -59,13 +63,13 @@ namespace ShodeLibrary
         public void update()
         {
             NewsDAC newsDAC = new NewsDAC();
-            newsDAC.update(this);
+            newsDAC.updateNews(this);
         }
 
         public void delete()
         {
             NewsDAC newsDAC = new NewsDAC();
-            newsDAC.delete(code);
+            newsDAC.deleteNews(code);
         }
 
         private static string generateCode()
@@ -94,7 +98,7 @@ namespace ShodeLibrary
             get { return author; }
             set { author = value; }
         }
-        public int Code
+        public string Code
         {
             get { return code; }
             set { code = value; }

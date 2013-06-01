@@ -495,39 +495,4 @@ h3
 }
 
 
-.news_item {
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    width: auto;
-    height: auto;
-    margin: 4px 4px 4px 4px;
-    //border-top: 2px inset #CCC;
-    border-top: 2px inset #E2E2E2;
-    border-bottom: 2px inset #E2E2E2;
-    padding: 5px;
-}
 
-.news_item_title {
-
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    margin: 4px 4px 4px 4px;
-    color: #F0AA0F;
-    text-shadow: 1px 2px 4px #DDD;
-    font-weight:bold;
-    float:left;
-
-}
-
-.news_item_date {
-    font-style:italic;
-    float: right;
-}
-
-.news_item_content {
-    float:clear;
-    color: #24242C;
-    font-size: larger;
-}
-
-.news_content_text {
-    text-align: justify;
-}

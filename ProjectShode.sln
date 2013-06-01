@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectShode", "ProjectShode\ProjectShode.csproj", "{E7CF586A-25F4-4D5D-8601-883CDAC905F1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShodeLibrary", "ShodeLibrary\ShodeLibrary.csproj", "{3F8CCE22-81E7-4BEA-9431-78A2AA2CA27E}"
