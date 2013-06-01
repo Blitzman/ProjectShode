@@ -33,9 +33,20 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         public string insertNews(NewsBE newsitem)
         {
-            string code = "";
-            // Do stuff here
-            return code;
+            string result = "The project has been created!";
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("INSERT INTO news ()" +
+                "VALUES ('" + project.Title + "','" + project.Description + "','" + project.ExpirationDate.ToString("dd/MM/yyyy") + "','" +
+                project.CreationDate.ToString("dd/MM/yyyy") + "'," + "1" + "," + project.Credit + ",'" + project.LastVersion.ToString("dd/MM/yyyy") +
+                "'," + project.Credit + ",'" + project.GitDir + "','" + project.Creator.Email + "')", c);
+
+            com.ExecuteNonQuery();
+            c.Close();
+
+            return result;
         }
 
         public NewsBE getNews(string code)
