@@ -53,13 +53,40 @@ namespace ShodeLibrary
 
             string result = "The user has been succesfully created!";
             SqlConnection c = new SqlConnection(connection);
-            c.Open();
+
 
             try
             {
-                SqlCommand com = new SqlCommand("INSERT INTO Users (name, last_name, email, nickname, password, credit)" +
-                    "VALUES ('" + user.Name + "','" + user.LastName + "','" + user.Email + "','" + user.Nickname + "','" +
-                    user.Password + "', " + user.Credit.ToString() + ")", c);
+                c.Open();
+
+                SqlParameter name = new SqlParameter();
+                name.ParameterName = "@name";
+                name.Value = user.Name;
+                SqlParameter last_name = new SqlParameter();
+                last_name.ParameterName = "@last_name";
+                last_name.Value = user.LastName;
+                SqlParameter email = new SqlParameter();
+                email.ParameterName = "@email";
+                email.Value = user.Email;
+                SqlParameter nickname = new SqlParameter();
+                nickname.ParameterName = "@nickname";
+                nickname.Value = user.Nickname;
+                SqlParameter password = new SqlParameter();
+                password.ParameterName = "@password";
+                password.Value = user.Password;
+                SqlParameter credit = new SqlParameter();
+                credit.ParameterName = "@credit";
+                credit.Value = user.Credit.ToString();
+
+                SqlCommand com = new SqlCommand("INSERT INTO users (name, last_name, email, nickname, password, credit) " +
+                    "VALUES (@name, @last_name, @email, @nickname, @password, @credit)", c);
+
+                com.Parameters.Add(name);
+                com.Parameters.Add(last_name);
+                com.Parameters.Add(email);
+                com.Parameters.Add(nickname);
+                com.Parameters.Add(password);
+                com.Parameters.Add(credit);
 
                 com.ExecuteNonQuery();
             }
@@ -75,6 +102,10 @@ namespace ShodeLibrary
                     result = "ERROR: The username is already registered.";
                 else
                     result = "ERROR: An error occurred, try again later.";
+            }
+            catch (Exception ex)
+            {
+                // Show message box
             }
             finally
             {
@@ -92,28 +123,46 @@ namespace ShodeLibrary
         /// <param name="email">The email of the requested user.</param>
         /// <returns>An empty user if the user wasn't found and a full user
         /// with all the required one fields if found.</returns>
-        public UserBE getUser(String email)
+        public UserBE getUser(string mail)
         {
             UserBE user = new UserBE();
 
             SqlConnection c = new SqlConnection(connection);
-            c.Open();
 
-            SqlCommand com = new SqlCommand("SELECT * FROM Users WHERE email='" + email + "'", c);
-
-            SqlDataReader dr = com.ExecuteReader();
-
-            while (dr.Read())
+            try
             {
-                user.Name = dr["name"].ToString();
-                user.LastName = dr["last_name"].ToString();
-                user.Email = dr["email"].ToString();
-                user.Nickname = dr["nickname"].ToString();
-                user.Password = dr["password"].ToString();
-                user.Credit = Int32.Parse(dr["credit"].ToString());
+                c.Open();
+
+                SqlParameter email = new SqlParameter();
+                email.ParameterName = "@email";
+                email.Value = mail;
+
+                SqlCommand com = new SqlCommand("SELECT * FROM Users WHERE email=@email", c);
+
+                com.Parameters.Add(email);
+
+                SqlDataReader dr = com.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    user.Name = dr["name"].ToString();
+                    user.LastName = dr["last_name"].ToString();
+                    user.Email = dr["email"].ToString();
+                    user.Nickname = dr["nickname"].ToString();
+                    user.Password = dr["password"].ToString();
+                    user.Credit = Int32.Parse(dr["credit"].ToString());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
             }
 
-            c.Close();
             return user;
         }
 
@@ -125,32 +174,49 @@ namespace ShodeLibrary
         /// <param name="nickname">The nickname of the requested user.</param>
         /// <returns>An empty user if the user wasn't found and a full user
         /// with all the required one fields if found.</returns>
-        public UserBE getByNick(string nickname)
+        public UserBE getByNick(string nick)
         {
             // We will be using the connected access model.
 
             UserBE user = new UserBE();
 
             SqlConnection c = new SqlConnection(connection);
-            c.Open();
 
-            SqlCommand com = new SqlCommand("SELECT * FROM Users WHERE nickname='" + nickname + "'", c);
-
-            SqlDataReader dr = com.ExecuteReader();
-
-            // If the query returned no rows, we will not enter in the loop
-            // and the user will remain empty.
-            while (dr.Read())
+            try
             {
-                user.Name = dr["name"].ToString();
-                user.LastName = dr["last_name"].ToString();
-                user.Email = dr["email"].ToString();
-                user.Nickname = dr["nickname"].ToString();
-                user.Password = dr["password"].ToString();
-                user.Credit = Int32.Parse(dr["credit"].ToString());
+                c.Open();
+
+                SqlParameter nickname = new SqlParameter();
+                nickname.ParameterName = "@nickname";
+                nickname.Value = nick;
+
+                SqlCommand com = new SqlCommand("SELECT * FROM Users WHERE nickname=@nickname", c);
+
+                com.Parameters.Add(nickname);
+
+                SqlDataReader dr = com.ExecuteReader();
+
+                // If the query returned no rows, we will not enter in the loop
+                // and the user will remain empty.
+                while (dr.Read())
+                {
+                    user.Name = dr["name"].ToString();
+                    user.LastName = dr["last_name"].ToString();
+                    user.Email = dr["email"].ToString();
+                    user.Nickname = dr["nickname"].ToString();
+                    user.Password = dr["password"].ToString();
+                    user.Credit = Int32.Parse(dr["credit"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
             }
 
-            c.Close();
             return user;
         }
 
@@ -164,18 +230,27 @@ namespace ShodeLibrary
             int userCount = 0;
 
             SqlConnection c = new SqlConnection(connection);
-            c.Open();
 
-            SqlCommand com = new SqlCommand("SELECT count(*) total FROM users", c);
-
-            SqlDataReader dr = com.ExecuteReader();
-
-            while (dr.Read())
+            try
             {
-                userCount = Int32.Parse(dr["total"].ToString());
-            }
+                c.Open();
 
-            c.Close();
+                SqlCommand com = new SqlCommand("SELECT count(*) total FROM users", c);
+                SqlDataReader dr = com.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    userCount = Int32.Parse(dr["total"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
+            }
 
             return userCount;
         }
@@ -187,19 +262,55 @@ namespace ShodeLibrary
         /// the ones of the provided user.
         /// </summary>
         /// <param name="updatedUser">The source user to perform the update.</param>
-        public void update(UserBE updatedUser)
+        public void update(UserBE user)
         {
             SqlConnection c = new SqlConnection(connection);
-            c.Open();
 
-            SqlCommand com = new SqlCommand("UPDATE Users " +
-                "SET name='" + updatedUser.Name + "', last_name='" + updatedUser.LastName + "'," +
-                " email='" + updatedUser.Email + "', nickname='" + updatedUser.Nickname + "'," +
-                " password='" + updatedUser.Password + "', credit=" + updatedUser.Credit.ToString() +
-                " WHERE email='" + updatedUser.Email + "'", c);
+            try
+            {
+                c.Open();
 
-            com.ExecuteNonQuery();
-            c.Close();
+                SqlParameter name = new SqlParameter();
+                name.ParameterName = "@name";
+                name.Value = user.Name;
+                SqlParameter last_name = new SqlParameter();
+                last_name.ParameterName = "@last_name";
+                last_name.Value = user.LastName;
+                SqlParameter email = new SqlParameter();
+                email.ParameterName = "@email";
+                email.Value = user.Email;
+                SqlParameter nickname = new SqlParameter();
+                nickname.ParameterName = "@nickname";
+                nickname.Value = user.Nickname;
+                SqlParameter password = new SqlParameter();
+                password.ParameterName = "@password";
+                password.Value = user.Password;
+                SqlParameter credit = new SqlParameter();
+                credit.ParameterName = "@credit";
+                credit.Value = user.Credit.ToString();
+
+                SqlCommand com = new SqlCommand("UPDATE Users " +
+                    "SET name=@name, last_name=@last_name, email=@email, nickname=@nickname," +
+                    " password=@password, credit=@credit " +
+                    " WHERE email=@email", c);
+
+                com.Parameters.Add(name);
+                com.Parameters.Add(last_name);
+                com.Parameters.Add(email);
+                com.Parameters.Add(nickname);
+                com.Parameters.Add(password);
+                com.Parameters.Add(credit);
+
+                com.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
+            }
         }
 
         /// <summary>
@@ -208,15 +319,32 @@ namespace ShodeLibrary
         /// to identify the user which has to be removed.
         /// </summary>
         /// <param name="email">The email of the user that will be deleted.</param>
-        public void delete(string email)
+        public void delete(string mail)
         {
             SqlConnection c = new SqlConnection(connection);
-            c.Open();
 
-            SqlCommand com = new SqlCommand("DELETE FROM Users WHERE email ='" + email + "'", c);
+            try
+            {
+                c.Open();
 
-            com.ExecuteNonQuery();
-            c.Close();
+                SqlParameter email = new SqlParameter();
+                email.ParameterName = "@email";
+                email.Value = mail;
+
+                SqlCommand com = new SqlCommand("DELETE FROM Users WHERE email=@email", c);
+
+                com.Parameters.Add(email);
+
+                com.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
+            }
         }
 
         // /////////////////////////////////////////////////////////////////////

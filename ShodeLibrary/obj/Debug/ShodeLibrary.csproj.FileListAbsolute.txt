@@ -24,3 +24,4 @@ C:\Users\Calimero\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibr
 C:\Users\Calimero\Documents\GitHub\ProjectShode\ShodeLibrary\bin\Debug\ShodeLibrary.dll
 C:\Users\Calimero\Documents\GitHub\ProjectShode\ShodeLibrary\bin\Debug\ShodeLibrary.pdb
 C:\Users\Calimero\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.pdb
+C:\Users\Albert\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.csprojResolveAssemblyReference.cache
