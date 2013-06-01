@@ -49,14 +49,33 @@ namespace ShodeLibrary
             // We will be using the connected access model.
 
             string result = "The contribution has been succesfully added!";
+
             SqlConnection c = new SqlConnection(connection);
-            c.Open();
 
             try
             {
-                SqlCommand com = new SqlCommand("INSERT INTO contributions (project, usr, date, amount) " +
-                    "VALUES ('" + contribution.Project.Code + "','" + contribution.Contributor.Email +
-                    "','" + contribution.Date.ToString("dd/MM/yyyy") + "'," + contribution.Amount.ToString() + ")", c);
+                c.Open();
+
+                SqlParameter project = new SqlParameter();
+                project.ParameterName = "@project";
+                project.Value = contribution.Project.Code;
+                SqlParameter usr = new SqlParameter();
+                usr.ParameterName = "@usr";
+                usr.Value = contribution.Contributor.Email;
+                SqlParameter date = new SqlParameter();
+                date.ParameterName = "@date";
+                date.Value = contribution.Date.ToString("dd/MM/yyyy");
+                SqlParameter amount = new SqlParameter();
+                amount.ParameterName = "@amount";
+                amount.Value = contribution.Amount.ToString();
+
+                SqlCommand com = new SqlCommand("INSERT INTO contributions (project, usr, date, amount)" +
+                    "VALUES (@project, @usr, @date, @amount)", c);
+
+                com.Parameters.Add(project);
+                com.Parameters.Add(usr);
+                com.Parameters.Add(date);
+                com.Parameters.Add(amount);
 
                 com.ExecuteNonQuery();
             }
@@ -64,6 +83,10 @@ namespace ShodeLibrary
             {
                 if (ex.Message.Contains("PRIMARY KEY"))
                     result = "ERROR: A contribution has already been made today for that project.";
+            }
+            catch (Exception exg)
+            {
+                result = "ERROR: Unknown error, try it again later...";
             }
             finally
             {
@@ -87,19 +110,28 @@ namespace ShodeLibrary
             int amount = 0;
 
             SqlConnection c = new SqlConnection(connection);
-            c.Open();
 
-            // Change this!!!
-            SqlCommand com = new SqlCommand("SELECT count(*) total FROM contributions", c);
-
-            SqlDataReader dr = com.ExecuteReader();
-
-            while (dr.Read())
+            try
             {
-                amount = Int32.Parse(dr["total"].ToString());
-            }
+                c.Open();
 
-            c.Close();
+                SqlCommand com = new SqlCommand("SELECT count(*) total FROM contributions", c);
+
+                SqlDataReader dr = com.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    amount = Int32.Parse(dr["total"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
+            }
 
             return amount;
         }
@@ -117,18 +149,29 @@ namespace ShodeLibrary
             int contributionCount = 0;
 
             SqlConnection c = new SqlConnection(connection);
-            c.Open();
 
-            SqlCommand com = new SqlCommand("SELECT count(*) total FROM contributions", c);
-
-            SqlDataReader dr = com.ExecuteReader();
-
-            while (dr.Read())
+            try
             {
-                contributionCount = Int32.Parse(dr["total"].ToString());
-            }
+                c.Open();
 
-            c.Close();
+                SqlCommand com = new SqlCommand("SELECT count(*) total FROM contributions", c);
+
+                SqlDataReader dr = com.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    contributionCount = Int32.Parse(dr["total"].ToString());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
+            }
 
             return contributionCount;
         }
@@ -143,14 +186,43 @@ namespace ShodeLibrary
         public void update(ContributionBE contribution)
         {
             SqlConnection c = new SqlConnection(connection);
-            c.Open();
 
-            SqlCommand com = new SqlCommand("UPDATE contributions " +
-                "SET project='" + contribution.Project.Code + "', usr='" + contribution.Contributor.Email +
-                "', date='" + contribution.Date.ToString("dd/MM/yyyy") + "', amount=" + contribution.Amount.ToString(), c);
+            try
+            {
+                c.Open();
 
-            com.ExecuteNonQuery();
-            c.Close();
+                SqlParameter project = new SqlParameter();
+                project.ParameterName = "@project";
+                project.Value = contribution.Project.Code;
+                SqlParameter usr = new SqlParameter();
+                usr.ParameterName = "@usr";
+                usr.Value = contribution.Contributor.Email;
+                SqlParameter date = new SqlParameter();
+                date.ParameterName = "@date";
+                date.Value = contribution.Date.ToString("dd/MM/yyyy");
+                SqlParameter amount = new SqlParameter();
+                amount.ParameterName = "@amount";
+                amount.Value = contribution.Amount.ToString();
+
+                SqlCommand com = new SqlCommand("UPDATE contributions " +
+                    "SET project=@project, usr=@usr, date=@date, amount=@amount " +
+                    "WHERE project=@project AND usr=@usr AND date=@date", c);
+
+                com.Parameters.Add(project);
+                com.Parameters.Add(usr);
+                com.Parameters.Add(date);
+                com.Parameters.Add(amount);
+
+                com.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
+            }
         }
 
         /// <summary>
@@ -162,14 +234,38 @@ namespace ShodeLibrary
         public void delete(ContributionBE contribution)
         {
             SqlConnection c = new SqlConnection(connection);
-            c.Open();
 
-            SqlCommand com = new SqlCommand("DELETE FROM contributions WHERE " +
-                "project='" + contribution.Project.Code + "' AND usr='" + contribution.Contributor.Email +
-                "' AND date='" + contribution.Date.ToString("dd/MM/yyyy") + "'", c);
+            try
+            {
+                c.Open();
 
-            com.ExecuteNonQuery();
-            c.Close();
+                SqlParameter project = new SqlParameter();
+                project.ParameterName = "@project";
+                project.Value = contribution.Project.Code;
+                SqlParameter usr = new SqlParameter();
+                usr.ParameterName = "@usr";
+                usr.Value = contribution.Contributor.Email;
+                SqlParameter date = new SqlParameter();
+                date.ParameterName = "@date";
+                date.Value = contribution.Date.ToString("dd/MM/yyyy");
+
+                SqlCommand com = new SqlCommand("DELETE FROM contributions " +
+                    "WHERE project=@project AND usr=@usr AND date=@date", c);
+
+                com.Parameters.Add(project);
+                com.Parameters.Add(usr);
+                com.Parameters.Add(date);
+
+                com.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
+            }
         }
 
         // /////////////////////////////////////////////////////////////////////
