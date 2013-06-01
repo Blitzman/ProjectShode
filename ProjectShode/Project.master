@@ -8,7 +8,7 @@
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <section id="location">
         <asp:HyperLink runat="server" NavigateUrl="~/Default.aspx">Shode</asp:HyperLink> > 
-        <asp:HyperLink runat="server" NavigateUrl="~/Project.aspx">Projects</asp:HyperLink>
+        <asp:HyperLink runat="server" NavigateUrl="~/Projects.aspx">Projects</asp:HyperLink>
     </section>
 
     <section id="menuSection">

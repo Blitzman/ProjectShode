@@ -8,6 +8,8 @@
   <asp:Label ID="createProjectTittle" runat="server" Text="Propose your idea!" 
    Font-Size=X-Large Font-Underline=true Height=75></asp:Label>
 
+  <asp:Panel ID="createPanel" runat="server" DefaultButton="sendProject">
+
   <section class="formNewProject">
     <section class="boxesProject">
         <asp:Label ID="tittleProjectLabel" runat="server" Text="Label">Tittle:</asp:Label>
@@ -29,15 +31,15 @@
     <asp:Label ID="descriptionLabel" runat="server" Text="Label">Description:</asp:Label>
     <section class="boxesProject">
         <asp:TextBox ID="descriptionTextbox" runat="server" MaxLength=1000 
-        TextMode="MultiLine" Font-Names="Segoe UI"
+        TextMode="MultiLine" Font-Names="Segoe UI" CssClass=TextBoxLogSign
         Wrap=true Width=600px Height=300px></asp:TextBox>
          <asp:TextBoxWatermarkExtender ID="descriptionTextbox_TextBoxWatermarkExtender" 
         runat="server" Enabled="True" TargetControlID="descriptionTextbox" 
-        WatermarkCssClass="Segou UI" 
+        WatermarkCssClass="TextBoxLogSign"
         WatermarkText="Write a description of what the program should do.">
     </asp:TextBoxWatermarkExtender>
          <asp:RegularExpressionValidator ID="maxlengthDescription" runat="server" ControlToValidate="descriptionTextbox"
-          ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_:,.\s]{1,1000}" 
+          ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_.!:,.\s]{1,1000}" 
           ErrorMessage="Description is not correct. Max: 1000."></asp:RegularExpressionValidator>
          <asp:RequiredFieldValidator ID="descriptionRequired" runat="server" ControlToValidate="descriptionTextbox"
          ErrorMessage="Description is required"></asp:RequiredFieldValidator>
@@ -66,7 +68,7 @@
 
     <section class="boxesProject">
         <asp:Label ID="creditsLabelProject" runat="server" Text="Starting credits:"></asp:Label>
-        <asp:TextBox ID="creditsTextboxProject" runat="server"></asp:TextBox>
+        <asp:TextBox ID="creditsTextboxProject" runat="server" CssClass=TextBoxLogSign></asp:TextBox>
 
         <asp:TextBoxWatermarkExtender ID="creditsTextboxProject_TextBoxWatermarkExtender" 
         runat="server" Enabled="True" TargetControlID="creditsTextboxProject" 
@@ -83,4 +85,7 @@
     <asp:Button ID="sendProject" runat="server" Text="Send" CssClass="ButtonShode" OnClick="create_Project"></asp:Button>
     <asp:Label ID="creationFeedback" runat="server"></asp:Label>
   </section>
+  
+  </asp:Panel>
+
 </asp:Content>

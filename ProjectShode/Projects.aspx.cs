@@ -22,11 +22,14 @@ namespace Project_Shode
             if (!Page.IsPostBack)
             {
                 Global.search = "";
+                //Maybe you entered the web on 19th 23:59 and you are at Search at 00:01. We must update the day the first time.
+                Global.day = DateTime.Today.ToString("dd"); 
                 DataSet d = new DataSet();
                 String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
                 SqlConnection c = new SqlConnection(s);
-                SqlDataAdapter da = new SqlDataAdapter("Select code, title, creator, " +
-                    " creation_date, total_bank, state from projects where creation_date like '" + Global.day + "%'", c);
+                SqlDataAdapter da = new SqlDataAdapter("Select code, title, nickname, " +
+                    " creation_date, total_bank, state from projects, users where " + "projects.creator=users.email and " + 
+                    "creation_date like '" + Global.day.ToString() + "%'", c);
                 da.Fill(d, "projects");
 
                 gridResults.DataSource = d;
@@ -52,9 +55,9 @@ namespace Project_Shode
                 DataSet d = new DataSet();
                 String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
                 SqlConnection c = new SqlConnection(s);
-                SqlDataAdapter da = new SqlDataAdapter("Select code, title, creator, " +
-                    " creation_date, total_bank, state from projects " +
-                    " where title like '%" + search + "%'", c);
+                SqlDataAdapter da = new SqlDataAdapter("Select code, title, nickname, " +
+                    " creation_date, total_bank, state from projects, users " +
+                    " where title like '%" + search + "%' and projects.creator=users.email", c);
                 da.Fill(d, "projects");
 
                 gridResults.PageIndex = 0;
@@ -74,20 +77,21 @@ namespace Project_Shode
 
             if (search.Length == 0)
             {
-                da = new SqlDataAdapter("Select code, title, creator, " +
-                    " creation_date, total_bank, state from projects where creation_date like '" + Global.day + "%'", c);
+                da = new SqlDataAdapter("Select code, title, nickname, " +
+                    " creation_date, total_bank, state from projects, users where creation_date like '" + Global.day + "%'" +
+                " and projects.creator=users.email", c);
             }
             else if (search == "$")
             {
-                da = new SqlDataAdapter("Select code, title, creator, " +
-                " creation_date, total_bank, state from projects " +
-                " where total_bank >=(select 0.9*max(total_bank) from projects)", c);
+                da = new SqlDataAdapter("Select code, title, nickname, " +
+                " creation_date, total_bank, state from projects, users " +
+                " where total_bank >=(select 0.9*max(total_bank) from projects) and projects.creator=users.email", c);
             }
             else
             {
-                da = new SqlDataAdapter("Select code, title, creator, " +
+                da = new SqlDataAdapter("Select code, title, nickname, " +
                     " creation_date, total_bank, state from projects " +
-                    " where title like '%" + Global.search + "%'", c);
+                    " where title like '%" + Global.search + "%' and projects.creator=users.email", c);
             }
 
             da.Fill(d, "projects");
@@ -101,9 +105,9 @@ namespace Project_Shode
             DataSet d = new DataSet();
             String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
             SqlConnection c = new SqlConnection(s);
-            SqlDataAdapter da = new SqlDataAdapter("Select code, title, creator, " +
-                " creation_date, total_bank, state from projects " +
-                " where total_bank >=(select 0.9*max(total_bank) from projects)", c);
+            SqlDataAdapter da = new SqlDataAdapter("Select code, title, nickname, " +
+                " creation_date, total_bank, state from projects, users " +
+                " where total_bank >=(select 0.9*max(total_bank) from projects) and projects.creator=users.email", c);
             da.Fill(d, "projects");
 
             gridResults.PageIndex = 0;

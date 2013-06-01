@@ -5,6 +5,8 @@ CodeBehind="ProfileCompose.aspx.cs" Inherits="Project_Shode.ProfileCompose" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentProfile" runat="server">
 <asp:Label ID="Compose" runat="server" Text="New Private Message" CssClass="contentTitle"></asp:Label>
     <section id="profileSection">
+    <asp:Panel ID="newMessagePanel" runat="server" DefaultButton=sendButton>
+
     <asp:Table ID="Table1" runat="server">
         <asp:TableRow>
             <asp:TableCell>
@@ -34,7 +36,8 @@ CodeBehind="ProfileCompose.aspx.cs" Inherits="Project_Shode.ProfileCompose" %>
                 <asp:Label ID="BodyLabel" runat="server" Text="Message" CssClass="formLabel"></asp:Label>
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox ID="textmessage" runat="server" TextMode="MultiLine" Width=200% Height="200" MaxLength="1000" Font-Names="Segoe UI"></asp:TextBox>
+                <asp:TextBox ID="textmessage" runat="server" TextMode="MultiLine" Width=200% Height="200" CssClass=TextBoxLogSign 
+                MaxLength="1000" Font-Names="Segoe UI"></asp:TextBox>
             </asp:TableCell>
         </asp:TableRow>
          <asp:TableRow>
@@ -49,5 +52,8 @@ CodeBehind="ProfileCompose.aspx.cs" Inherits="Project_Shode.ProfileCompose" %>
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
+
+    </asp:Panel>
+
     </section>
 </asp:Content>

@@ -46,17 +46,17 @@ namespace Project_Shode
             totalContributions.Text = contributions.getTotalContributions().ToString();
         }
 
-        protected void loadCookie(HttpCookie userCookie)
+       public static void loadCookie(HttpCookie userCookie)
         {
             UserBE user1 = new UserBE("", "", "", "", "", userCookie.Value, "");
             UserBE user = new UserBE(user1.getUserByNick());
 
-            Session["UserNickname"] = user.Nickname;
-            Session["UserName"] = user.Name;
-            Session["UserLastname"] = user.LastName;
-            Session["UserEmail"] = user.Email;
-            Session["UserCredit"] = user.Credit;
-            Session["UserProfpict"] = user.ProfilePicture;
+            HttpContext.Current.Session["UserNickname"] = user.Nickname;
+            HttpContext.Current.Session["UserName"] = user.Name;
+            HttpContext.Current.Session["UserLastname"] = user.LastName;
+            HttpContext.Current.Session["UserEmail"] = user.Email;
+            HttpContext.Current.Session["UserCredit"] = user.Credit;
+            HttpContext.Current.Session["UserProfpict"] = user.ProfilePicture;
         }
 
         protected void logOut(object sender, EventArgs e)

@@ -10,7 +10,7 @@ namespace Project_Shode
     public class Global : System.Web.HttpApplication
     {
         public static String search = "";
-        public static String day = DateTime.Today.Day.ToString();
+        public static String day = DateTime.Today.ToString("dd");
 
         public string Search
         {

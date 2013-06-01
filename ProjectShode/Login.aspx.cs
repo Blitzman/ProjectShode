@@ -12,7 +12,12 @@ namespace Project_Shode
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Session["Username"]!=null)
+            HttpCookie userCookie = Request.Cookies["UserNickname"];
+
+            if (userCookie != null)
+                SiteMaster.loadCookie(userCookie);
+
+            if(Session["UserName"]!=null)
                 Response.Redirect("Profiles.aspx");
         }
 

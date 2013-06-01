@@ -22,6 +22,15 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label Compose;
         
         /// <summary>
+        /// Control newMessagePanel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel newMessagePanel;
+        
+        /// <summary>
         /// Control Table1.
         /// </summary>
         /// <remarks>

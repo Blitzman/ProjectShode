@@ -22,6 +22,11 @@ namespace Project_Shode
             lengthFeedback.Visible = false;
             messageFeedback.Visible = false;
 
+            HttpCookie userCookie = Request.Cookies["UserNickname"];
+
+            if (userCookie != null)
+                SiteMaster.loadCookie(userCookie);
+
             if (Session["UserNickname"] == null)
             {
                 Response.Redirect("Login.aspx");

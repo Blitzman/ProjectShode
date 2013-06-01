@@ -23,6 +23,11 @@ namespace Project_Shode
             if (Request.QueryString["ProTitle"] == null || Request.QueryString["Code"] == null)
                 Response.Redirect("Default.aspx");
 
+            HttpCookie userCookie = Request.Cookies["UserNickname"];
+
+            if (userCookie != null)
+                SiteMaster.loadCookie(userCookie);
+
             if (Session["UserNickname"] == null)
             {
                 GiveLabel.Visible = false;
@@ -37,7 +42,9 @@ namespace Project_Shode
 
             //Get the query string parameters.
             string projectTitle = Request.QueryString["ProTitle"].ToString();
+            Session["ProjectTitle"] = projectTitle;
             int projectCode = Int32.Parse(Request.QueryString["Code"].ToString());
+            Session["ProjectCode"] = projectCode;
 
             //Create a project and look for the one we are being asked.
             ProjectBE project = new ProjectBE();
@@ -46,8 +53,12 @@ namespace Project_Shode
 
             //If we get something different from the database, or nothing: error.
             //The code and the title must match. Otherwise, the user is playing with the URL.
-            if(project.Code!=projectCode || project.Title!=projectTitle)
+            if (project.Code != projectCode || project.Title != projectTitle)
+            {
+                Session["ProjectTitle"] = null;
+                Session["ProjectCode"] = null;
                 Response.Redirect("Default.aspx");
+            }
 
             //We need this so we get the nickname and we do not show the user's email to the public.
             UserBE usuario = new UserBE();
@@ -65,12 +76,14 @@ namespace Project_Shode
             DataSet d = new DataSet();
             String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
             SqlConnection c = new SqlConnection(s);
-            SqlDataAdapter da = new SqlDataAdapter("Select usr, date, comment from users, comments" +
-                " where project=" + project.Code, c);
+            SqlDataAdapter da = new SqlDataAdapter("Select nickname, date, comment from users, comments" +
+                " where project=" + project.Code + " and comments.usr=users.email", c);
             da.Fill(d, "comments");
 
             gridComments.DataSource = d;
             gridComments.DataBind();
+
+            Page.Title = project.Title;
         }
 
         protected void contribute(object sender, EventArgs e)
@@ -80,8 +93,8 @@ namespace Project_Shode
                 if (float.Parse(creditsBox.Text) <= float.Parse(Session["USerCredit"].ToString()))
                 {
                     //Get the query string parameters.
-                    string projectTitle = Request.QueryString["ProTitle"].ToString();
-                    int projectCode = Int32.Parse(Request.QueryString["Code"].ToString());
+                    string projectTitle = Session["ProjectTitle"].ToString();
+                    int projectCode = Int32.Parse(Session["ProjectCode"].ToString());
 
                     //Create a project and look for the one we are being asked.
                     ProjectBE project = new ProjectBE();
@@ -91,6 +104,18 @@ namespace Project_Shode
                     project.Credit = project.Credit + Int32.Parse(creditsBox.Text);
 
                     project.update();
+
+                    //We need the user, so we update its credits.
+                    UserBE usuario = new UserBE();
+                    usuario.Email = project.Creator.Email;
+                    usuario = usuario.getUserByEmail();
+                    usuario.Credit = usuario.Credit - Int32.Parse(creditsBox.Text);
+                    usuario.update();
+                    Session["UserCredit"] = usuario.Credit;
+
+                    //And we must also create the contribution entry.
+                    ContributionBE contr = new ContributionBE(usuario, project, Int32.Parse(creditsBox.Text), DateTime.Now);
+                    contr.create();
 
                     FeedbackCredit.Text = "Done!";
                     projectProfileLabelCredits.Text = project.Credit.ToString();
@@ -106,8 +131,8 @@ namespace Project_Shode
         protected void pageChanging(object sender, GridViewPageEventArgs e)
         {
             //Get the query string parameters.
-            string projectTitle = Request.QueryString["ProTitle"].ToString();
-            int projectCode = Int32.Parse(Request.QueryString["Code"].ToString());
+            string projectTitle = Session["ProjectTitle"].ToString();
+            int projectCode = Int32.Parse(Session["ProjectCode"].ToString());
 
             //Create a project and look for the one we are being asked.
             ProjectBE project = new ProjectBE();
@@ -117,8 +142,8 @@ namespace Project_Shode
             DataSet d = new DataSet();
             String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
             SqlConnection c = new SqlConnection(s);
-            SqlDataAdapter da = new SqlDataAdapter("Select usr, date, comment from users, comments" +
-                " where project=" + project.Code, c);
+            SqlDataAdapter da = new SqlDataAdapter("Select nickname, date, comment from users, comments" +
+                " where project=" + project.Code + " and comments.usr=users.email", c);
             da.Fill(d, "comments");
 
             gridComments.PageIndex = e.NewPageIndex;
@@ -129,8 +154,8 @@ namespace Project_Shode
         protected void uploadComment(object sender, EventArgs e)
         {
             //Get the query string parameters.
-            string projectTitle = Request.QueryString["ProTitle"].ToString();
-            int projectCode = Int32.Parse(Request.QueryString["Code"].ToString());
+            string projectTitle = Session["ProjectTitle"].ToString();
+            int projectCode = Int32.Parse(Session["ProjectCode"].ToString());
 
             //Create a project and look for the one we are being asked.
             ProjectBE project = new ProjectBE();
@@ -138,7 +163,7 @@ namespace Project_Shode
             project = project.getByCode();
 
             //If we get something different from the database, or nothing: error.
-            //The code and the title must match. Otherwise, the user is playing with the URL.
+            //They could have change since we opened the page.
             if(project.Code!=projectCode || project.Title!=projectTitle)
                 Response.Redirect("Default.aspx");
 
@@ -157,6 +182,9 @@ namespace Project_Shode
             CommentBE crComment = new CommentBE(writer, project, creationDate, message);
 
             crComment.create();
+
+            //Reload the page with the added comment.
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

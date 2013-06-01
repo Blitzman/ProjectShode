@@ -35,8 +35,9 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
 
         <section id="projectOptionsHelp">
             <section id="leftOptions">
+              <asp:Panel ID="optionsPanel" runat="server" DefaultButton="sendCredits">
                 <asp:Label ID="GiveLabel" runat="server" Text="Give some credits:"></asp:Label> 
-                <asp:TextBox ID="creditsBox" runat="server" Width="50px" BorderStyle="Groove"
+                <asp:TextBox ID="creditsBox" runat="server" Width="50px" CssClass=TextBoxLogSign
                 ValidationGroup="creditsValidation"></asp:TextBox>
 
                 <asp:Button ID="sendCredits" runat="server" Text="Contribute!" OnClick="contribute"
@@ -46,10 +47,11 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
                 <asp:RegularExpressionValidator ID="checkCredtisProfile" runat="server" Display=Static 
                 ErrorMessage="At least 100 credits." ControlToValidate="creditsBox" 
                 ValidationExpression="\d{2}\d+" ValidationGroup="creditsValidation"></asp:RegularExpressionValidator>
+              </asp:Panel>
             </section>
             <section id="rightOptions">
                 <asp:Image ID="developLinkImage" runat="server" ImageUrl="/Images/bullet.png" /> 
-                <asp:HyperLink id="developLink" runat="server" NavigateUrl="~/ProjectProfile.aspx" Text="Develop">
+                <asp:HyperLink id="developLink" runat="server" NavigateUrl="~/Default.aspx" Text="Develop">
                 </asp:HyperLink>
             </section>
             <div id="clear" class="clear"></div>
@@ -67,7 +69,7 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
              OnPageIndexChanging="pageChanging">
 
                  <Columns>
-                    <asp:BoundField DataField="usr" HeaderText="Author" ItemStyle-Font-Italic="true" 
+                    <asp:BoundField DataField="nickname" HeaderText="Author" ItemStyle-Font-Italic="true" 
                     ItemStyle-Width=100px ItemStyle-VerticalAlign="Top" ItemStyle-Font-Underline="true"/>
                     <asp:BoundField DataField="comment" HeaderText="Comment" ItemStyle-Width=720px/>
                     <asp:BoundField DataField="date" HeaderText="Commented On" 
@@ -82,7 +84,7 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
 
         <section id="commentProjectContent">
             <asp:TextBox ID="commentProjectText" runat="server" TextMode="MultiLine" Width="835" 
-            Height="100" MaxLength="140" BorderStyle=Groove ValidationGroup="commentValidation"></asp:TextBox>
+            Height="100" MaxLength="140" CssClass=TextBoxLogSign ValidationGroup="commentValidation"></asp:TextBox>
             <asp:Button ID="sendCommentProject" runat="server" Text="Send" ValidationGroup="commentValidation"
             CssClass=ButtonShode OnClick="uploadComment"></asp:Button>
         </section>
@@ -90,7 +92,7 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
         <asp:RequiredFieldValidator ID="commentTextRequired" runat="server" ControlToValidate="commentProjectText"
         ErrorMessage="Write something!" ValidationGroup="commentValidation"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="commentCorrectness" runat="server" ControlToValidate="commentProjectText"
-        ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_:,.\s.]{1,140}" 
+        ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_.!:,.\s.]{1,140}" 
         ErrorMessage="Message length is not correct. Max: 140." ValidationGroup="commentValidation"></asp:RegularExpressionValidator>
     </section>
 </asp:Content>

@@ -5,15 +5,11 @@
 - Adjust CSS to fit Twitter box.
 - Comment the rest of the files.
 - Categories and project comments.
+- Projects Development
 - Email notification
-- Change results 'Creator' column: Nickname instead of email.
 - Augment varchar digits in Message so that time also fits.
 - Password security y singleton
-- Projects description written in one large word
-- Change comments creator: Nickname instead of email.
-- Update at real time the comments.
-- Allow '!' at those complex RegullarExpression validator 
 - Complete CommentBE and CommentDAC
-- Control better the data at projectProfile.aspx.cs: they are taken from the
-URL and it can change!
 - Give funcionality to the DEVELOP link at project profiles.
+- Searchs "empty entry": error or show ALL?
+- Fix contributions: does not create more than one entry per project/user/date (with no time!)

@@ -34,7 +34,8 @@ CodeBehind="Message.aspx.cs" Inherits="Project_Shode.Message" %>
         <asp:Button ID="replyButton" runat="server" Text="Reply" CssClass="ButtonShode" OnClick="openTextBox"></asp:Button>
     </section>
     <section>
-        <asp:TextBox ID="textmessage" Visible="false" runat="server" TextMode="MultiLine" Width="700px" Height="200" MaxLength="1000" Font-Names="Segoe UI"></asp:TextBox>
+        <asp:TextBox ID="textmessage" Visible="false" runat="server" CssClass=TextBoxLogSign
+        TextMode="MultiLine" Width="700px" Height="200" MaxLength="1000" Font-Names="Segoe UI"></asp:TextBox>
     </section>
     <section>
         <asp:Button ID="sendButton" Visible="false" runat="server" Text="Send" CssClass="ButtonShode" OnClick="reply_Message"></asp:Button>

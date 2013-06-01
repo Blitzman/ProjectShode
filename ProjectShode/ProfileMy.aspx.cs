@@ -11,6 +11,11 @@ namespace Project_Shode
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            HttpCookie userCookie = Request.Cookies["UserNickname"];
+
+            if (userCookie != null)
+                SiteMaster.loadCookie(userCookie);
+
             if (Session["UserNickname"] != null)
             {
                 Username.Text = Session["UserNickname"].ToString();
