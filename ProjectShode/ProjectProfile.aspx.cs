@@ -90,26 +90,27 @@ namespace Project_Shode
         {
             if (creditsBox.Text.Length > 2)
             {
-                if (float.Parse(creditsBox.Text) <= float.Parse(Session["USerCredit"].ToString()))
+                if (float.Parse(creditsBox.Text) <= float.Parse(Session["UserCredit"].ToString()))
                 {
                     //Get the query string parameters.
                     string projectTitle = Session["ProjectTitle"].ToString();
                     int projectCode = Int32.Parse(Session["ProjectCode"].ToString());
+                    int credits = Int32.Parse(creditsBox.Text);
 
                     //Create a project and look for the one we are being asked.
                     ProjectBE project = new ProjectBE();
                     project.Code = projectCode;
                     project = project.getByCode();
 
-                    project.Credit = project.Credit + Int32.Parse(creditsBox.Text);
+                    project.Credit = project.Credit + credits;
 
                     project.update();
 
                     //We need the user, so we update its credits.
                     UserBE usuario = new UserBE();
-                    usuario.Email = project.Creator.Email;
+                    usuario.Email = Session["UserEmail"].ToString();
                     usuario = usuario.getUserByEmail();
-                    usuario.Credit = usuario.Credit - Int32.Parse(creditsBox.Text);
+                    usuario.Credit = usuario.Credit - credits;
                     usuario.update();
                     Session["UserCredit"] = usuario.Credit;
 
