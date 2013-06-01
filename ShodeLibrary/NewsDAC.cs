@@ -31,17 +31,15 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         /* Methods                                                            */
         /* ****************************************************************** */
-        public string insertNews(NewsBE newsitem)
+        public string insertNews(NewsBE news)
         {
-            string result = "The project has been created!";
+            string result = "The news item has been created!";
 
             SqlConnection c = new SqlConnection(connection);
             c.Open();
 
-            SqlCommand com = new SqlCommand("INSERT INTO news ()" +
-                "VALUES ('" + project.Title + "','" + project.Description + "','" + project.ExpirationDate.ToString("dd/MM/yyyy") + "','" +
-                project.CreationDate.ToString("dd/MM/yyyy") + "'," + "1" + "," + project.Credit + ",'" + project.LastVersion.ToString("dd/MM/yyyy") +
-                "'," + project.Credit + ",'" + project.GitDir + "','" + project.Creator.Email + "')", c);
+            SqlCommand com = new SqlCommand("INSERT INTO news (code, title, content, public_date, creator)" +
+                "VALUES ('" + news.Code+ "','" + news.Title+ "','" + news.Content + "','" + news.PublicationDate.ToString("dd/MM/yyyy") + "','" +  news.Author + "',')", c);
 
             com.ExecuteNonQuery();
             c.Close();
@@ -49,11 +47,31 @@ namespace ShodeLibrary
             return result;
         }
 
-        public NewsBE getNews(string code)
+        public NewsBE getNews(int code)
         {
-            NewsBE newsitem = new NewsBE();
-            // Do stuff here
-            return newsitem;
+            NewsBE news = new NewsBE();
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("SELECT * FROM news WHERE code='" + code + "'", c);
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                news.Code = Int32.Parse(dr["code"].ToString());
+                news.Title = dr["title"].ToString();
+                news.Content = dr["content"].ToString();
+                news.PublicationDate = DateTime.ParseExact(dr["public_date"].ToString(), "dd/MM/yyyy", null);
+                news.Author = new UserBE();
+                news.Author.Nickname = dr["creator"].ToString();
+
+                
+            }
+
+            c.Close();
+            return news;
         }
 
         public List<NewsBE> getAllNews ()
@@ -108,14 +126,28 @@ namespace ShodeLibrary
             return newsitems;
         }
 
-        public void updateNews(NewsBE news)
+        public void update(NewsBE news)
         {
-            // Do stuff here
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("UPDATE newss " +
+                "SET title='" + news.Title + "', content='" + news.Content +
+                " WHERE code='" + news.Code + "'", c);
+
+            com.ExecuteNonQuery();
+            c.Close();
         }
 
-        public void deleteNews(string code)
+        public void delete(int code)
         {
-            // Do stuff here
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("DELETE FROM news WHERE code =" + code.ToString() + "", c);
+
+            com.ExecuteNonQuery();
+            c.Close();
         }
     }
     
