@@ -68,6 +68,7 @@
                         <asp:MenuItem Text="Projects" Value="About" ImageUrl="~/Images/search.png" NavigateUrl="Projects.aspx"></asp:MenuItem>
                         <asp:MenuItem Text="Profile" Value="About" ImageUrl="~/Images/settings.png" NavigateUrl="Profiles.aspx"></asp:MenuItem>
                         <asp:MenuItem Text="Contact" Value="About" ImageUrl="~/Images/i.png" NavigateUrl="Contact.aspx"></asp:MenuItem>
+                        <asp:MenuItem Text="News" Value="About" ImageUrl="~/Images/news.png" NavigateUrl="News.aspx"></asp:MenuItem>
                     </Items>
                 </asp:Menu>
             </section>
