@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Data.Common;
 using System.Data.SqlTypes;
 using System.Configuration;
+using System.Security.Cryptography;
 
 namespace ShodeLibrary
 {

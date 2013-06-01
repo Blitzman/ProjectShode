@@ -31,6 +31,7 @@ namespace Project_Shode
             user.Nickname = nick;
             user.Password = password;
             exists = user.verifyUser();
+            
 
             if (exists)
             {
