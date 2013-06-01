@@ -11,7 +11,7 @@ name VARCHAR(32) NOT NULL,
 last_name VARCHAR(32) NOT NULL,
 email VARCHAR(64),
 nickname VARCHAR(32) NOT NULL,
-password VARCHAR(32) NOT NULL,
+password VARCHAR(70) NOT NULL,
 credit INT NOT NULL,
 CONSTRAINT pk_users PRIMARY KEY (email),
 CONSTRAINT altk_users UNIQUE (nickname))
@@ -50,7 +50,7 @@ CREATE TABLE news (
 code INT,
 title VARCHAR(32) NOT NULL,
 content VARCHAR(256) NOT NULL,
-public_date VARCHAR(11) NOT NULL,
+public_date VARCHAR(20) NOT NULL,
 creator VARCHAR(64),
 CONSTRAINT pk_news PRIMARY KEY (code),
 CONSTRAINT fk_creator_news FOREIGN KEY (creator) REFERENCES users(email) ON DELETE CASCADE)
@@ -58,7 +58,7 @@ CONSTRAINT fk_creator_news FOREIGN KEY (creator) REFERENCES users(email) ON DELE
 CREATE TABLE contributions (
 project INT,
 usr VARCHAR(64),
-date VARCHAR(11),
+date VARCHAR(20),
 amount INT NOT NULL,
 CONSTRAINT pk_contributions PRIMARY KEY(project, usr, date),
 CONSTRAINT fk_contributors_project FOREIGN KEY (project) REFERENCES projects(code) ON DELETE CASCADE,
@@ -67,7 +67,7 @@ CONSTRAINT fk_contributors_user FOREIGN KEY (usr) REFERENCES users(email) ON DEL
 CREATE TABLE developments (
 project INT,
 usr VARCHAR(64),
-date VARCHAR(11),
+date VARCHAR(20),
 gitbranch VARCHAR(128) NOT NULL,
 ups INT NOT NULL,
 CONSTRAINT pk_developments PRIMARY KEY(project, usr, date),
