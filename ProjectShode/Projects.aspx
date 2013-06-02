@@ -6,6 +6,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContentProject">
   <section id="searchEngine">
     
+    <%-- Searching Engine --%>
     <asp:Panel ID="searchsPanel" runat="server" DefaultButton="buttonSearchProjects">
     <section id="entrySearch">
         <asp:TextBox ID="searchTextbox" runat="server" Height="20px" Width="180px" MaxLength=30 CssClass=TextBoxLogSign></asp:TextBox>
@@ -22,6 +23,7 @@
 
     <asp:Label ID="searchLabelProject" runat="server" Text="Select the categories you want to explore."></asp:Label>
     
+    <%-- Searching Categories --%>
     <section id="searchCategories">
         <section id="categoriesLeft">
         <asp:TreeView ID="treeviewCat1" runat="server" ShowCheckBoxes=All NodeStyle-HorizontalPadding=5 
@@ -55,6 +57,7 @@
         </section>   
    </section>
   
+   <%-- Searching Results --%>
    <section id="searchResults">
         <section id="searchTopLabels">
             <section id="resultsLabel">

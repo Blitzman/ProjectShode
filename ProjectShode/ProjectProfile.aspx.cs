@@ -21,7 +21,7 @@ namespace Project_Shode
         {
             //We need the title and the code. Otherwise the user must be playing with the URL.
             if (Request.QueryString["ProTitle"] == null || Request.QueryString["Code"] == null)
-                Response.Redirect("Default.aspx");
+                Response.Redirect("Error.aspx");
 
             HttpCookie userCookie = Request.Cookies["UserNickname"];
 
@@ -63,7 +63,7 @@ namespace Project_Shode
             {
                 Session["ProjectTitle"] = null;
                 Session["ProjectCode"] = null;
-                Response.Redirect("Default.aspx");
+                Response.Redirect("Error.aspx");
             }
 
             //We need this so we get the nickname and we do not show the user's email to the public.
@@ -165,8 +165,8 @@ namespace Project_Shode
 
             //If we get something different from the database, or nothing: error.
             //They could have change since we opened the page.
-            if(project.Code!=projectCode || project.Title!=projectTitle)
-                Response.Redirect("Default.aspx");
+            if (project.Code != projectCode || project.Title != projectTitle)
+                Response.Redirect("Error.aspx");
 
             //We need this so we get the nickname and we do not show the user's email to the public.
             UserBE writer = new UserBE();
@@ -178,7 +178,7 @@ namespace Project_Shode
 
             //And the message content.
             String message = commentProjectText.Text;
-  
+
             //Comment creation
             CommentBE crComment = new CommentBE(writer, project, creationDate, message);
 

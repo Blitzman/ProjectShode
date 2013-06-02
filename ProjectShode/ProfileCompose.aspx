@@ -8,6 +8,7 @@ CodeBehind="ProfileCompose.aspx.cs" Inherits="Project_Shode.ProfileCompose" %>
     <asp:Panel ID="newMessagePanel" runat="server" DefaultButton=sendButton>
 
     <asp:Table ID="Table1" runat="server">
+        <%-- Destination User --%>
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label ID="user" runat="server" Text="Username" CssClass="formLabel"></asp:Label>
@@ -20,6 +21,8 @@ CodeBehind="ProfileCompose.aspx.cs" Inherits="Project_Shode.ProfileCompose" %>
                 <asp:Label ID="existsFeedback" runat="server" ForeColor="Red" Text="Destination user doesn't exist!"></asp:Label>
             </asp:TableCell>
         </asp:TableRow>
+
+        <%-- Subject --%>
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label ID="SubjectLabel" runat="server" Text="Subject" CssClass="formLabel"></asp:Label>
@@ -31,6 +34,8 @@ CodeBehind="ProfileCompose.aspx.cs" Inherits="Project_Shode.ProfileCompose" %>
                 <asp:Label ID="subjectFeedback" runat="server" ForeColor="Red" Text="Subject missing!"></asp:Label>
             </asp:TableCell>
         </asp:TableRow>
+
+        <%-- Body --%>
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label ID="BodyLabel" runat="server" Text="Message" CssClass="formLabel"></asp:Label>
@@ -40,6 +45,9 @@ CodeBehind="ProfileCompose.aspx.cs" Inherits="Project_Shode.ProfileCompose" %>
                 MaxLength="1000" Font-Names="Segoe UI"></asp:TextBox>
             </asp:TableCell>
         </asp:TableRow>
+
+        
+        <%-- Send Button --%>
          <asp:TableRow>
             <asp:TableCell>
             </asp:TableCell>

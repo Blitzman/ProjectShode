@@ -4,14 +4,17 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentProject" runat="server">
     <section id="projectProfile">
+        <%-- Title --%>
         <section id="projectProfileTittle">
             <asp:Label ID="profileTittleLabel" runat="server" Font-Size=X-Large Font-Underline=true Height=50></asp:Label>
         </section>
-
+        
+        <%-- Decription --%>
         <section id="project>
             <asp:Label ID="projectProfileDescription" runat="server"></asp:Label>
         </section>
 
+        <%-- Statistics --%>
         <section id="projectProfileStatistics">
             <h4>Project statistics</h4>
 
@@ -32,7 +35,8 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
             </section>
             <div class=clear></div>
         </section>
-
+        
+        <%-- Private Options --%>
         <section id="projectOptionsHelp">
             <section id="leftOptions">
               <asp:Panel ID="optionsPanel" runat="server" DefaultButton="sendCredits">
@@ -56,7 +60,8 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
             <div id="clear" class="clear"></div>
         </section>
     </section>
-
+    
+    <%-- Comments --%>
     <section id="projectComments">
         <h3>Project comments</h3>
 
@@ -77,14 +82,15 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
 
          </asp:GridView>
      </section>
-
+     
+    <%-- Write a Comment section --%>
     <section id="writeProjectComment">
         <asp:Label id="commentProjectLabel" runat="server" Text="Write a comment."></asp:Label>
 
         <section id="commentProjectContent">
             <asp:TextBox ID="commentProjectText" runat="server" TextMode="MultiLine" Width="835" 
             Height="100" MaxLength="140" CssClass=TextBoxLogSign ValidationGroup="commentValidation"></asp:TextBox>
-            <asp:Button ID="sendCommentProject" runat="server" Text="Send" ValidationGroup="commentValidation"
+            <asp:Button ID="sendCommentProject" runat="server" Text="Send" 
             CssClass=ButtonShode OnClick="uploadComment"></asp:Button>
         </section>
 
@@ -92,6 +98,6 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
         ErrorMessage="Write something!" ValidationGroup="commentValidation"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="commentCorrectness" runat="server" ControlToValidate="commentProjectText"
         ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_.!:,.\s.]{1,140}" 
-        ErrorMessage="Message length is not correct. Max: 140." ValidationGroup="commentValidation"></asp:RegularExpressionValidator>
+        ErrorMessage="Message length is not correct. Max: 140." ></asp:RegularExpressionValidator>
     </section>
 </asp:Content>

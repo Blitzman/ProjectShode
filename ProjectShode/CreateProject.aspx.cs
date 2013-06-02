@@ -41,6 +41,7 @@ namespace Project_Shode
 
             if (correct)
             {
+                //Project information.
                 String tittle = tittleProjectTextbox.Text;
                 String description = descriptionTextbox.Text;
                 UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
@@ -51,20 +52,20 @@ namespace Project_Shode
                 int credit = Int32.Parse(creditsTextboxProject.Text);
                 DateTime version = DateTime.Now;
                 String gitDir = "There";
-                
+
                 //Update the UserBE credits and also the Sessión value.
                 String currentCredits = Session["UserCredit"].ToString();
-                Session["UserCredit"]=Int32.Parse(currentCredits)-credit;
-                creator.Credit = Int32.Parse(currentCredits)-credit;
+                Session["UserCredit"] = Int32.Parse(currentCredits) - credit;
+                creator.Credit = Int32.Parse(currentCredits) - credit;
                 creator.update();
 
+                //Project creation.
                 ProjectBE crProject = new ProjectBE(tittle, description, creator, code,
                     creation, expires, credit, credit, version, gitDir);
-
                 crProject.create();
-
                 crProject.Code = crProject.getLastCode();
 
+                //When you create a project, you are contributing to it.
                 ContributionBE contribution = new ContributionBE(creator, crProject, credit, DateTime.Now);
                 contribution.create();
 

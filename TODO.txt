@@ -6,5 +6,7 @@
 - Categories in projects.
 - Email notification
 - Singleton class
+- CommentDAC "inserComment" with parameters does not work.
 - Control what the create development returns so we change the feedback message.
 - Breakline for long words. Long words at the beggining are controlled, but not the rest.
+- Add Regular Expression Validators to Contact form.

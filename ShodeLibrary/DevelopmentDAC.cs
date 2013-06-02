@@ -233,6 +233,12 @@ namespace ShodeLibrary
         }
 
 
+        /// <summary>
+        /// User Developments Getter.
+        /// This function obtains the developments that have been made
+        /// by a given user.
+        /// </summary>
+        /// <returns>Developments in a DataSet.</returns>
         public static DataSet getUserDevelopments(String userEmail)
         {
             DataSet d = new DataSet();
@@ -247,6 +253,12 @@ namespace ShodeLibrary
             return d;
         }
 
+        /// <summary>
+        /// User Top Developments Getter.
+        /// This function obtains the top developments that have been made
+        /// by a given user. The top ones are those with higher up votes.
+        /// </summary>
+        /// <returns>Top 3 Developments in a DataSet.</returns>
         public static DataSet getUserTopDevelopments(String userEmail)
         {
             DataSet d = new DataSet();
@@ -261,6 +273,12 @@ namespace ShodeLibrary
             return d;
         }
 
+        /// <summary>
+        /// Total Number of User Developments Getter.
+        /// This is a statistical function which obtains the total number of 
+        /// developments that have been made by a given user.
+        /// </summary>
+        /// <returns>The total number of developments.</returns>
         public static int getTotalUserDevelopments(String userEmail)
         {
             int developmentsCount = 0;
@@ -272,8 +290,8 @@ namespace ShodeLibrary
             {
                 c.Open();
 
-                SqlCommand com = new SqlCommand("SELECT count(*) total FROM developments"+
-                    " where developments.usr='"+userEmail+"'", c);
+                SqlCommand com = new SqlCommand("SELECT count(*) total FROM developments" +
+                    " where developments.usr='" + userEmail + "'", c);
                 SqlDataReader dr = com.ExecuteReader();
 
                 while (dr.Read())

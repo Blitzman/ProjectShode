@@ -7,10 +7,11 @@
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <section id="location">
-        <asp:HyperLink runat="server" NavigateUrl="~/Default.aspx">Shode</asp:HyperLink> > 
-        <asp:HyperLink runat="server" NavigateUrl="~/Profiles.aspx">Profile</asp:HyperLink>
+        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Shode</asp:HyperLink> > 
+        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Profiles.aspx">Profile</asp:HyperLink>
     </section>
 
+    <%-- Profile Menu --%>
     <section id="menuSection">
        <asp:Menu ID="MenuProfile" runat="server" Orientation="vertical">
              <Items>

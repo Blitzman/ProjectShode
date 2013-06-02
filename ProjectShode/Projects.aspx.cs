@@ -21,9 +21,9 @@ namespace Project_Shode
         {
             if (!Page.IsPostBack)
             {
-                Global.search = "";
+                Session["Search"] = "";
                 //Maybe you entered the web on 19th 23:59 and you are at Search at 00:01. We must update the day the first time.
-                Global.day = DateTime.Today.ToString("dd");
+                Session["SearchDay"] = DateTime.Today.ToString("dd");
 
                 gridResults.DataSource = ProjectDAC.getRecentProjects();
                 gridResults.DataBind();
@@ -34,7 +34,7 @@ namespace Project_Shode
         protected void startSearch(object sender, EventArgs e)
         {
             string search = searchTextbox.Text;
-            Global.search = search;
+            Session["Search"] = search;
 
             gridResults.PageIndex = 0;
             gridResults.DataSource = ProjectDAC.searchProjects(search);
@@ -44,7 +44,7 @@ namespace Project_Shode
 
         protected void resultsPageChanging(object sender, GridViewPageEventArgs e)
         {
-            string search = Global.search;
+            string search = Session["Search"].ToString();
             DataSet d;
 
             if (search.Length == 0)
@@ -57,7 +57,7 @@ namespace Project_Shode
             }
             else
             {
-                d = ProjectDAC.searchProjects(Global.search);
+                d = ProjectDAC.searchProjects(search);
             }
 
             gridResults.PageIndex = e.NewPageIndex;
@@ -71,7 +71,7 @@ namespace Project_Shode
             gridResults.DataSource = ProjectDAC.getPopularProjects();
             gridResults.DataBind();
             projectsResultsLabel.Text = "Most Populars";
-            Global.search = "$";
+            Session["Search"] = "$";
         }
     }
 }
