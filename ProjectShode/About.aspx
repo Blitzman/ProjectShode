@@ -8,7 +8,7 @@
     </section>
 
     <hgroup class="title">
-        <h2>If you arrived here accidentally, you are probably wondering WTF is Shode.</h2>
+        <h2>If you arrived here accidentally, you are probably wondering what is Shode.</h2>
     </hgroup>
     <section class="body_custom">
         <p>        

@@ -14,25 +14,25 @@ namespace Project_Shode
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            feedback.Visible = false;
+            feedback.Visible = false; 
         }
 
-        protected void SendMail(object sender, EventArgs e)
-        {
-            MailMessage mm = new MailMessage("remitente@gmail.com", "projectshode@gmail.com");
-            mm.Subject = textsubject.Text.ToString();
-            mm.Body = "Name: " + textname.Text.ToString() + "<br /><br />Email: " + textemail.Text.ToString() +
-                "<br /><br />Subject: " + textsubject.Text.ToString() + "<br /><br />Body: " + textmessage.Text.ToString();
-
-            try
-            {
-                mm.IsBodyHtml = true;
-                SmtpClient smtp = new SmtpClient();
-                smtp.Host = "smtp.gmail.com";
+        protected void SendMail(object sender, EventArgs e) 
+        { 
+            MailMessage mm = new MailMessage("remitente@gmail.com", "projectshode@gmail.com"); 
+            mm.Subject = textsubject.Text.ToString(); 
+            mm.Body = "Name: " + textname.Text.ToString() + "<br /><br />Email: " + textemail.Text.ToString() + 
+                "<br /><br />Subject: " + textsubject.Text.ToString() + "<br /><br />Body: " + textmessage.Text.ToString(); 
+             
+            try 
+            { 
+                mm.IsBodyHtml = true; 
+                SmtpClient smtp = new SmtpClient(); 
+                smtp.Host = "smtp.gmail.com"; 
                 smtp.EnableSsl = true;
                 System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
                 NetworkCred.UserName = "projectshode@gmail.com";
-                NetworkCred.Password = "IreneChupameElPene";
+                NetworkCred.Password = "sharecodehada";
                 smtp.UseDefaultCredentials = true;
                 smtp.Credentials = NetworkCred;
                 smtp.Port = 587;

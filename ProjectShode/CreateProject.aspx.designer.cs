@@ -130,33 +130,6 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator descriptionRequired;
         
         /// <summary>
-        /// Control categoriesLabel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label categoriesLabel;
-        
-        /// <summary>
-        /// Control categoriesCheckbox.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList categoriesCheckbox;
-        
-        /// <summary>
-        /// Control CheckBoxList1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
-        
-        /// <summary>
         /// Control creditsLabelProject.
         /// </summary>
         /// <remarks>

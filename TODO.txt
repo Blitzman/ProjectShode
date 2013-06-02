@@ -3,7 +3,6 @@
 - Report.
 - Adjust CSS to fit Twitter box.
 - Comment the rest of the files.
-- Categories in projects.
 - Singleton class
 - CommentDAC "inserComment" with parameters does not work.
 - Control what the create development returns so we change the feedback message.

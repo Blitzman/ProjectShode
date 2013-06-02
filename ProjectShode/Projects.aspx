@@ -4,8 +4,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContentProject">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContentProject">
-  <section id="searchEngine">
-    
+
     <%-- Searching Engine --%>
     <asp:Panel ID="searchsPanel" runat="server" DefaultButton="buttonSearchProjects">
     <section id="entrySearch">
@@ -16,46 +15,12 @@
     
     <section id"searchLabelHere">           
         <asp:RegularExpressionValidator ID="searchCorrectnes" runat="server" ControlToValidate="searchTextbox"
-           ForeColor="#C36464" ErrorMessage="Searching String Incorrect" Display=Dynamic
+           ForeColor="#C36464" ErrorMessage="Searching String Incorrect" Display=Static
            ValidationExpression="^(?!\s*$)(?![,.]*$)(?![-a-zA-Z0-9,.]{20,}$)[a-zA-Z0-9,.\s]{1,64}" ></asp:RegularExpressionValidator>
     </section>
     </asp:Panel>
 
-    <asp:Label ID="searchLabelProject" runat="server" Text="Select the categories you want to explore."></asp:Label>
-    
-    <%-- Searching Categories --%>
-    <section id="searchCategories">
-        <section id="categoriesLeft">
-        <asp:TreeView ID="treeviewCat1" runat="server" ShowCheckBoxes=All NodeStyle-HorizontalPadding=5 
-        NodeStyle-VerticalPadding=5 ForeColor="#24242C">
-            <Nodes>
-                <asp:TreeNode SelectAction=None Text="Web"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="Educational"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="Investigation"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="Programming Lang"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="Algorithms"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="Mobile Phones"></asp:TreeNode>
-                <asp:TreeNode SelectAction=None Text="Others"></asp:TreeNode>
-            </Nodes>
-        </asp:TreeView>
-        </section>
-        <section id="categoriesRight">
-        <asp:TreeView ID="treeviewCat2" runat="server" ShowCheckBoxes=All NodeStyle-HorizontalPadding=5 
-            NodeStyle-VerticalPadding=5 ForeColor="#24242C">
-                <Nodes>
-                    <asp:TreeNode SelectAction=None Text="C++"></asp:TreeNode>
-                    <asp:TreeNode SelectAction=None Text="Java"></asp:TreeNode>
-                    <asp:TreeNode SelectAction=None Text="C#"></asp:TreeNode>
-                    <asp:TreeNode SelectAction=None Text="Scala"></asp:TreeNode>
-                    <asp:TreeNode SelectAction=None Text="Scheme"></asp:TreeNode>
-                    <asp:TreeNode SelectAction=None Text="ASP.NET"></asp:TreeNode>
-                    <asp:TreeNode SelectAction=None Text="Ruby"></asp:TreeNode>
-                </Nodes>
-            </asp:TreeView>
-            </section>
-            <div class="clear"></div>      
-        </section>   
-   </section>
+
   
    <%-- Searching Results --%>
    <section id="searchResults">

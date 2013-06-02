@@ -51,29 +51,6 @@
          <asp:RequiredFieldValidator ID="descriptionRequired" runat="server" ControlToValidate="descriptionTextbox" ForeColor="#C36464"
             ErrorMessage="Description is required" ValidationGroup="creation"></asp:RequiredFieldValidator>
     </section>
-    
-    <%-- Project Categories: not being used right now. --%>
-
-    <asp:Label ID="categoriesLabel" runat="server" Text="Select the categories your project fits:"></asp:Label>
-    <section class="boxesProject">
-        <section id="categoriesLeft">
-            <asp:CheckBoxList ID="categoriesCheckbox" runat="server" CellSpacing=20>
-                <asp:ListItem Text="Category One"></asp:ListItem>
-                <asp:ListItem Text="Category Two"></asp:ListItem>
-                <asp:ListItem Text="Category Three"></asp:ListItem>
-                <asp:ListItem Text="Category Four"></asp:ListItem>
-            </asp:CheckBoxList>
-        </section>
-        <section id="categoriesRight">
-            <asp:CheckBoxList ID="CheckBoxList1" runat="server" CellSpacing=20>
-                <asp:ListItem Text="Category Five"></asp:ListItem>
-                <asp:ListItem Text="Category Six"></asp:ListItem>
-                <asp:ListItem Text="Category Seven"></asp:ListItem>
-                <asp:ListItem Text="Category Eight"></asp:ListItem>
-            </asp:CheckBoxList>
-        </section>
-        <div class="clear"></div>
-    </section>
 
     <%-- Credits --%>
     <section class="boxesProject">
