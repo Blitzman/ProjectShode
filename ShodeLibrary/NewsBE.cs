@@ -6,6 +6,7 @@ using System.Text;
 /*
  * Task performed by Liesbeth
  */
+//Good BE
 namespace ShodeLibrary
 {
 
@@ -17,7 +18,7 @@ namespace ShodeLibrary
         private string title;
         private string content;
         private UserBE author;
-        private string code;
+        private int code;
         private DateTime publicationDate;
         private DevelopmentBE topic;
         private ProjectBE project;
@@ -30,22 +31,21 @@ namespace ShodeLibrary
             title = "";
             content = "";
             author = new UserBE();
-            code = "";
+            code = -1;
             publicationDate = new DateTime();
             topic = new DevelopmentBE();
             project = new ProjectBE();
         }
 
-        public NewsBE(string title, string content,
+        public NewsBE(string title, string content, int code,
                             UserBE author, DateTime publicationDate,
                             DevelopmentBE topic, ProjectBE project)
         {
-            code = generateCode();
-
+            this.code = code;
             this.title = title;
             this.content = content;
             this.author = author;
-            this.publicationDate = publicationDate; 
+            this.publicationDate = publicationDate;
             this.topic = topic;
             this.project = project;
         }
@@ -63,13 +63,13 @@ namespace ShodeLibrary
         public void update()
         {
             NewsDAC newsDAC = new NewsDAC();
-            newsDAC.updateNews(this);
+            newsDAC.update(this);
         }
 
         public void delete()
         {
             NewsDAC newsDAC = new NewsDAC();
-            newsDAC.deleteNews(code);
+            newsDAC.delete(code);
         }
 
         private static string generateCode()
@@ -77,6 +77,12 @@ namespace ShodeLibrary
             string newCode = "";
             //Randomize a new project code
             return newCode;
+        }
+
+        public NewsBE getByCode(int code)
+        {
+            NewsDAC dac = new NewsDAC();
+            return dac.getNews(code);
         }
 
 
@@ -98,7 +104,7 @@ namespace ShodeLibrary
             get { return author; }
             set { author = value; }
         }
-        public string Code
+        public int Code
         {
             get { return code; }
             set { code = value; }

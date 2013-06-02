@@ -9,6 +9,7 @@ using System.Configuration;
 /*
  * Task performed by Liesbeth
  */
+//Good DAC
 namespace ShodeLibrary
 {
     public class NewsDAC
@@ -31,27 +32,69 @@ namespace ShodeLibrary
         /* ****************************************************************** */
         /* Methods                                                            */
         /* ****************************************************************** */
-        public string insertNews(NewsBE newsitem)
+        public string insertNews(NewsBE news)
         {
-            string code = "";
-            // Do stuff here
-            return code;
+            string result = "The news item has been created!";
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("INSERT INTO news (code, title, content, public_date, creator)" +
+                " VALUES ('" + news.Code + "','" + news.Title + "','" + news.Content + "','" + news.PublicationDate.ToString("dd/MM/yyyy") + "','" + news.Author.Email + "')", c);
+
+            com.ExecuteNonQuery();
+            c.Close();
+
+            return result;
         }
 
-        public NewsBE getNews(string code)
+        public NewsBE getNews(int code)
         {
-            NewsBE newsitem = new NewsBE();
-            // Do stuff here
-            return newsitem;
+            NewsBE news = new NewsBE();
+
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("SELECT * FROM news WHERE code='" + code + "'", c);
+
+            SqlDataReader dr = com.ExecuteReader();
+
+            while (dr.Read())
+            {
+                news.Code = Int32.Parse(dr["code"].ToString());
+                news.Title = dr["title"].ToString();
+                news.Content = dr["content"].ToString();
+                news.PublicationDate = DateTime.ParseExact(dr["public_date"].ToString(), "dd/MM/yyyy", null);
+                news.Author = new UserBE();
+                news.Author.Nickname = dr["creator"].ToString();
+
+
+            }
+
+            c.Close();
+            return news;
         }
 
-        public List<NewsBE> getAllNews ()
+        public void update(NewsBE news)
+        {
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
+
+            SqlCommand com = new SqlCommand("UPDATE news " +
+                "SET title='" + news.Title + "', content='" + news.Content + "'" +
+                " WHERE code='" + news.Code + "'", c);
+
+            com.ExecuteNonQuery();
+            c.Close();
+        }
+
+        public List<NewsBE> getAllNews()
         {
             List<NewsBE> newsitems = new List<NewsBE>();
             // Do stuff here
             return newsitems;
         }
-        public List<NewsBE> getTopNews (int num)
+        public List<NewsBE> getTopNews(int num)
         {
             List<NewsBE> newsitems = new List<NewsBE>();
             // Do stuff here
@@ -85,7 +128,7 @@ namespace ShodeLibrary
 
         public List<NewsBE> getNewsByTitleSearch(string title)
         {
-             List<NewsBE> newsitems = new List<NewsBE>();
+            List<NewsBE> newsitems = new List<NewsBE>();
             // Do stuff here
             return newsitems;
         }
@@ -97,15 +140,17 @@ namespace ShodeLibrary
             return newsitems;
         }
 
-        public void updateNews(NewsBE news)
+        public void delete(int code)
         {
-            // Do stuff here
-        }
+            SqlConnection c = new SqlConnection(connection);
+            c.Open();
 
-        public void deleteNews(string code)
-        {
-            // Do stuff here
+            SqlCommand com = new SqlCommand("DELETE FROM news WHERE code =" + code.ToString() + "", c);
+
+            com.ExecuteNonQuery();
+            c.Close();
         }
     }
-    
+
 }
+

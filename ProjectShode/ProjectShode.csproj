@@ -67,6 +67,9 @@
     <Content Include="Error.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Message.aspx" />
+    <Content Include="NewsAdmin.aspx" />
+    <Content Include="NewsCreate.aspx" />
+    <Content Include="NewsEdit.aspx" />
     <Content Include="ProfileCredits.aspx" />
     <Content Include="Profiles.aspx" />
     <Content Include="ProfileCompose.aspx" />
@@ -169,6 +172,33 @@
     </Compile>
     <Compile Include="Message.aspx.designer.cs">
       <DependentUpon>Message.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="News.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="News.aspx.designer.cs">
+      <DependentUpon>News.aspx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewsAdmin.aspx.cs">
+      <DependentUpon>NewsAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsAdmin.aspx.designer.cs">
+      <DependentUpon>NewsAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsCreate.aspx.cs">
+      <DependentUpon>NewsCreate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsCreate.aspx.designer.cs">
+      <DependentUpon>NewsCreate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewsEdit.aspx.cs">
+      <DependentUpon>NewsEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewsEdit.aspx.designer.cs">
+      <DependentUpon>NewsEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProfileCredits.aspx.cs">
       <DependentUpon>ProfileCredits.aspx</DependentUpon>
@@ -305,7 +335,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54759</DevelopmentServerPort>
+          <DevelopmentServerPort>32766</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

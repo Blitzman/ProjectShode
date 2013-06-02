@@ -21,3 +21,8 @@ C:\Users\Sergiu\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrar
 C:\Users\Sergiu\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.pdb
 C:\Users\Pablo\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.csprojResolveAssemblyReference.cache
 C:\Users\Administrador\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Calimero\Documents\GitHub\ProjectShode\ShodeLibrary\bin\Debug\ShodeLibrary.dll
+C:\Users\Calimero\Documents\GitHub\ProjectShode\ShodeLibrary\bin\Debug\ShodeLibrary.pdb
+C:\Users\Calimero\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Calimero\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.dll
+C:\Users\Calimero\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.pdb
