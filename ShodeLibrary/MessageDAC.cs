@@ -11,23 +11,39 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 
 namespace ShodeLibrary
-{
+{    
+    /// <summary>
+    /// This is the data access component of the messages. This class will allow
+    /// performing CRUD operations directly with the database so it will be
+    /// an intermediate layer between the business entity and the raw database.
+    /// </summary>
     public class MessageDAC
     {
-        //* ****************************************************************** */
-        /* Constructors                                                       */
-        /* ****************************************************************** */
+        // /////////////////////////////////////////////////////////////////////
+        // Constructors ////////////////////////////////////////////////////////
+        // /////////////////////////////////////////////////////////////////////
 
+        /// <summary>
+        /// Default Constructor.
+        /// Creates a new message data access component by initializing the field
+        /// which holds the connection string to the database connection string
+        /// value which is stored in the Web.config file.
+        /// </summary>
         public MessageDAC()
         {
+            // Get the connection string from a fixed location (Web.config file)
+            connection = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
         }
 
+        // /////////////////////////////////////////////////////////////////////
+        // Methods /////////////////////////////////////////////////////////////
+        // /////////////////////////////////////////////////////////////////////
 
-        /* ****************************************************************** */
-        /* Methods                                                            */
-        /* ****************************************************************** */
-
-        /* Inserts a new message */
+        /// <summary>
+        /// Message Insertion.
+        /// Inserts the given message in the database.
+        /// </summary>
+        /// <param name="m">The message to be inserted.</param>
         public void insertMessage(MessageBE m)
         {
             int read = 0; if (m.Read) read = 1;
@@ -46,6 +62,12 @@ namespace ShodeLibrary
         }
 
         /* Obtains a unique code for a new message */
+        /// <summary>
+        /// DB code.
+        /// We get a unique code from the db for a new message.
+        /// </summary>
+        /// <param name="codetype">Code type of the message.</param>
+        /// <returns>It returns the integer code.</returns>
         public static int getCodeDB(String codeType)
         {
             int newCode = 0;
@@ -69,8 +91,12 @@ namespace ShodeLibrary
             return newCode;
         }
 
-        /* Updates the field isRead of the passed message in order to know that the message
-         * has been opened. */
+        /// <summary>
+        /// Message Reader.
+        /// Updates the field isRead of the given message so we know that it has been opened.
+        /// </summary>
+        /// <param name="m">The message to be read.</param>
+        /// <returns>It returns a boolean: true if we could read it.</returns>
         public bool readMessage(MessageBE m)
         {
             bool read = false;
@@ -84,8 +110,14 @@ namespace ShodeLibrary
             return read;
         }
 
-        /* Deletes the message for the specified user. If both users have
-         * deleted it, it is removed from database. */
+        /// <summary>
+        /// Message Delete.
+        /// Deletes the message for the specified user. If both users have deleted
+        /// the message, it is removed from the database as we do not need it anymore.
+        /// </summary>
+        /// <param name="m">The message to be deleted.</param>
+        /// <param name="u">The users who is deleting the message.</param>
+        /// <returns>A boolean is returned.</returns>
         public bool deleteMessage(MessageBE m, UserBE u = null)
         {
             bool deleted = false;
@@ -151,7 +183,13 @@ namespace ShodeLibrary
         }
 
 
-        /* Gets the dataset of messages that compound the conversation before the passed message. */
+        /// <summary>
+        /// Conversation Before.
+        /// This method gets the datase of messages that compound the conversation
+        /// before the given message.
+        /// </summary>
+        /// <param name="message">The reference message.</param>
+        /// <returns>A datase is returned with the conversation.</returns>
         public DataSet getConversationBefore(MessageBE message)
         {
             DataSet d = new DataSet();
@@ -166,7 +204,13 @@ namespace ShodeLibrary
             return d;
         }
 
-        /* Gets the dataset of messages that compound the conversation after the passed message. */
+        /// <summary>
+        /// Conversation After.
+        /// This method gets the datase of messages that compound the conversation
+        /// after the given message.
+        /// </summary>
+        /// <param name="message">The reference message.</param>
+        /// <returns>A datase is returned with the conversation.</returns>
         public DataSet getConversationAfter(MessageBE message)
         {
             DataSet d = new DataSet();
@@ -181,8 +225,12 @@ namespace ShodeLibrary
             return d;
         }
 
-
-        /* Gets a single message by its code */
+        /// <summary>
+        /// Message Getter.
+        /// This method gets a message being given its code.
+        /// </summary>
+        /// <param name="code">The message code.</param>
+        /// <returns>A MessageBE is returned.</returns>
         public static MessageBE getMessage(int code)
         {
             MessageBE message = new MessageBE();
@@ -222,8 +270,14 @@ namespace ShodeLibrary
             return message;
         }
 
-        /* Gets the dataset with the messages sent by the passed user in the
-         * specified order. */
+        /// <summary>
+        /// Sent Message Getter.
+        /// This method gets a dataset with the messages sent by the given user
+        /// in the specified order.
+        /// </summary>
+        /// <param name="sender">The user.</param>
+        /// <param name="order">The message ordering to be used.</param>
+        /// <returns>A datased is returned with those comments.</returns>
         public static DataSet getSentMessages(UserBE sender, String order)
         {
             DataSet d = new DataSet();
@@ -239,8 +293,14 @@ namespace ShodeLibrary
             return d;
         }
 
-        /* Gets the dataset with the messages received by the passed user in the
-         * specified order. */
+        /// <summary>
+        /// Received Message Getter.
+        /// This method gets a dataset with the messages received by the given user
+        /// in the specified order.
+        /// </summary>
+        /// <param name="sender">The user.</param>
+        /// <param name="order">The message ordering to be used.</param>
+        /// <returns>A datased is returned with those comments.</returns>
         public static DataSet getReceivedMessages(UserBE addressee, String order)
         {
             DataSet d = new DataSet();
@@ -256,10 +316,9 @@ namespace ShodeLibrary
             return d;
         }
 
-        /* ****************************************************************** */
-        /* Fields                                                             */
-        /* ****************************************************************** */
-
-        private static string connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;User Instance=true";
+        // /////////////////////////////////////////////////////////////////////
+        // Fields //////////////////////////////////////////////////////////////
+        // /////////////////////////////////////////////////////////////////////
+        private static String connection;
     }
 }

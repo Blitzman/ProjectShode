@@ -11,11 +11,20 @@ using System.Data.Common;
  */
 namespace ShodeLibrary
 {
+    /// This is the business entity of the messages. Messages are sent between users.
+    /// This class allows a single user to perform CRUD operations by communicating with the determined
+    /// data access component for the user. 
+    /// </summary>
     public class MessageBE
     {
-        /* ****************************************************************** */
-        /* Constructors                                                       */
-        /* ****************************************************************** */
+        // /////////////////////////////////////////////////////////////////////
+        // Constructors ////////////////////////////////////////////////////////
+        // /////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// Default Constructor.
+        /// Creates a new comment filling all the fields with empty values.
+        /// </summary>
         public MessageBE()
         {
             this.messageDAC = new MessageDAC();
@@ -29,6 +38,15 @@ namespace ShodeLibrary
             this.Message = "";
         }
 
+        /// <summary>
+        /// Auxiliary Constructor.
+        /// Creates a new commet filling all the fields with the specified values.
+        /// </summary>
+        /// <param name="sender">The user who sends the message.</param>
+        /// <param name="addressee">The user who will receive the message.</param>
+        /// <param name="date">The date when the message is sent.</param>
+        /// <param name="subject">The message subject.</param>
+        /// <param name="message">The message body.</param>
         public MessageBE(UserBE sender, UserBE addressee, DateTime date,
                         string subject, string message)
         {
@@ -45,11 +63,15 @@ namespace ShodeLibrary
         }
 
 
-        /* ****************************************************************** */
-        /* Methods                                                            */
-        /* ****************************************************************** */
+        // /////////////////////////////////////////////////////////////////////
+        // Methods /////////////////////////////////////////////////////////////
+        // /////////////////////////////////////////////////////////////////////
 
-        /* Sends a new message */
+        /// <summary>
+        /// Message Creation.
+        /// This method inserts or creates the message in the database. We generate
+        /// a unique code for it and then using the DAC it is inserted.
+        /// </summary>
         public void sendMessage()
         {
             this.Mcode = generateCode();
@@ -57,7 +79,12 @@ namespace ShodeLibrary
             messageDAC.insertMessage(this);
         }
 
-        /* Sends a new message replying the one passed as parameter. */
+        /// <summary>
+        /// Message Reply Creation.
+        /// This method inserts or creates the message reply in the database. We generate
+        /// a unique code for it and then using the DAC it is inserted. It is similar
+        /// to the previous method.
+        /// </summary>
         public void replyMessage(MessageBE Original)
         {
             this.Mcode = generateCode();
@@ -65,7 +92,11 @@ namespace ShodeLibrary
             messageDAC.insertMessage(this);
         }
 
-        /* Removes a message from the list of the specified user. */
+        /// <summary>
+        /// Message Delete.
+        /// This method deletes a message from the list of the specified user
+        /// in the database.
+        /// </summary>
         public void removeMessage(UserBE u)
         {
             if (this.Sender != null && this.Addressee != null)
@@ -91,7 +122,11 @@ namespace ShodeLibrary
         }
 
 
-        /* Opens a message and tags it as read. */
+        /// <summary>
+        /// Message opened.
+        /// This method opens a message. When it is open we can read it
+        /// and its state changes.
+        /// </summary>
         public void openMessage()
         {
             if (!this.Read)
@@ -101,7 +136,12 @@ namespace ShodeLibrary
             }
         }
 
-        /* Returns a dataset with the message chain before or after this message */
+        /// <summary>
+        /// Show Conversation.
+        /// This method retuns the message chain before or after this message.
+        /// </summary>
+        /// <returns>A dataset is returned so it is easy to put this
+        /// information in a gridview.</returns>
         public DataSet showConversation(String where)
         {
             if (where == "Before")
@@ -110,7 +150,11 @@ namespace ShodeLibrary
                 return messageDAC.getConversationAfter(this);
         }
 
-        /* Generates the code for the following message */
+        /// <summary>
+        /// Code generation.
+        /// Static method we use to generate unique codes.
+        /// </summary>
+        /// <returns>The new code is returned.</returns>
         private static int generateCode()
         {
             int newCode = MessageDAC.getCodeDB("code");
@@ -118,7 +162,11 @@ namespace ShodeLibrary
             return newCode;
         }
 
-        /* If we are not replying, we need to generate a new conversation code */
+        /// <summary>
+        /// If we are not replying a message, we need to generate
+        /// a new conversation code
+        /// </summary>
+        /// <returns>The new code is returned.</returns>
         private static int generateConversCode()
         {
             int newCode = MessageDAC.getCodeDB("convers_code");
@@ -126,9 +174,9 @@ namespace ShodeLibrary
             return newCode;
         }
 
-        /* ****************************************************************** */
-        /* Properties                                                         */
-        /* ****************************************************************** */
+        // /////////////////////////////////////////////////////////////////////
+        // Properties //////////////////////////////////////////////////////////
+        // /////////////////////////////////////////////////////////////////////
         public int code
         {
             get { return Mcode; }
@@ -180,10 +228,9 @@ namespace ShodeLibrary
             set { conversCode = value; }
         }
 
-
-        /* ****************************************************************** */
-        /* Fields                                                             */
-        /* ****************************************************************** */
+        // /////////////////////////////////////////////////////////////////////
+        // Fields //////////////////////////////////////////////////////////////
+        // /////////////////////////////////////////////////////////////////////
         private int Mcode;
         private UserBE sender;
         private UserBE addressee;
