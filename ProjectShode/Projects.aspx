@@ -10,12 +10,18 @@
     <section id="entrySearch">
         <asp:TextBox ID="searchTextbox" runat="server" Height="20px" Width="180px" MaxLength=30 CssClass=TextBoxLogSign></asp:TextBox>
         <asp:Button ID="buttonSearchProjects" runat="server" Text="Search" CssClass="ButtonShode" OnClick="startSearch"></asp:Button>
+
+    </section>
+    
+    <section id"searchLabelHere">        
+        <asp:RequiredFieldValidator ID="searchRequired" runat="server" ControlToValidate="searchTextbox" Display=Dynamic
+           ForeColor="#C36464" ErrorMessage="Introduce something." ToolTip="Use keywords."></asp:RequiredFieldValidator>   
+        <asp:RegularExpressionValidator ID="searchCorrectnes" runat="server" ControlToValidate="searchTextbox"
+           ForeColor="#C36464" ErrorMessage="Searching String Incorrect" Display=Dynamic
+           ValidationExpression="^(?!\s*$)(?![,.]*$)(?![-a-zA-Z0-9,.]{20,}$)[a-zA-Z0-9,.\s]{1,64}" ></asp:RegularExpressionValidator>
     </section>
     </asp:Panel>
-    
-    <section id"searchLabelHere">
-        <asp:Label ID="searchError" runat="server" ForeColor="Red" Text="Incorrect seaching string" Visible="false"></asp:Label>
-    </section>
+
     <asp:Label ID="searchLabelProject" runat="server" Text="Select the categories you want to explore."></asp:Label>
     
     <section id="searchCategories">

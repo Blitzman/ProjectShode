@@ -121,22 +121,22 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator checkCredtisProfile;
         
         /// <summary>
-        /// Control developLinkImage.
+        /// Control developFeedback.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image developLinkImage;
+        protected global::System.Web.UI.WebControls.Label developFeedback;
         
         /// <summary>
-        /// Control developLink.
+        /// Control developButton.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink developLink;
+        protected global::System.Web.UI.WebControls.Button developButton;
         
         /// <summary>
         /// Control gridComments.

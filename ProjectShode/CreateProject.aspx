@@ -24,7 +24,7 @@
          <asp:RequiredFieldValidator ID="tittleRequired" runat="server" ControlToValidate="tittleProjectTextbox"
          ErrorMessage="Tittle is required"></asp:RequiredFieldValidator>
          <asp:RegularExpressionValidator ID="tittleCorrectness" runat="server" ControlToValidate="tittleProjectTextbox"
-         ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_:,.\s]{1,64}" 
+         ValidationExpression="^(?!\s*$)(?![,.]*$)(?![-a-zA-Z0-9]{20,}$)[a-zA-Z0-9,.\s]{1,64}"
          ErrorMessage="Title is not correct. Max: 64"></asp:RegularExpressionValidator>
     </section>
     

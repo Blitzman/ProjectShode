@@ -42,29 +42,20 @@ namespace Project_Shode
         {
             string search = searchTextbox.Text;
 
-            if (search.Length == 0 || search.Contains('=') || search.Contains('*') ||
-                search.Contains('>') || search.Contains('<') || search.Contains('$'))
-            {
-                searchError.Visible = true;
-            }
-            else
-            {
-                Global.search = search;
-                searchError.Visible = false;
+            Global.search = search;
 
-                DataSet d = new DataSet();
-                String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
-                SqlConnection c = new SqlConnection(s);
-                SqlDataAdapter da = new SqlDataAdapter("Select code, title, nickname, " +
-                    " creation_date, total_bank, state from projects, users " +
-                    " where title like '%" + search + "%' and projects.creator=users.email", c);
-                da.Fill(d, "projects");
+            DataSet d = new DataSet();
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
+            SqlDataAdapter da = new SqlDataAdapter("Select code, title, nickname, " +
+                " creation_date, total_bank, state from projects, users " +
+                " where title like '%" + search + "%' and projects.creator=users.email", c);
+            da.Fill(d, "projects");
 
-                gridResults.PageIndex = 0;
-                gridResults.DataSource = d;
-                gridResults.DataBind();
-                projectsResultsLabel.Text = "'" + search + "'";
-            }
+            gridResults.PageIndex = 0;
+            gridResults.DataSource = d;
+            gridResults.DataBind();
+            projectsResultsLabel.Text = "'" + search + "'";
         }
 
         protected void resultsPageChanging(object sender, GridViewPageEventArgs e)

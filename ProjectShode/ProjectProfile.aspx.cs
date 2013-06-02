@@ -34,8 +34,6 @@ namespace Project_Shode
                 creditsBox.Visible = false;
                 sendCredits.Visible = false;
                 checkCredtisProfile.Visible = false;
-                developLinkImage.Visible = false;
-                developLink.Visible = false;
             }
 
             FeedbackCredit.Visible = false;
@@ -187,6 +185,34 @@ namespace Project_Shode
 
             //Reload the page with the added comment.
             Response.Redirect(Request.RawUrl);
+        }
+
+        protected void developing(object sender, EventArgs e)
+        {
+            //Get the query string parameters.
+            string projectTitle = Session["ProjectTitle"].ToString();
+            int projectCode = Int32.Parse(Session["ProjectCode"].ToString());
+
+            //Create a project and look for the one we are being asked.
+            ProjectBE project = new ProjectBE();
+            project.Code = projectCode;
+            project = project.getByCode();
+
+            //We get the user who wants to develop.
+            UserBE user = new UserBE();
+            user.Email = Session["UserEmail"].ToString();
+            user = user.getUserByEmail();
+
+            DateTime date = DateTime.Now;
+            String gitUrl = "none";
+            int votes = 0;
+
+            DevelopmentBE develop = new DevelopmentBE(project, user, date, gitUrl, votes);
+
+            develop.create();
+
+            developFeedback.ForeColor = System.Drawing.Color.Red;
+            developFeedback.Text = "Accepted";
         }
     }
 }

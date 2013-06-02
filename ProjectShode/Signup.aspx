@@ -31,7 +31,8 @@
                     <asp:RequiredFieldValidator ID="NameRequired" runat="server" ControlToValidate="Name"
                         ForeColor="#C36464" ErrorMessage="Name is required." ToolTip="Name is required."></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="NameCorrectness" runat="server" ControlToValidate="Name"
-                        ForeColor="#C36464" ErrorMessage="Name format is incorrect." ValidationExpression="\S[A-z]+"></asp:RegularExpressionValidator>
+                        ForeColor="#C36464" ErrorMessage="Name format is incorrect." 
+                        ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9,:_-]{20,}$)[a-zA-Z0-9\s]{1,64}"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <%--Last Name--%>
@@ -44,7 +45,8 @@
                     <asp:RequiredFieldValidator ID="LastNameRequired" runat="server" ControlToValidate="LastName"
                         ForeColor="#C36464" ErrorMessage="Last Name is required." ToolTip="Last Name is required."></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="LastNameCorrectness" runat="server" ControlToValidate="LastName"
-                        ForeColor="#C36464" ErrorMessage="Last Name format is incorrect." ValidationExpression="\S[A-z]+"></asp:RegularExpressionValidator>
+                        ForeColor="#C36464" ErrorMessage="Last Name format is incorrect." 
+                        ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9,:_-]{20,}$)[a-zA-Z0-9\s]{1,64}"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <%--User Name--%>
@@ -57,7 +59,7 @@
                     <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserNameBox"
                         ForeColor="#C36464" ErrorMessage="User Name is required." ToolTip="User Name is required."></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="UserNameCorrectness" runat="server" ControlToValidate="UserNameBox"
-                        ForeColor="#C36464" ErrorMessage="User Name format is incorrect." ValidationExpression="\w[0-9A-z]+"></asp:RegularExpressionValidator>
+                        ForeColor="#C36464" ErrorMessage="User Name format is incorrect." ValidationExpression="(?![_]*$)\w[0-9A-z_]+"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <%--Password--%>

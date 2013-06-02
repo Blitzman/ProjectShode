@@ -50,9 +50,8 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
               </asp:Panel>
             </section>
             <section id="rightOptions">
-                <asp:Image ID="developLinkImage" runat="server" ImageUrl="/Images/bullet.png" /> 
-                <asp:HyperLink id="developLink" runat="server" NavigateUrl="~/Default.aspx" Text="Develop">
-                </asp:HyperLink>
+                <asp:Label ID="developFeedback" runat="server"></asp:Label>
+                <asp:Button ID="developButton" runat="server" CssClass="ButtonShode" Text="Develop!" OnClick="developing" />
             </section>
             <div id="clear" class="clear"></div>
         </section>
