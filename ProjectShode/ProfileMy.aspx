@@ -34,32 +34,40 @@ CodeBehind="ProfileMy.aspx.cs" Inherits="Project_Shode.ProfileMy" %>
     <section id="profileData">
         <section id="profileDataTopContributions">
             <asp:Label ID="topcontrib" runat="server" Text="Top Contributions" CssClass="contentTitle"></asp:Label>
-            <asp:BulletedList ID="TopContributionsList"
-                DisplayMode="Text"
-                runat="server" BulletStyle="Disc">
-                <%-- The bulleted list items will be introduced by coding, however this is a good example to show. --%>
-                <asp:ListItem Value="[dd/mm/yy] xxxx Credits contributed on yyyyy Project by zzzzzz"></asp:ListItem>
-                <asp:ListItem Value="[dd/mm/yy] xxxx Credits contributed on yyyyy Project by zzzzzz"></asp:ListItem>
-                <asp:ListItem Value="[dd/mm/yy] xxxx Credits contributed on yyyyy Project by zzzzzz"></asp:ListItem>
-                <asp:ListItem Value="[dd/mm/yy] xxxx Credits contributed on yyyyy Project by zzzzzz"></asp:ListItem>
-                <asp:ListItem Value="[dd/mm/yy] xxxx Credits contributed on yyyyy Project by zzzzzz"></asp:ListItem>
-                <asp:ListItem Value="[dd/mm/yy] xxxx Credits contributed on yyyyy Project by zzzzzz"></asp:ListItem>
-            </asp:BulletedList>
+
+            <asp:GridView ID="gridContr" runat="server" CellPadding="5" CellSpacing="5" ForeColor="White" RowStyle-HorizontalAlign=Center
+                BackColor="#24242C" Width="400px" EmptyDataText="You have not contributed to any project yet!" 
+                AutoGenerateColumns="false">
+
+            <Columns>
+                <asp:BoundField DataField="code" HeaderText="Code" />
+                <asp:HyperLinkField DataTextField="title" HeaderText="Project" Target="_self"
+                  DataNavigateUrlFields="title, code" ItemStyle-ForeColor="White" ControlStyle-ForeColor="White"
+                  DataNavigateUrlFormatString="~/ProjectProfile.aspx?ProTitle={0}&Code={1}"/>
+                <asp:BoundField DataField="date" HeaderText="On" />                
+                <asp:BoundField DataField="amount" HeaderText="Contribution" />
+            </Columns>
+
+         </asp:GridView>
  
         </section>
         <section id="profileDataTopDevelopments">
             <asp:Label ID="topdevel" runat="server" Text="Top Developments" CssClass="contentTitle"></asp:Label>
-             <asp:BulletedList ID="TopDevelopmentList"
-                DisplayMode="Text"
-                runat="server" BulletStyle="Disc">
-                <%-- The bulleted list items will be introduced by coding, however this is a good example to show. --%>
-                <asp:ListItem Value="[dd/mm/yy] [rate %] development xxxxx on project yyyyy"></asp:ListItem>
-                <asp:ListItem Value="[dd/mm/yy] [rate %] development xxxxx on project yyyyy"></asp:ListItem>
-                <asp:ListItem Value="[dd/mm/yy] [rate %] development xxxxx on project yyyyy"></asp:ListItem>
-                <asp:ListItem Value="[dd/mm/yy] [rate %] development xxxxx on project yyyyy"></asp:ListItem>
-                <asp:ListItem Value="[dd/mm/yy] [rate %] development xxxxx on project yyyyy"></asp:ListItem>
-                <asp:ListItem Value="[dd/mm/yy] [rate %] development xxxxx on project yyyyy"></asp:ListItem>
-            </asp:BulletedList>
+            <asp:GridView ID="gridDev" runat="server" CellPadding="5" CellSpacing="5" ForeColor="White" RowStyle-HorizontalAlign=Center
+                BackColor="#24242C" Width="400px" EmptyDataText="You have not started developing any project yet!" 
+                AutoGenerateColumns="false">
+
+            <Columns>
+                <asp:BoundField DataField="code" HeaderText="Code" />
+                <asp:HyperLinkField DataTextField="title" HeaderText="Project" Target="_self"
+                  DataNavigateUrlFields="title, code" ItemStyle-ForeColor="White" ControlStyle-ForeColor="White"
+                  DataNavigateUrlFormatString="~/ProjectProfile.aspx?ProTitle={0}&Code={1}"/>
+                <asp:BoundField DataField="date" HeaderText="Started On" />                
+                <asp:BoundField DataField="gitbranch" HeaderText="GitHub" /> 
+                <asp:BoundField DataField="ups" HeaderText="Votes" />
+            </Columns>
+
+         </asp:GridView>
         </section>
         <div class="clear"></div>
     </section>

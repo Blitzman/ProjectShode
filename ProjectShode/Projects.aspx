@@ -13,9 +13,7 @@
 
     </section>
     
-    <section id"searchLabelHere">        
-        <asp:RequiredFieldValidator ID="searchRequired" runat="server" ControlToValidate="searchTextbox" Display=Dynamic
-           ForeColor="#C36464" ErrorMessage="Introduce something." ToolTip="Use keywords."></asp:RequiredFieldValidator>   
+    <section id"searchLabelHere">           
         <asp:RegularExpressionValidator ID="searchCorrectnes" runat="server" ControlToValidate="searchTextbox"
            ForeColor="#C36464" ErrorMessage="Searching String Incorrect" Display=Dynamic
            ValidationExpression="^(?!\s*$)(?![,.]*$)(?![-a-zA-Z0-9,.]{20,}$)[a-zA-Z0-9,.\s]{1,64}" ></asp:RegularExpressionValidator>

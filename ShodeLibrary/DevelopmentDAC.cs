@@ -247,6 +247,52 @@ namespace ShodeLibrary
             return d;
         }
 
+        public static DataSet getUserTopDevelopments(String userEmail)
+        {
+            DataSet d = new DataSet();
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
+            SqlDataAdapter da = new SqlDataAdapter("Select top 3 code, title, date, gitbranch, ups from developments, projects" +
+                " where projects.code=developments.project and usr='" + userEmail +
+                "' order by ups DESC", c);
+            da.Fill(d, "topDevelopments");
+            c.Close();
+
+            return d;
+        }
+
+        public static int getTotalUserDevelopments(String userEmail)
+        {
+            int developmentsCount = 0;
+
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
+
+            try
+            {
+                c.Open();
+
+                SqlCommand com = new SqlCommand("SELECT count(*) total FROM developments"+
+                    " where developments.usr='"+userEmail+"'", c);
+                SqlDataReader dr = com.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    developmentsCount = Int32.Parse(dr["total"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
+            }
+
+            return developmentsCount;
+        }
+
         // /////////////////////////////////////////////////////////////////////
         // Fields //////////////////////////////////////////////////////////////
         // /////////////////////////////////////////////////////////////////////

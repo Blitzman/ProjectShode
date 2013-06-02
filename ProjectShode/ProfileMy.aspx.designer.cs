@@ -94,13 +94,13 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label topcontrib;
         
         /// <summary>
-        /// Control TopContributionsList.
+        /// Control gridContr.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.BulletedList TopContributionsList;
+        protected global::System.Web.UI.WebControls.GridView gridContr;
         
         /// <summary>
         /// Control topdevel.
@@ -112,12 +112,12 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label topdevel;
         
         /// <summary>
-        /// Control TopDevelopmentList.
+        /// Control gridDev.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.BulletedList TopDevelopmentList;
+        protected global::System.Web.UI.WebControls.GridView gridDev;
     }
 }

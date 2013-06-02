@@ -23,7 +23,7 @@ namespace Project_Shode
 
             if (userCookie != null)
                 SiteMaster.loadCookie(userCookie);
-
+            //This would be the same as writing an 'else' clause.
             if (Session["Username"] != null)
                 Response.Redirect("Profiles.aspx");     
         }
@@ -43,10 +43,14 @@ namespace Project_Shode
             UserBE usuario = new UserBE(name, 0, lastName, email, userName, password);
             resultLabel.Text = usuario.create();
 
+            /* If the user is created successfully, the DB returns this string.
+             Only in this condition we are going to upload the file. */
             if (resultLabel.Text == "The user has been succesfully created!" && AsyncFileUpload1.FileName!="")
             {
                 string filename = System.IO.Path.GetFileName(AsyncFileUpload1.FileName);
                 AsyncFileUpload1.SaveAs(Server.MapPath("Uploads/") + usuario.Nickname + "_pict.jpg");
+                lblMesg.Text = "File Uploaded successfully";
+                lblMesg.ForeColor = System.Drawing.Color.Green;
             }
         }
     }

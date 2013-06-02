@@ -34,6 +34,14 @@ namespace Project_Shode
                 creditsBox.Visible = false;
                 sendCredits.Visible = false;
                 checkCredtisProfile.Visible = false;
+
+                developButton.Visible = false;
+
+                commentProjectLabel.Visible = false;
+                commentProjectText.Visible = false;
+                sendCommentProject.Visible = false;
+                commentTextRequired.Visible = false;
+                commentCorrectness.Visible = false;
             }
 
             FeedbackCredit.Visible = false;

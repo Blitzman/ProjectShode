@@ -286,6 +286,54 @@ namespace ShodeLibrary
             return d;
         }
 
+        public static DataSet getUserTopContributions(String userEmail)
+        {
+            DataSet d = new DataSet();
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
+            SqlDataAdapter da = new SqlDataAdapter("Select top 3 code, title, date, amount from contributions, projects" +
+                " where projects.code=contributions.project and usr='" + userEmail +
+                "' order by amount DESC", c);
+            da.Fill(d, "topContributions");
+            c.Close();
+
+            return d;
+        }
+
+        public static int getTotalUserContributions(String userEmail)
+        {
+            int contributionCount = 0;
+
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
+
+            try
+            {
+                c.Open();
+
+                SqlCommand com = new SqlCommand("SELECT count(*) total FROM contributions"+
+                    " where contributions.usr='"+userEmail+"'", c);
+
+                SqlDataReader dr = com.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    contributionCount = Int32.Parse(dr["total"].ToString());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
+            }
+
+            return contributionCount;
+        }
+
         // /////////////////////////////////////////////////////////////////////
         // Fields //////////////////////////////////////////////////////////////
         // /////////////////////////////////////////////////////////////////////

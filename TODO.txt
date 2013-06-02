@@ -4,13 +4,7 @@
 - Adjust CSS to fit Twitter box.
 - Comment the rest of the files.
 - Categories in projects.
-- Projects Development
 - Email notification
 - Singleton class
-- Give funcionality to the DEVELOP link at project profiles.
-- Searchs "empty entry": error or show ALL?
-- Do we want to let users to "develop" the same project just once?
 - Control what the create development returns so we change the feedback message.
-- we cannot log out being on those panel-controlled pages if we do not use the textbox.
-- Use BE and DAC in the aspx.cs pages and not the SQL directly.
-- Check that users are logged in when trying to comment in a project.
+- Breakline for long words. Long words at the beggining are controlled, but not the rest.
