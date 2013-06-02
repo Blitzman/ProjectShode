@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+using System.Data;
+using System.Data.Common;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -266,6 +269,21 @@ namespace ShodeLibrary
             {
                 c.Close();
             }
+        }
+
+
+        public static DataSet getUserContributions(String userEmail)
+        {
+            DataSet d = new DataSet();
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
+            SqlDataAdapter da = new SqlDataAdapter("Select code, title, date, amount from contributions, projects" +
+                " where projects.code=contributions.project and usr='" +userEmail +
+                "' order by date DESC", c);
+            da.Fill(d, "contributions");
+            c.Close();
+
+            return d;
         }
 
         // /////////////////////////////////////////////////////////////////////

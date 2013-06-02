@@ -71,14 +71,7 @@ namespace Project_Shode
             projectProfileLabelCredits.Text = project.Credit.ToString();
 
             //Project comments
-            DataSet d = new DataSet();
-            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
-            SqlConnection c = new SqlConnection(s);
-            SqlDataAdapter da = new SqlDataAdapter("Select nickname, date, comment from users, comments" +
-                " where project=" + project.Code + " and comments.usr=users.email", c);
-            da.Fill(d, "comments");
-
-            gridComments.DataSource = d;
+            gridComments.DataSource = project.getComments();
             gridComments.DataBind();
 
             Page.Title = project.Title;

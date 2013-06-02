@@ -19,3 +19,4 @@ C:\Users\Sergiu\Documents\GitHub\ProjectShode\ShodeLibrary\bin\Debug\ShodeLibrar
 C:\Users\Sergiu\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Sergiu\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.dll
 C:\Users\Sergiu\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.pdb
+C:\Users\Pablo\Documents\GitHub\ProjectShode\ShodeLibrary\obj\Debug\ShodeLibrary.csprojResolveAssemblyReference.cache

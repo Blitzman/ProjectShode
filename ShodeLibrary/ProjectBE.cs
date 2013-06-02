@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Data;
+
 namespace ShodeLibrary
 {
     public enum ProjectState { Active, Closed, Inactive };
@@ -127,6 +129,12 @@ namespace ShodeLibrary
         {
             ProjectDAC projectDAC = new ProjectDAC();
             return projectDAC.lastCode();
+        }
+
+
+        public DataSet getComments()
+        {
+            return CommentDAC.getProjectComments(this);
         }
 
         // /////////////////////////////////////////////////////////////////////

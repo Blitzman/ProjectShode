@@ -7,7 +7,7 @@ CodeBehind="ProfileDevelopments.aspx.cs" Inherits="Project_Shode.ProfileDevelopm
     <section id="profileSection">
         <asp:GridView ID="gridDev" runat="server" CellPadding="5" CellSpacing="5" ForeColor="White" RowStyle-HorizontalAlign=Center
          BackColor="#24242C" Width="600px" AllowPaging="true" PageSize="5" PagerSettings-Mode="NumericFirstLast"
-         OnPageIndexChanging="pageChanging"  EmptyDataText="You have not contributed to any project yet!" AutoGenerateColumns="false">
+         OnPageIndexChanging="pageChanging"  EmptyDataText="You have not started developing any project yet!" AutoGenerateColumns="false">
 
             <Columns>
                 <asp:BoundField DataField="code" HeaderText="Code" />

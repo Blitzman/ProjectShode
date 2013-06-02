@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+using System.Data;
+using System.Data.Common;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -104,6 +107,19 @@ namespace ShodeLibrary {
     	public void deleteComment (CommentBE comment) {
 
     	}
+
+        public static DataSet getProjectComments(ProjectBE project)
+        {
+            DataSet d = new DataSet();
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
+            SqlDataAdapter da = new SqlDataAdapter("Select nickname, date, comment from users, comments" +
+                " where project=" + project.Code + " and comments.usr=users.email", c);
+            da.Fill(d, "comments");
+            c.Close();
+
+            return d;
+        }
 
     	/*
     	 * Properties.
