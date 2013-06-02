@@ -121,7 +121,7 @@ namespace ShodeLibrary
         /// Fetchs an user from the database using a given email to obtain
         /// the desired user.
         /// </summary>
-        /// <param name="email">The email of the requested user.</param>
+        /// <param name="mail">The email of the requested user.</param>
         /// <returns>An empty user if the user wasn't found and a full user
         /// with all the required one fields if found.</returns>
         public UserBE getUser(string mail)
@@ -172,7 +172,7 @@ namespace ShodeLibrary
         /// Fetchs an user from the database using a given nickname to obtain
         /// the desired user.
         /// </summary>
-        /// <param name="nickname">The nickname of the requested user.</param>
+        /// <param name="nick">The nickname of the requested user.</param>
         /// <returns>An empty user if the user wasn't found and a full user
         /// with all the required one fields if found.</returns>
         public UserBE getByNick(string nick)
@@ -262,7 +262,7 @@ namespace ShodeLibrary
         /// user one and updates all the fields in the database with
         /// the ones of the provided user.
         /// </summary>
-        /// <param name="updatedUser">The source user to perform the update.</param>
+        /// <param name="user">The source user to perform the update.</param>
         public void update(UserBE user)
         {
             SqlConnection c = new SqlConnection(connection);

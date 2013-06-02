@@ -98,7 +98,7 @@ namespace ShodeLibrary
 
         /// <summary>
         /// Contributions Amount Getter.
-        /// This is an statistical mehtod which gets the amount of
+        /// This is an statistical method which gets the amount of
         /// credits that have been contributed if we sum up all the
         /// contributions.
         /// </summary>

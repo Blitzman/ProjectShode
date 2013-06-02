@@ -48,7 +48,7 @@ namespace Project_Shode
                 int code = -1;
                 DateTime creation = DateTime.Now;
                 DateTime expires = DateTime.MinValue;
-                float credit = float.Parse(creditsTextboxProject.Text);
+                int credit = Int32.Parse(creditsTextboxProject.Text);
                 DateTime version = DateTime.Now;
                 String gitDir = "There";
                 
@@ -59,7 +59,7 @@ namespace Project_Shode
                 creator.update();
 
                 ProjectBE crProject = new ProjectBE(tittle, description, creator, code,
-                    creation, expires, credit, version, gitDir);
+                    creation, expires, credit, credit, version, gitDir);
 
                 crProject.create();
 
