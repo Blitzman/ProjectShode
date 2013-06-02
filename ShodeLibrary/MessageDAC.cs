@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.OleDb;
-using System.Data.SqlClient;
 using System.Configuration;
+
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
 namespace ShodeLibrary
 {
@@ -16,7 +20,6 @@ namespace ShodeLibrary
 
         public MessageDAC()
         {
-            connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;User Instance=true";
         }
 
 
@@ -36,7 +39,7 @@ namespace ShodeLibrary
             SqlCommand com;
             com = new SqlCommand("INSERT INTO message (code, issue, body, sender, addressee, date, isread, deleted_sender, deleted_reader, convers_code)" +
                 "VALUES ('" + m.code.ToString() + "','" + m.Subject + "','" + m.Message + "','" + m.Sender.Email + "','" + m.Addressee.Email +
-                "','" + m.Date.ToString("dd/MM/yyyy") + "','" + read + "','" + delSend + "','" + delAddr + "','" + m.ConversCode.ToString() + "')", c);
+                "','" + m.Date.ToString("G") + "','" + read + "','" + delSend + "','" + delAddr + "','" + m.ConversCode.ToString() + "')", c);
 
             com.ExecuteNonQuery();
             c.Close();
@@ -66,8 +69,8 @@ namespace ShodeLibrary
             return newCode;
         }
 
-        /* Deletes the message for the specified user. If both users have
-         * deleted it, it is removed from database. */
+        /* Updates the field isRead of the passed message in order to know that the message
+         * has been opened. */
         public bool readMessage(MessageBE m)
         {
             bool read = false;
@@ -148,94 +151,34 @@ namespace ShodeLibrary
         }
 
 
-        /* Gets the list of message that compound a conversation. */
-        public List<MessageBE> getConversation(MessageBE m)
+        /* Gets the dataset of messages that compound the conversation before the passed message. */
+        public DataSet getConversationBefore(MessageBE message)
         {
-            List<MessageBE> messages = new List<MessageBE>();
-
-            /*if (m.OriginalMessage != null)
-            {
-                MessageBE message = getMessage(m.code);
-                MessageBE tempM = message.OriginalMessage;
-
-                do
-                {
-                    messages.Add(tempM);
-                    tempM = tempM.OriginalMessage;
-
-                } while (tempM != null);
-            }*/
-
-            return messages;
-        }
-
-
-        /* Gets messages by DateTime */
-        public List<MessageBE> getMessageDate(DateTime d)
-        {
-            List<MessageBE> messages = new List<MessageBE>();
-            MessageBE tempM = new MessageBE();
-            UserDAC user = new UserDAC();
-
-            SqlConnection c = new SqlConnection(connection);
-            c.Open();
-            SqlCommand com = new SqlCommand("SELECT * FROM message WHERE date='" + d.ToString() + "'", c);
-            SqlDataReader dr = com.ExecuteReader();
-
-            while (dr.Read())
-            {
-                tempM = new MessageBE();
-                tempM.code = int.Parse(dr["code"].ToString());
-                tempM.Sender = user.getUser(dr["sender"].ToString());
-                tempM.Addressee = user.getUser(dr["addressee"].ToString());
-                tempM.Subject = dr["issue"].ToString();
-                tempM.Message = dr["body"].ToString();
-                tempM.Date = DateTime.Parse(dr["date"].ToString());
-                tempM.Read = bool.Parse(dr["isread"].ToString());
-                tempM.DelSender = bool.Parse(dr["deleted_sender"].ToString());
-                tempM.DelAddressee = bool.Parse(dr["deleted_reader"].ToString());
-                //tempM.OriginalMessage = getMessage(int.Parse(dr["original"].ToString()));
-
-                messages.Add(tempM);
-            }
-
+            DataSet d = new DataSet();
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT u1.nickname AS Sender, u2.nickname as Addressee, SUBSTRING(body, 1, 30) as Body, date as Date, code as Code, isRead as IsRead " +
+                "FROM message, users u1, users u2 WHERE convers_code = " + message.ConversCode.ToString() + "AND code < " + message.code.ToString() +
+                " AND u1.email = sender AND u2.email = addressee ORDER BY code ASC", c);
+            da.Fill(d, "message");
             c.Close();
 
-            return messages;
+            return d;
         }
 
-        /* Gets all messages */
-        public List<MessageBE> getAllMessages()
+        /* Gets the dataset of messages that compound the conversation after the passed message. */
+        public DataSet getConversationAfter(MessageBE message)
         {
-            List<MessageBE> messages = new List<MessageBE>();
-            MessageBE tempM = new MessageBE();
-            UserDAC user = new UserDAC();
-
-            SqlConnection c = new SqlConnection(connection);
-            c.Open();
-            SqlCommand com = new SqlCommand("SELECT * FROM message", c);
-            SqlDataReader dr = com.ExecuteReader();
-
-            while (dr.Read())
-            {
-                tempM = new MessageBE();
-                tempM.code = int.Parse(dr["code"].ToString());
-                tempM.Sender = user.getUser(dr["sender"].ToString());
-                tempM.Addressee = user.getUser(dr["addressee"].ToString());
-                tempM.Subject = dr["issue"].ToString();
-                tempM.Message = dr["body"].ToString();
-                tempM.Date = DateTime.Parse(dr["date"].ToString());
-                tempM.Read = bool.Parse(dr["isread"].ToString());
-                tempM.DelSender = bool.Parse(dr["deleted_sender"].ToString());
-                tempM.DelAddressee = bool.Parse(dr["deleted_reader"].ToString());
-                //tempM.OriginalMessage = getMessage(int.Parse(dr["original"].ToString()));
-
-                messages.Add(tempM);
-            }
-
+            DataSet d = new DataSet();
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT u1.nickname AS Sender, u2.nickname as Addressee, SUBSTRING(body, 1, 30) as Body, date as Date, code as Code, isRead as IsRead " +
+                "FROM message, users u1, users u2 WHERE convers_code = " + message.ConversCode.ToString() + "AND code > " + message.code.ToString() +
+                " AND u1.email = sender AND u2.email = addressee ORDER BY code ASC", c);
+            da.Fill(d, "message");
             c.Close();
 
-            return messages;
+            return d;
         }
 
 
@@ -279,61 +222,44 @@ namespace ShodeLibrary
             return message;
         }
 
-        /* If addresee is NULL, gets the list of sent messages by sender.
-         * If sender is NULL, gets the list of received messages by addresee.
-         * If anyone is NULL, gets the list of messages traded by sender and addressee. */
-        public List<MessageBE> getMessages(UserBE sender, UserBE addressee)
+        /* Gets the dataset with the messages sent by the passed user in the
+         * specified order. */
+        public static DataSet getSentMessages(UserBE sender, String order)
         {
-            List<MessageBE> messages = new List<MessageBE>();
-            if (sender == null && addressee == null)
-            {
-                MessageBE tempM = new MessageBE();
-                UserDAC user = new UserDAC();
+            DataSet d = new DataSet();
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
 
-                SqlConnection c = new SqlConnection(connection);
-                c.Open();
-                SqlCommand com;
+            SqlDataAdapter da = new SqlDataAdapter("SELECT nickname as Addressee, issue as Subject, date as Date, code as Code, isRead as IsRead FROM message, users WHERE sender = '" +
+            sender.Email + "' AND deleted_sender = 0 AND email = addressee ORDER BY " + order, c);
 
-                if (sender == null)
-                {
-                    com = new SqlCommand("SELECT * FROM message WHERE addressee='" + addressee.Email + "'", c);
-                }
-                else if (addressee == null)
-                {
-                    com = new SqlCommand("SELECT * FROM message WHERE sender='" + sender.Email + "'", c);
-                }
-                else
-                {
-                    com = new SqlCommand("SELECT * FROM message WHERE sender='" + sender.Email + "' and addressee='" + addressee.Email + "'", c);
-                }
-                SqlDataReader dr = com.ExecuteReader();
+            da.Fill(d, "message");
+            c.Close();
 
-                while (dr.Read())
-                {
-                    tempM = new MessageBE();
-                    tempM.code = int.Parse(dr["code"].ToString());
-                    tempM.Sender = user.getUser(dr["sender"].ToString());
-                    tempM.Addressee = user.getUser(dr["addressee"].ToString());
-                    tempM.Subject = dr["issue"].ToString();
-                    tempM.Message = dr["body"].ToString();
-                    tempM.Date = DateTime.Parse(dr["date"].ToString());
-                    tempM.Read = bool.Parse(dr["isread"].ToString());
-                    tempM.DelSender = bool.Parse(dr["deleted_sender"].ToString());
-                    tempM.DelAddressee = bool.Parse(dr["deleted_reader"].ToString());
-                    //tempM.OriginalMessage = getMessage(int.Parse(dr["original"].ToString()));
+            return d;
+        }
 
-                    messages.Add(tempM);
-                }
+        /* Gets the dataset with the messages received by the passed user in the
+         * specified order. */
+        public static DataSet getReceivedMessages(UserBE addressee, String order)
+        {
+            DataSet d = new DataSet();
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
 
-                c.Close();
-            }
+            SqlDataAdapter da = new SqlDataAdapter("SELECT nickname as Sender, issue as Subject, date as Date, code AS Code, isRead as IsRead FROM message, users WHERE addressee = '" +
+                        addressee.Email + "' AND deleted_reader = 0 AND email = sender ORDER BY " + order, c);
 
-            return messages;
+            da.Fill(d, "message");
+            c.Close();
+
+            return d;
         }
 
         /* ****************************************************************** */
         /* Fields                                                             */
         /* ****************************************************************** */
-        private static string connection;
+
+        private static string connection = "data source=.\\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\\ShodeDatabase.mdf;User Instance=true";
     }
 }

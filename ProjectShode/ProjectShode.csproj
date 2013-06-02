@@ -64,6 +64,7 @@
       <DependentUpon>ShodeDatabase.mdf</DependentUpon>
     </Content>
     <Content Include="CreateProject.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Message.aspx" />
     <Content Include="ProfileCredits.aspx" />
@@ -144,6 +145,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

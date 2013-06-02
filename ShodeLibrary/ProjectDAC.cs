@@ -463,6 +463,48 @@ namespace ShodeLibrary
             }
         }
 
+        public static DataSet getRecentProjects()
+        {
+            DataSet d = new DataSet();
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
+            SqlDataAdapter da = new SqlDataAdapter("Select code, title, nickname, " +
+                " creation_date, total_bank, state from projects, users where " + "projects.creator=users.email and " +
+                "creation_date like '" + DateTime.Today.ToString("dd") + "%'", c);
+            da.Fill(d, "projects");
+            c.Close();
+
+            return d;
+        }
+
+        public static DataSet searchProjects(String search)
+        {
+            DataSet d = new DataSet();
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
+            SqlDataAdapter da = new SqlDataAdapter("Select code, title, nickname, " +
+                " creation_date, total_bank, state from projects, users " +
+                " where title like '%" + search + "%' and projects.creator=users.email", c);
+            da.Fill(d, "projects");
+            c.Close();
+
+            return d;
+        }
+
+        public static DataSet getPopularProjects()
+        {
+            DataSet d = new DataSet();
+            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
+            SqlConnection c = new SqlConnection(s);
+            SqlDataAdapter da = new SqlDataAdapter("Select code, title, nickname, " +
+                " creation_date, total_bank, state from projects, users " +
+                " where total_bank >=(select 0.9*max(total_bank) from projects) and projects.creator=users.email", c);
+            da.Fill(d, "projects");
+            c.Close();
+
+            return d;
+        }
+
         // /////////////////////////////////////////////////////////////////////
         // Fields //////////////////////////////////////////////////////////////
         // /////////////////////////////////////////////////////////////////////

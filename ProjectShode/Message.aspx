@@ -5,7 +5,7 @@ CodeBehind="Message.aspx.cs" Inherits="Project_Shode.Message" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentProfile" runat="server">
 <asp:Label ID="AsuntoM" Width="700px" Font-Size="30px" runat="server" BackColor="#F0AA0F" ForeColor="White" Font-Bold="true" CssClass="showMessage"/>
     <section>
-        <asp:Label Width="600px" runat="server" Font-Size="18px" Text="Previous Messages in this conversation" ForeColor="Black" CssClass="showMessage"/>
+        <asp:Label ID="Previous" Width="600px" runat="server" Font-Size="18px" Text="Previous Messages in this conversation" ForeColor="Black" CssClass="showMessage"/>
         <asp:GridView ID="gridBefore" runat="server" CellPadding="5" CellSpacing="5" ForeColor="White"
          BackColor="#24242C" Width="700px" AllowPaging="false"
          EmptyDataText="No previous messages" OnRowCommand="gridBefore_RowCommand">
@@ -20,18 +20,21 @@ CodeBehind="Message.aspx.cs" Inherits="Project_Shode.Message" %>
         </asp:GridView>
     </section>
     <section>
-        <asp:Label ID="ErrorM" Width="700px" Font-Size="15px" runat="server" BackColor="White" ForeColor="Black"/>
-        <asp:Label ID="Label1" Width="600px" runat="server" Font-Size="18px" Text="Current Message" ForeColor="Black" CssClass="showMessage"/>
+        <asp:Label ID="ErrorM" Width="700px" Font-Size="25px" runat="server" BackColor="White" ForeColor="Black" Font-Names="Segoe UI"/>
+        <asp:Label ID="Current" Width="600px" runat="server" Font-Size="18px" Text="Current Message" ForeColor="Black" CssClass="showMessage"/>
         <asp:Label ID="EmisorM" Width="700px" runat="server" Font-Size="18px" BackColor="#24242C" ForeColor="White" CssClass="showMessage"/>
         <asp:Label ID="ReceptorM" Width="330px" runat="server" BackColor="#24242C" ForeColor="White" CssClass="showMessage"/>
         <asp:Label ID="FechaM" Width="335px" runat="server" BackColor="#24242C" ForeColor="White" CssClass="showMessage"/>
         <asp:Label ID="TextoM" Width="700px" runat="server" BackColor="#24242C" ForeColor="White" CssClass="showMessage"/>
     </section>
     <section>
-        <asp:Label runat="server" ForeColor="White" BackColor="White" Text="Space"></asp:Label>
+        <asp:Label ID="Label1" runat="server" ForeColor="White" BackColor="White" Text="-"></asp:Label>
     </section>
     <section>
         <asp:Button ID="replyButton" runat="server" Text="Reply" CssClass="ButtonShode" OnClick="openTextBox"></asp:Button>
+    </section>
+    <section>
+        <asp:Label ID="Label2" runat="server" ForeColor="White" BackColor="White" Text="-"></asp:Label>
     </section>
     <section>
         <asp:TextBox ID="textmessage" Visible="false" runat="server" CssClass=TextBoxLogSign
@@ -43,7 +46,7 @@ CodeBehind="Message.aspx.cs" Inherits="Project_Shode.Message" %>
         <asp:Label ID="lengthFeedback" runat="server" ForeColor="Red" Text="The message is too long!"></asp:Label>
     </section>
     <section>
-        <asp:Label Width="700px" runat="server" Font-Size="18px" Text="Replies" ForeColor="Black" CssClass="showMessage"/>
+        <asp:Label ID="Replies" Width="700px" runat="server" Font-Size="18px" Text="Replies" ForeColor="Black" CssClass="showMessage"/>
         <asp:GridView ID="gridAfter" runat="server" CellPadding="5" CellSpacing="5" ForeColor="White"
          BackColor="#24242C" Width="700px" AllowPaging="false"
          EmptyDataText="No replies" OnRowCommand="gridAfter_RowCommand">

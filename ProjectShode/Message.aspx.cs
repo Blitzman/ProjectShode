@@ -19,89 +19,81 @@ namespace Project_Shode
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lengthFeedback.Visible = false;
-            messageFeedback.Visible = false;
-
-            HttpCookie userCookie = Request.Cookies["UserNickname"];
-
-            if (userCookie != null)
-                SiteMaster.loadCookie(userCookie);
-
-            if (Session["UserNickname"] == null)
+            try
             {
-                Response.Redirect("Login.aspx");
-            }
-            else if(!Page.IsPostBack)
-            {
-                if (Request.QueryString["ID"] != null)
+                lengthFeedback.Visible = false;
+                messageFeedback.Visible = false;
+
+                HttpCookie userCookie = Request.Cookies["UserNickname"];
+
+                if (userCookie != null)
+                    SiteMaster.loadCookie(userCookie);
+
+                if (Session["UserNickname"] == null)
                 {
-                    new MessageDAC();
-                    MessageBE message = MessageDAC.getMessage(int.Parse(Request.QueryString["ID"]));
+                    Response.Redirect("Login.aspx");
+                }
 
-                    UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
-                    UserBE currentUser = new UserBE(user1.getUserByNick());
-
-                    if (currentUser.Email != "" && currentUser.Email != null && message.Sender != null && message.Addressee != null)
+                else if (!Page.IsPostBack)
+                {
+                    if (Request.QueryString["ID"] != null)
                     {
-                        if (message.Sender.Email == currentUser.Email || message.Addressee.Email == currentUser.Email)
+                        new MessageDAC();
+                        MessageBE message = MessageDAC.getMessage(int.Parse(Request.QueryString["ID"]));
+
+                        UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
+                        UserBE currentUser = new UserBE(user1.getUserByNick());
+
+                        if (currentUser.Email != "" && currentUser.Email != null && message.Sender != null && message.Addressee != null)
                         {
-                            DataSet d = new DataSet();
-                            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
-                            SqlConnection c = new SqlConnection(s);
-                            SqlDataAdapter da = new SqlDataAdapter("SELECT u1.nickname AS Sender, u2.nickname as Addressee, SUBSTRING(body, 1, 30) as Body, date as Date, code as Code, isRead as IsRead " +
-                                "FROM message, users u1, users u2 WHERE convers_code = " + message.ConversCode.ToString() + "AND code < " + message.code.ToString() +
-                                " AND u1.email = sender AND u2.email = addressee ORDER BY code ASC", c);
-                            da.Fill(d, "message");
+                            if (message.Sender.Email == currentUser.Email || message.Addressee.Email == currentUser.Email)
+                            {
+                                gridBefore.DataSource = message.showConversation("Before");
+                                gridBefore.DataBind();
 
-                            gridBefore.DataSource = d;
-                            gridBefore.DataBind();
+                                gridAfter.DataSource = message.showConversation("After");
+                                gridAfter.DataBind();
 
-                            d = new DataSet();
-                            da = new SqlDataAdapter("SELECT u1.nickname AS Sender, u2.nickname as Addressee, SUBSTRING(body, 1, 30) as Body, date as Date, code as Code, isRead as IsRead " +
-                                "FROM message, users u1, users u2 WHERE convers_code = " + message.ConversCode.ToString() + "AND code > " + message.code.ToString() +
-                                " AND u1.email = sender AND u2.email = addressee ORDER BY code ASC", c);
-                            da.Fill(d, "message");
+                                EmisorM.Text = "From:  " + message.Sender.Nickname;
+                                ReceptorM.Text = "To:  " + message.Addressee.Nickname;
+                                FechaM.Text = "Date:  " + message.Date.ToString();
+                                AsuntoM.Text = message.Subject;
+                                TextoM.Text = message.Message;
 
-                            gridAfter.DataSource = d;
-                            gridAfter.DataBind();
-
-                            c.Close();
-
-                            EmisorM.Text = "From:  " + message.Sender.Nickname;
-                            ReceptorM.Text = "To:  " + message.Addressee.Nickname;
-                            FechaM.Text = "Date:  " + message.Date.ToString();
-                            AsuntoM.Text = message.Subject;
-                            TextoM.Text = message.Message;
-
-                            if (message.Addressee.Email != currentUser.Email)
-                                replyButton.Visible = false;
+                                if (message.Addressee.Email != currentUser.Email)
+                                    replyButton.Visible = false;
+                                else
+                                    message.openMessage();
+                            }
                             else
-                                message.openMessage();
+                            {
+                                ErrorM.Visible = true;
+                                ErrorM.Text = "This one is not one of your messages. You shouldn't be here.";
+                                hideElements();
+                            }
                         }
                         else
                         {
                             ErrorM.Visible = true;
-                            ErrorM.Text = "This one is not one of your messages. You shouldn't be here.";
+                            ErrorM.Text = "This message doesn't exist. You shouldn't be here.";
                             hideElements();
                         }
                     }
                     else
                     {
-                        ErrorM.Visible = true;
-                        ErrorM.Text = "This message doesn't exist. You shouldn't be here.";
-                        hideElements();
+                        Response.Redirect("ProfileMessages.aspx");
                     }
                 }
-                else
-                {
-                    hideElements();
-                }
+            }
+            catch (Exception)
+            {
+                Response.Redirect("Error.aspx");
             }
         }
 
         protected void hideElements()
         {
-            ErrorM.Visible = false;
+            //ErrorM.Visible = false;
             EmisorM.Visible = false;
             ReceptorM.Visible = false;
             FechaM.Visible = false;
@@ -114,11 +106,13 @@ namespace Project_Shode
             lengthFeedback.Visible = false;
             gridAfter.Visible = false;
             gridBefore.Visible = false;
+            Current.Visible = false;
+            Previous.Visible = false;
+            Replies.Visible = false;
         }
 
         protected void grid_RowCommand(int code)
         {
-            new MessageDAC();
             MessageBE message = MessageDAC.getMessage(code);
 
             UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
@@ -167,7 +161,6 @@ namespace Project_Shode
         {
             bool correct = true;
 
-            new MessageDAC();
             MessageBE message = MessageDAC.getMessage(int.Parse(Request.QueryString["ID"]));
             if (message.Sender == null || message.Addressee == null)
             {

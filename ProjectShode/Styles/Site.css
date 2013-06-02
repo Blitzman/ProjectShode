@@ -468,6 +468,31 @@ h3
     color: #FFFFFF;
 }
 
+
+.inboxList
+{
+    color: White;
+    opacity: 0.7;
+    text-decoration: none;
+    text-align: center;
+    vertical-align:middle;
+    font-family:Segoe UI;
+}
+
+.inboxList:hover
+{
+    opacity: 1.0
+}
+
+.showMessage
+{
+    margin: 10px 10px 0px 0px;
+    padding: 10px 10px 10px 10px;
+    vertical-align:middle;
+    font-family:Segoe UI;
+}
+
+
 .colorPass1
 {
     color:#FFFFFF;

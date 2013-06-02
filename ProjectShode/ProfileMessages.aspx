@@ -14,7 +14,7 @@ CodeBehind="ProfileMessages.aspx.cs" Inherits="Project_Shode.ProfileMessages" %>
     <section id="profileSection">
         <asp:GridView ID="gridResults" runat="server" CellPadding="5" CellSpacing="5" ForeColor="White"
          BackColor="#24242C" Width="640px" AllowPaging="true" PageSize="10" PagerSettings-Mode="NumericFirstLast"
-         OnPageIndexChanging="resultsPageChanging" EmptyDataText="You don't have received messages!" OnRowCommand="gridResults_RowCommand">
+         OnPageIndexChanging="resultsPageChanging" EmptyDataText="You don't have messages!" OnRowCommand="gridResults_RowCommand">
          <Columns>
             <asp:HyperLinkField headertext="Open" ItemStyle-CssClass="inboxList" DataTextField="isRead"
               DataTextFormatString="<img src='Images/Messages/{0}.png'/>" 

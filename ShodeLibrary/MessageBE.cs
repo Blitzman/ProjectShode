@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Data;
+using System.Data.Common;
+
 /*
  * Task performed by Pablo
  */
@@ -98,29 +101,16 @@ namespace ShodeLibrary
             }
         }
 
-        /* Shows all the message chain made by replying */
-        public void showConversation()
+        /* Returns a dataset with the message chain before or after this message */
+        public DataSet showConversation(String where)
         {
-            messageDAC.getConversation(this);
-
-            //Show the MessageBE array returned by getConversation.
+            if (where == "Before")
+                return messageDAC.getConversationBefore(this);
+            else
+                return messageDAC.getConversationAfter(this);
         }
 
-
-        /* Show the messages sent by the user passed as parameter */
-        public void showSentMessages(UserBE u)
-        {
-            messageDAC.getMessages(u, null);
-
-            //Show the MessageBE array returned by getMessages.
-        }
-
-        /* Show the messages received by the user passed as parameter */
-        public List<MessageBE> showReceivedMessages(UserBE u)
-        {
-            return messageDAC.getMessages(null, u);
-        }
-
+        /* Generates the code for the following message */
         private static int generateCode()
         {
             int newCode = MessageDAC.getCodeDB("code");
@@ -128,6 +118,7 @@ namespace ShodeLibrary
             return newCode;
         }
 
+        /* If we are not replying, we need to generate a new conversation code */
         private static int generateConversCode()
         {
             int newCode = MessageDAC.getCodeDB("convers_code");

@@ -22,6 +22,15 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label AsuntoM;
         
         /// <summary>
+        /// Control Previous.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Previous;
+        
+        /// <summary>
         /// Control gridBefore.
         /// </summary>
         /// <remarks>
@@ -40,13 +49,13 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label ErrorM;
         
         /// <summary>
-        /// Control Label1.
+        /// Control Current.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label Current;
         
         /// <summary>
         /// Control EmisorM.
@@ -85,6 +94,15 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label TextoM;
         
         /// <summary>
+        /// Control Label1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
         /// Control replyButton.
         /// </summary>
         /// <remarks>
@@ -92,6 +110,15 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button replyButton;
+        
+        /// <summary>
+        /// Control Label2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
         /// Control textmessage.
@@ -128,6 +155,15 @@ namespace Project_Shode {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lengthFeedback;
+        
+        /// <summary>
+        /// Control Replies.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Replies;
         
         /// <summary>
         /// Control gridAfter.

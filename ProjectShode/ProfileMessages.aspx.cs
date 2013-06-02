@@ -8,8 +8,6 @@ using System.Configuration;
 
 using System.Data;
 using System.Data.Common;
-using System.Data.SqlClient;
-using System.Data.SqlTypes;
 
 using ShodeLibrary;
 
@@ -90,85 +88,59 @@ namespace Project_Shode
         {
             String order = "code DESC";
             if (Request.QueryString["Order"] == "sender" && Request.QueryString["Box"] == "In")
-            {
                 order = "sender ASC, code DESC";
-            }
             else if (Request.QueryString["Order"] == "addressee" && Request.QueryString["Box"] == "Out")
-            {
                 order = "addressee ASC, code DESC";
-            }
             else if (Request.QueryString["Order"] == "isread")
-            {
                 order = "isread ASC, code DESC";
-            }
             else if (Request.QueryString["Order"] == "code_ASC")
-            {
                 order = "code ASC";
-            }
 
             UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
             UserBE currentUser = new UserBE(user1.getUserByNick());
 
-            DataSet d = new DataSet();
-            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
-            SqlConnection c = new SqlConnection(s);
-            SqlDataAdapter da = new SqlDataAdapter("SELECT nickname as Sender, issue as Subject, date as Date, code as Code, isRead as IsRead FROM message, users WHERE addressee = '" +
-                currentUser.Email + "' AND deleted_reader = 0 AND email = sender ORDER BY " + order, c);
-
+            DataSet d;
             if (Request.QueryString["Box"] == "Out")
             {
-                da = new SqlDataAdapter("SELECT nickname as Addressee, issue as Subject, date as Date, code as Code, isRead as IsRead FROM message, users WHERE sender = '" +
-                currentUser.Email + "' AND deleted_sender = 0 AND email = addressee ORDER BY " + order, c);
+                d = MessageDAC.getSentMessages(currentUser, order);
             }
-            da.Fill(d, "message");
+            else
+            {
+                d = MessageDAC.getReceivedMessages(currentUser, order);
+            }
 
             gridResults.DataSource = d;
             gridResults.DataBind();
-            c.Close();
         }
 
         protected void resultsPageChanging(object sender, GridViewPageEventArgs e)
         {
             String order = "code DESC";
-
             if (Request.QueryString["Order"] == "sender" && Request.QueryString["Box"] == "In")
-            {
-                order = "sender ASC";
-            }
+                order = "sender ASC, code DESC";
             else if (Request.QueryString["Order"] == "addressee" && Request.QueryString["Box"] == "Out")
-            {
-                order = "addressee DESC";
-            }
+                order = "addressee ASC, code DESC";
             else if (Request.QueryString["Order"] == "isread")
-            {
-                order = "isread ASC";
-            }
+                order = "isread ASC, code DESC";
             else if (Request.QueryString["Order"] == "code_ASC")
-            {
                 order = "code ASC";
-            }
 
             UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
             UserBE currentUser = new UserBE(user1.getUserByNick());
 
-            DataSet d = new DataSet();
-            String s = ConfigurationManager.ConnectionStrings["ShodeDDBB"].ToString();
-            SqlConnection c = new SqlConnection(s);
-
-            SqlDataAdapter da = new SqlDataAdapter("SELECT nickname as Sender, issue as Subject, date as Date, code AS Code, isRead as IsRead FROM message, users WHERE addressee = '" +
-                        currentUser.Email + "' AND deleted_reader = 0 AND email = sender ORDER BY " + order, c);
-
+            DataSet d;
             if (Request.QueryString["Box"] == "Out")
             {
-                da = new SqlDataAdapter("SELECT nickname as Addressee, issue as Subject, date as Date, code as Code, isRead as IsRead FROM message, users WHERE sender = '" +
-                currentUser.Email + "' AND deleted_sender = 0 AND email = addressee ORDER BY " + order, c);
+                d = MessageDAC.getSentMessages(currentUser, order);
+            }
+            else
+            {
+                d = MessageDAC.getReceivedMessages(currentUser, order);
             }
 
-            da.Fill(d, "message");
             gridResults.PageIndex = e.NewPageIndex;
             gridResults.DataSource = d;
             gridResults.DataBind();
-            c.Close();
         }
 
         protected void gridResults_RowCommand(Object sender, GridViewCommandEventArgs e)
@@ -183,7 +155,6 @@ namespace Project_Shode
             TableCell codeCell = selectedRow.Cells[6];
             int code = int.Parse(codeCell.Text);
 
-            new MessageDAC();
             MessageBE message = MessageDAC.getMessage(code);
 
             if (e.CommandName == "View")

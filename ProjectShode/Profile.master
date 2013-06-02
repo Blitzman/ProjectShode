@@ -14,14 +14,14 @@
     <section id="menuSection">
        <asp:Menu ID="MenuProfile" runat="server" Orientation="vertical">
              <Items>
-                 <asp:MenuItem Text="Get More Credits!!!" Value="Credits" ImageUrl="~/Images/i.png" NavigateUrl="ProfileCredits.aspx"></asp:MenuItem>
+                  <asp:MenuItem Text="Get More Credits!!!" Value="Credits" ImageUrl="~/Images/credits.png" NavigateUrl="ProfileCredits.aspx"></asp:MenuItem>
                  <asp:MenuItem Text="Resume" Value="Resume" ImageUrl="~/Images/i.png" NavigateUrl="ProfileMy.aspx"></asp:MenuItem>
-                 <asp:MenuItem Text="My Contributions" Value="Contributions" ImageUrl="~/Images/i.png" NavigateUrl="ProfileContributions.aspx"></asp:MenuItem>
-                 <asp:MenuItem Text="My Developments" Value="Developments" ImageUrl="~/Images/i.png" NavigateUrl="ProfileDevelopments.aspx"></asp:MenuItem>
-                 <asp:MenuItem Text="My Favourites" Value="Interests" ImageUrl="~/Images/i.png" NavigateUrl="ProfileFavourites.aspx"></asp:MenuItem>
-                 <asp:MenuItem Text="Inbox" Value="Inbox" ImageUrl="~/Images/i.png" NavigateUrl="ProfileMessages.aspx?Box=In"></asp:MenuItem>
-                 <asp:MenuItem Text="Outbox" Value="Outbox" ImageUrl="~/Images/i.png" NavigateUrl="ProfileMessages.aspx?Box=Out"></asp:MenuItem>
-                 <asp:MenuItem Text="New Private Message" Value="Inbox" ImageUrl="~/Images/i.png" NavigateUrl="ProfileCompose.aspx"></asp:MenuItem>
+                 <asp:MenuItem Text="My Contributions" Value="Contributions" ImageUrl="~/Images/profile_contributions.png" NavigateUrl="ProfileContributions.aspx"></asp:MenuItem>
+                 <asp:MenuItem Text="My Developments" Value="Developments" ImageUrl="~/Images/profile_developments.png" NavigateUrl="ProfileDevelopments.aspx"></asp:MenuItem>
+                 <asp:MenuItem Text="My Favourites" Value="Interests" ImageUrl="~/Images/star2.png" NavigateUrl="ProfileFavourites.aspx"></asp:MenuItem>
+                 <asp:MenuItem Text="Inbox" Value="Inbox" ImageUrl="~/Images/Messages/inbox.png" NavigateUrl="ProfileMessages.aspx?Box=In"></asp:MenuItem>
+                 <asp:MenuItem Text="Outbox" Value="Outbox" ImageUrl="~/Images/Messages/outbox.png" NavigateUrl="ProfileMessages.aspx?Box=Out"></asp:MenuItem>
+                 <asp:MenuItem Text="New Private Message" Value="Inbox" ImageUrl="~/Images/Messages/write.png" NavigateUrl="ProfileCompose.aspx"></asp:MenuItem>
              </Items>
        </asp:Menu>
     </section>
