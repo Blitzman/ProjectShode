@@ -24,7 +24,7 @@ namespace ShodeLibrary
         {
             contributor = new UserBE();
             project = new ProjectBE();
-            amount = 0.0f;
+            amount = 0;
             date = DateTime.Now;
         }
 
@@ -37,7 +37,7 @@ namespace ShodeLibrary
         /// <param name="project">The destination project of the contribution</param>
         /// <param name="amount">The amount of credits contributed.</param>
         /// <param name="date">The date when the contribution was made.</param>
-        public ContributionBE(UserBE contributor, ProjectBE project, float amount, DateTime date)
+        public ContributionBE(UserBE contributor, ProjectBE project, int amount, DateTime date)
         {
             this.contributor = contributor;
             this.project = project;
@@ -110,7 +110,7 @@ namespace ShodeLibrary
             get { return project; }
             set { project = value; }
         }
-        public float Amount
+        public int Amount
         {
             get { return amount; }
             set { amount = value; }
@@ -126,7 +126,7 @@ namespace ShodeLibrary
         // /////////////////////////////////////////////////////////////////////
         private UserBE contributor;
         private ProjectBE project;
-        private float amount;
+        private int amount;
         private DateTime date;
     }
 }

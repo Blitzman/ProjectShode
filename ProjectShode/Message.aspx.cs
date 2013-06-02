@@ -38,7 +38,7 @@ namespace Project_Shode
                     new MessageDAC();
                     MessageBE message = MessageDAC.getMessage(int.Parse(Request.QueryString["ID"]));
 
-                    UserBE user1 = new UserBE("", "", "", "", "", Session["UserNickname"].ToString(), "");
+                    UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
                     UserBE currentUser = new UserBE(user1.getUserByNick());
 
                     if (currentUser.Email != "" && currentUser.Email != null && message.Sender != null && message.Addressee != null)
@@ -121,7 +121,7 @@ namespace Project_Shode
             new MessageDAC();
             MessageBE message = MessageDAC.getMessage(code);
 
-            UserBE user1 = new UserBE("", "", "", "", "", Session["UserNickname"].ToString(), "");
+            UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
             UserBE currentUser = new UserBE(user1.getUserByNick());
             message.removeMessage(currentUser);
 

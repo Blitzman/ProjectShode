@@ -31,7 +31,7 @@ namespace Project_Shode
             bool correct = true;
 
             if (creditsTextboxProject.Text.Length == 0 ||
-                float.Parse(creditsTextboxProject.Text) > float.Parse(Session["UserCredit"].ToString()))
+                Int32.Parse(creditsTextboxProject.Text) > Int32.Parse(Session["UserCredit"].ToString()))
             {
                 creditsFeedback.Visible = true;
                 correct = false;
@@ -43,7 +43,7 @@ namespace Project_Shode
             {
                 String tittle = tittleProjectTextbox.Text;
                 String description = descriptionTextbox.Text;
-                UserBE user1 = new UserBE("", "", "", "", "", Session["UserNickname"].ToString(), "");
+                UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
                 UserBE creator = new UserBE(user1.getUserByNick());
                 int code = -1;
                 DateTime creation = DateTime.Now;
@@ -54,14 +54,19 @@ namespace Project_Shode
                 
                 //Update the UserBE credits and also the Sessión value.
                 String currentCredits = Session["UserCredit"].ToString();
-                Session["UserCredit"]=float.Parse(currentCredits)-credit;
-                creator.Credit = float.Parse(currentCredits)-credit;
+                Session["UserCredit"]=Int32.Parse(currentCredits)-credit;
+                creator.Credit = Int32.Parse(currentCredits)-credit;
                 creator.update();
 
                 ProjectBE crProject = new ProjectBE(tittle, description, creator, code,
                     creation, expires, credit, credit, version, gitDir);
 
                 crProject.create();
+
+                crProject.Code = crProject.getLastCode();
+
+                ContributionBE contribution = new ContributionBE(creator, crProject, credit, DateTime.Now);
+                contribution.create();
 
                 creationFeedback.Text = "Project created successfully!";
                 creationFeedback.ForeColor = System.Drawing.Color.Green;

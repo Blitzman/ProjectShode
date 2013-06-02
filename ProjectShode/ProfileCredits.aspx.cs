@@ -25,7 +25,7 @@ namespace Project_Shode
         protected void addCredits(object sender, EventArgs e)
         {
             Button b = sender as Button;
-            float credits = float.Parse(b.CommandArgument.ToString());
+            int credits = Int32.Parse(b.CommandArgument.ToString());
 
             UserBE user = new UserBE();
             user.Nickname = Session["UserNickname"].ToString();

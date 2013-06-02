@@ -37,18 +37,15 @@ namespace Project_Shode
                 LogInMotivator.Visible = true;
             }
 
-            ProjectDAC projects = new ProjectDAC();
-            totalProjects.Text = projects.getTotalProjects().ToString();
-            totalCredits.Text = projects.getTotalCreditsInProjects().ToString();
-            DevelopmentDAC developments = new DevelopmentDAC();
-            totalDevelopments.Text = developments.getTotalDevelopments().ToString();
-            ContributionDAC contributions = new ContributionDAC();
-            totalContributions.Text = contributions.getTotalContributions().ToString();
+            totalProjects.Text = StatisticalSingleton.Instance.getTotalProjects().ToString();
+            totalCredits.Text = StatisticalSingleton.Instance.getTotalCreditsInProjects().ToString();
+            totalDevelopments.Text = StatisticalSingleton.Instance.getTotalDevelopments().ToString();
+            totalContributions.Text = StatisticalSingleton.Instance.getTotalContributions().ToString();
         }
 
        public static void loadCookie(HttpCookie userCookie)
         {
-            UserBE user1 = new UserBE("", "", "", "", "", userCookie.Value, "");
+            UserBE user1 = new UserBE("", 0, "", "", userCookie.Value, "");
             UserBE user = new UserBE(user1.getUserByNick());
 
             HttpContext.Current.Session["UserNickname"] = user.Nickname;

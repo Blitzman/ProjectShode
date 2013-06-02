@@ -41,7 +41,7 @@ namespace Project_Shode
             }
             else
             {
-                UserBE user1 = new UserBE("", "", "", "", "", textuserdest.Text, "");
+                UserBE user1 = new UserBE("", 0, "", "", textuserdest.Text, "");
                 UserBE dest = new UserBE(user1.getUserByNick());
 
                 if (dest.Email == "")
@@ -74,10 +74,10 @@ namespace Project_Shode
                 String message = textmessage.Text;
                 DateTime date = DateTime.Now;
 
-                UserBE user1 = new UserBE("", "", "", "", "", Session["UserNickname"].ToString(), "");
+                UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
                 UserBE sender1 = new UserBE(user1.getUserByNick());
 
-                user1 = new UserBE("", "", "", "", "", textuserdest.Text, "");
+                user1 = new UserBE("", 0, "", "", textuserdest.Text, "");
                 UserBE addressee = new UserBE(user1.getUserByNick());
 
                 MessageBE sndMessage = new MessageBE(sender1, addressee, date, subject, message);

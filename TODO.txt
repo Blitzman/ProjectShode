@@ -1,15 +1,17 @@
 - Handle database (no-sql) exception, handle all exceptions.
-- Credits should be INT not FLOATS.
+- (DONE) Credits should be INT not FLOATS.
 - Use of LINQ.
 - Report.
 - Adjust CSS to fit Twitter box.
 - Comment the rest of the files.
-- Categories and project comments.
+- Categories in projects.
+- (DONE) Project comments.
 - Projects Development
 - Email notification
-- Augment varchar digits in Message so that time also fits.
-- Password security y singleton
-- Complete CommentBE and CommentDAC
+- (DONE) Augment varchar digits in Message so that time also fits.
+- (DONE) Password security
+- Singleton class
+- (DONE) Complete CommentBE and CommentDAC
 - Give funcionality to the DEVELOP link at project profiles.
 - Searchs "empty entry": error or show ALL?
-- Fix contributions: does not create more than one entry per project/user/date (with no time!)
+- (DONE) Fix contributions: does not create more than one entry per project/user/date (with no time!)

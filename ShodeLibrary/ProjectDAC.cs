@@ -5,6 +5,9 @@ using System.Text;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data.Common;
+using System.Data.SqlTypes;
+using System.Data;
 
 namespace ShodeLibrary
 {
@@ -244,12 +247,88 @@ namespace ShodeLibrary
             return amount;
         }
 
-        // Not used yet
+        /// <summary>
+        /// All Projects Getter.
+        /// Gets a list with all the projects in the database.
+        /// </summary>
+        /// <returns>The project list.</returns>
         public List<ProjectBE> getAllProjects ()
         {
             List<ProjectBE> projects = new List<ProjectBE>();
-            // Do Stuff here (Query)
+
+            ProjectBE project = new ProjectBE();
+
+            SqlConnection c = new SqlConnection(connection);
+
+            try
+            {
+                c.Open();
+
+                SqlCommand com = new SqlCommand("SELECT * FROM projects", c);
+
+                SqlDataReader dr = com.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    project.Code = Int32.Parse(dr["code"].ToString());
+                    project.Title = dr["title"].ToString();
+                    project.Description = dr["description"].ToString();
+                    project.CreationDate = DateTime.ParseExact(dr["creation_date"].ToString(), "dd/MM/yyyy", null);
+                    project.ExpirationDate = DateTime.ParseExact(dr["deadline"].ToString(), "dd/MM/yyyy", null);
+                    project.State = (ProjectState)Int32.Parse(dr["state"].ToString());
+                    project.Credit = Int32.Parse(dr["total_bank"].ToString());
+                    project.GitDir = dr["gitdir"].ToString();
+                    project.Creator = new UserBE();
+                    project.Creator.Email = dr["creator"].ToString();
+                    projects.Add(project);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
+            }
+
             return projects;
+        }
+
+        /// <summary>
+        /// Last Code Getter.
+        /// Gets the last inserted code.
+        /// </summary>
+        /// <returns>The last inserted code.</returns>
+        public int lastCode()
+        {
+            int lastCode = 0;
+
+            SqlConnection c = new SqlConnection(connection);
+
+            try
+            {
+                c.Open();
+                SqlCommand com = new SqlCommand("SELECT MAX(code) last_id FROM projects", c);
+
+                SqlDataReader dr = com.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    if (dr["last_id"].ToString() != "")
+                        lastCode = Int32.Parse(dr["last_id"].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                // Show message box
+            }
+            finally
+            {
+                c.Close();
+            }
+
+            return lastCode;
         }
 
         // Not used yet

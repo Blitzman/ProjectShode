@@ -106,6 +106,7 @@ namespace ShodeLibrary
         }
 
         /// <summary>
+        /// By Code Fetcher.
         /// Uses the data access component to fetch a determined
         /// project from the database using the code of the
         /// current project.
@@ -115,6 +116,17 @@ namespace ShodeLibrary
         {
             ProjectDAC projectDAC = new ProjectDAC();
             return projectDAC.getProject(this.code);
+        }
+
+        /// <summary>
+        /// Last Code Getter.
+        /// Gets the last created project code.
+        /// </summary>
+        /// <returns>The last project code.</returns>
+        public int getLastCode()
+        {
+            ProjectDAC projectDAC = new ProjectDAC();
+            return projectDAC.lastCode();
         }
 
         // /////////////////////////////////////////////////////////////////////

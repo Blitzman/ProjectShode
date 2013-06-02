@@ -106,7 +106,7 @@ namespace Project_Shode
                 order = "code ASC";
             }
 
-            UserBE user1 = new UserBE("", "", "", "", "", Session["UserNickname"].ToString(), "");
+            UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
             UserBE currentUser = new UserBE(user1.getUserByNick());
 
             DataSet d = new DataSet();
@@ -148,7 +148,7 @@ namespace Project_Shode
                 order = "code ASC";
             }
 
-            UserBE user1 = new UserBE("", "", "", "", "", Session["UserNickname"].ToString(), "");
+            UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
             UserBE currentUser = new UserBE(user1.getUserByNick());
 
             DataSet d = new DataSet();
@@ -213,7 +213,7 @@ namespace Project_Shode
 
             if (e.CommandName == "Delete")
             {
-                UserBE user1 = new UserBE("", "", "", "", "", Session["UserNickname"].ToString(), "");
+                UserBE user1 = new UserBE("", 0, "", "", Session["UserNickname"].ToString(), "");
                 UserBE currentUser = new UserBE(user1.getUserByNick());
                 message.removeMessage(currentUser);
 

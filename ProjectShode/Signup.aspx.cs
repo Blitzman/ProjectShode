@@ -40,7 +40,7 @@ namespace Project_Shode
             email = Email.Text;
             gender = MaleFemale.SelectedValue.ToString();
 
-            UserBE usuario = new UserBE(name, lastName, " ", " ", email, userName, password);
+            UserBE usuario = new UserBE(name, 0, lastName, email, userName, password);
             resultLabel.Text = usuario.create();
 
             if (resultLabel.Text == "The user has been succesfully created!" && AsyncFileUpload1.FileName!="")

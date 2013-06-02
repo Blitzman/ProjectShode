@@ -24,26 +24,30 @@ namespace ShodeLibrary
         public UserBE()
         {
             name = "";
+            credit = 0;
             lastName = "";
             email = "";
             nickname = "";
             password = "";
         }
 
+
         /// <summary>
         /// Auxiliary Constructor.
         /// Creates a new UserBE filling all the fields with the specified values.
         /// </summary>
-        /// <param name="name">The actual name of the user.</param>
-        /// <param name="lastName">The surname of the user.</param>
-        /// <param name="email">The mail address of the user.</param>
-        /// <param name="nickname">The username or nickname of the user.</param>
+        /// <param name="name">The user name.</param>
+        /// <param name="credit">The amount of credits the user has.</param>
+        /// <param name="lastName">The last name of the user.</param>
+        /// <param name="email">The mail of the user.</param>
+        /// <param name="nickname">The user nickname.</param>
         /// <param name="password">The user password.</param>
-        public UserBE(string name, string lastName, string address,
-                        string zipcode, string email, string nickname,
+        public UserBE(string name, int credit, string lastName,
+                        string email, string nickname,
                         string password)
         {
             this.name = name;
+            this.credit = credit;
             this.lastName = lastName;
             this.email = email;
             this.nickname = nickname;
@@ -275,7 +279,7 @@ namespace ShodeLibrary
             get { return password; }
             set { password = value; }
         }
-        public float Credit
+        public int Credit
         {
             get { return credit; }
             set { credit = value; }
@@ -290,7 +294,7 @@ namespace ShodeLibrary
         private string nickname;
         private string profilePicture;
         private string password;
-        private float credit;
+        private int credit;
 
 
         //Constants for the criptography of the passwords
