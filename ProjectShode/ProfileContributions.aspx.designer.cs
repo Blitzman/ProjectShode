@@ -22,12 +22,12 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Label Contributions;
         
         /// <summary>
-        /// Control ContributionsList.
+        /// Control gridContr.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.BulletedList ContributionsList;
+        protected global::System.Web.UI.WebControls.GridView gridContr;
     }
 }

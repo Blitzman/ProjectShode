@@ -24,7 +24,7 @@
                                   <tr>
                                     <td>
                                         <asp:Twitter ID="TwitterProfile" runat="server" Mode="Profile"  
-                                            ScreenName="ginesalicante" IsLiveContentOnDesignMode="True" Count="25">
+                                            ScreenName="_yayan24" IsLiveContentOnDesignMode="True" Count="25">
                                         </asp:Twitter>
                                     </td>
                                </tr>  
