@@ -24,10 +24,10 @@
             WatermarkText="Being creative will catch developers attention.">
         </asp:TextBoxWatermarkExtender>
 
-         <asp:RequiredFieldValidator ID="tittleRequired" runat="server" ControlToValidate="tittleProjectTextbox"
+         <asp:RequiredFieldValidator ID="tittleRequired" runat="server" ControlToValidate="tittleProjectTextbox" ForeColor="#C36464"
              ErrorMessage="Tittle is required" ValidationGroup="creation"></asp:RequiredFieldValidator>
          <asp:RegularExpressionValidator ID="tittleCorrectness" runat="server" ControlToValidate="tittleProjectTextbox"
-             ValidationExpression="^(?!\s*$)(?![,.]*$)(?![-a-zA-Z0-9]{20,}$)[a-zA-Z0-9,.\s]{1,64}"
+             ValidationExpression="^(?!\s*$)(?![,.]*$)(?![-a-zA-Z0-9]{20,}$)[a-zA-Z0-9,.\s]{1,64}" ForeColor="#C36464"
              ErrorMessage="Title is not correct. Max: 64" ValidationGroup="creation"></asp:RegularExpressionValidator>
     </section>
     
@@ -46,9 +46,9 @@
         </asp:TextBoxWatermarkExtender>
         
         <asp:RegularExpressionValidator ID="maxlengthDescription" runat="server" ControlToValidate="descriptionTextbox"
-            ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_.!:,.\s]{1,1000}" 
+            ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_.!:,.\s]{1,1000}" ForeColor="#C36464"
             ErrorMessage="Description is not correct. Max: 1000." ValidationGroup="creation"></asp:RegularExpressionValidator>
-         <asp:RequiredFieldValidator ID="descriptionRequired" runat="server" ControlToValidate="descriptionTextbox"
+         <asp:RequiredFieldValidator ID="descriptionRequired" runat="server" ControlToValidate="descriptionTextbox" ForeColor="#C36464"
             ErrorMessage="Description is required" ValidationGroup="creation"></asp:RequiredFieldValidator>
     </section>
     
@@ -85,7 +85,7 @@
             WatermarkText="More than 100 credits">
         </asp:TextBoxWatermarkExtender>
 
-        <asp:RegularExpressionValidator ID="checkCredtis" runat="server" Display=Static 
+        <asp:RegularExpressionValidator ID="checkCredtis" runat="server" Display=Static  ForeColor="#C36464"
              ErrorMessage="New projects must start with at least 100 credits." ControlToValidate="creditsTextboxProject" 
              ValidationExpression="\d{2}\d+" ValidationGroup="creation"></asp:RegularExpressionValidator>
 

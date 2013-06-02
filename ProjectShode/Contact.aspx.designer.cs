@@ -76,13 +76,22 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.TextBox textname;
         
         /// <summary>
-        /// Control nameFeedback.
+        /// Control NameRequired.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label nameFeedback;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NameRequired;
+        
+        /// <summary>
+        /// Control NameCorrectness.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator NameCorrectness;
         
         /// <summary>
         /// Control email.
@@ -103,31 +112,22 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.TextBox textemail;
         
         /// <summary>
-        /// Control RegularExpressionValidator1.
+        /// Control emailRequired.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator emailRequired;
         
         /// <summary>
-        /// Control emailFeedback.
+        /// Control emailCorrectness.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label emailFeedback;
-        
-        /// <summary>
-        /// Control correctEmail.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label correctEmail;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator emailCorrectness;
         
         /// <summary>
         /// Control SubjectLabel.
@@ -148,13 +148,22 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.TextBox textsubject;
         
         /// <summary>
-        /// Control subjectFeedback.
+        /// Control subjectRequired.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label subjectFeedback;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator subjectRequired;
+        
+        /// <summary>
+        /// Control subjectCorrectness.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator subjectCorrectness;
         
         /// <summary>
         /// Control BodyLabel.
@@ -175,6 +184,24 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.TextBox textmessage;
         
         /// <summary>
+        /// Control bodyRequired.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator bodyRequired;
+        
+        /// <summary>
+        /// Control maxlengthBody.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator maxlengthBody;
+        
+        /// <summary>
         /// Control sendButton.
         /// </summary>
         /// <remarks>
@@ -184,30 +211,12 @@ namespace Project_Shode {
         protected global::System.Web.UI.WebControls.Button sendButton;
         
         /// <summary>
-        /// Control messageFeedback.
+        /// Control feedback.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label messageFeedback;
-        
-        /// <summary>
-        /// Control lengthFeedback.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lengthFeedback;
-        
-        /// <summary>
-        /// Control Label1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label feedback;
     }
 }

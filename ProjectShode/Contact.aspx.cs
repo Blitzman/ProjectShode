@@ -14,61 +14,15 @@ namespace Project_Shode
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            nameFeedback.Visible = false;
-            emailFeedback.Visible = false;
-            subjectFeedback.Visible = false;
-            messageFeedback.Visible = false;
-            lengthFeedback.Visible = false;
-            Label1.Visible = false;
-            correctEmail.Visible = false;
+            feedback.Visible = false;
         }
 
-        protected void contact(object sender, EventArgs e)
-        {
-            bool correct = true;
-
-            if (textname.Text.Length == 0)
-            {
-                correct = false;
-                nameFeedback.Visible = true;
-            }
-
-            if (textemail.Text.Length == 0)
-            {
-                correct = false;
-                emailFeedback.Visible = true;
-            }
-
-            if (textsubject.Text.Length == 0)
-            {
-                correct = false;
-                subjectFeedback.Visible = true;
-            }
-
-            if (textmessage.Text.Length == 0)
-            {
-                messageFeedback.Visible = true;
-                correct = false;
-            }
-            else if (textmessage.Text.Length > 1000)
-            {
-                lengthFeedback.Visible = true;
-                lengthFeedback.Text = "The message is too long! Delete " + (textmessage.Text.Length - 1000).ToString() + " characters.";
-                correct = false;
-            }
-
-            if (correct)
-            {
-                SendMail();
-            }
-
-        }
-
-        protected void SendMail()
+        protected void SendMail(object sender, EventArgs e)
         {
             MailMessage mm = new MailMessage("remitente@gmail.com", "projectshode@gmail.com");
-            mm.Subject = textmessage.Text;
-            mm.Body = "Name: " + textname.Text + "<br /><br />Email: " + textemail.Text + "<br />" + textmessage.Text;
+            mm.Subject = textsubject.Text.ToString();
+            mm.Body = "Name: " + textname.Text.ToString() + "<br /><br />Email: " + textemail.Text.ToString() +
+                "<br /><br />Subject: " + textsubject.Text.ToString() + "<br /><br />Body: " + textmessage.Text.ToString();
 
             try
             {
@@ -83,11 +37,11 @@ namespace Project_Shode
                 smtp.Credentials = NetworkCred;
                 smtp.Port = 587;
                 smtp.Send(mm);
-                Label1.Visible = true;
+                feedback.Visible = true;
             }
             catch (Exception ex)
             {
-                Label1.Text = "Message not sended. Try again, please.";
+                feedback.Text = "Message not sended. Try again, please.";
             }
 
         }
