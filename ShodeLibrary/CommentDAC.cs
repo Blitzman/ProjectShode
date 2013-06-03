@@ -43,21 +43,8 @@ namespace ShodeLibrary
         /// Inserts the given comment in the database.
         /// </summary>
         /// <param name="comment">The comment to be inserted.</param>
-        public void insertComment(CommentBE comment)
-        {
-            SqlConnection c = new SqlConnection(connection);
-            c.Open();
-            SqlCommand com;
-            com = new SqlCommand("Insert into comments (project, usr, date, comment)" +
-                "values ('" + comment.Project.Code + "', '" + comment.Writer.Email + "', '" +
-                comment.Date.ToString("G") + "', '" + comment.Content + "')", c);
-
-            com.ExecuteNonQuery();
-            c.Close();
-        }
-
-        /* /// <returns>A string which contains an error/success message.</returns> */
-        /*public string insertComment (CommentBE comment) {
+        /// <returns>A string which contains an error/success message.</returns> */
+        public string insertComment (CommentBE comment) {
             String result = "The comment has been successfully added!";
             SqlConnection c = new SqlConnection(connection);
             try
@@ -83,7 +70,7 @@ namespace ShodeLibrary
                 com.Parameters.Add(project);
                 com.Parameters.Add(usr);
                 com.Parameters.Add(date);
-                com.Parameters.Add(comment);
+                com.Parameters.Add(content);
 
                 com.ExecuteNonQuery();
             }
@@ -102,7 +89,7 @@ namespace ShodeLibrary
             }
 
             return result;
-        }*/
+        }
 
         /*
          * It returns a comment given a code. If the code

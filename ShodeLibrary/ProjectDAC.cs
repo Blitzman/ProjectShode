@@ -498,7 +498,8 @@ namespace ShodeLibrary
             SqlConnection c = new SqlConnection(s);
             SqlDataAdapter da = new SqlDataAdapter("Select code, title, nickname, " +
                 " creation_date, total_bank, state from projects, users " +
-                " where total_bank >=(select 0.9*max(total_bank) from projects) and projects.creator=users.email", c);
+                " where total_bank >=(select 0.9*max(total_bank) from projects) and projects.creator=users.email"+
+                " order by total_bank DESC", c);
             da.Fill(d, "projects");
             c.Close();
 

@@ -75,7 +75,6 @@
     <Content Include="ProfileCompose.aspx" />
     <Content Include="ProfileContributions.aspx" />
     <Content Include="ProfileDevelopments.aspx" />
-    <Content Include="ProfileFavourites.aspx" />
     <Content Include="ProfileMessages.aspx" />
     <Content Include="ProfileMy.aspx" />
     <Content Include="ProjectProfile.aspx" />
@@ -241,13 +240,6 @@
     </Compile>
     <Compile Include="ProfileDevelopments.aspx.designer.cs">
       <DependentUpon>ProfileDevelopments.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ProfileFavourites.aspx.cs">
-      <DependentUpon>ProfileFavourites.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProfileFavourites.aspx.designer.cs">
-      <DependentUpon>ProfileFavourites.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProfileMessages.aspx.cs">
       <DependentUpon>ProfileMessages.aspx</DependentUpon>

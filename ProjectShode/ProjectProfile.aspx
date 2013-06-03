@@ -97,7 +97,7 @@ CodeBehind="ProjectProfile.aspx.cs" Inherits="Project_Shode.ProjectProfile" %>
         <asp:RequiredFieldValidator ID="commentTextRequired" runat="server" ControlToValidate="commentProjectText"
         ErrorMessage="Write something!" ValidationGroup="commentValidation"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="commentCorrectness" runat="server" ControlToValidate="commentProjectText"
-        ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_.!:,.\s.]{1,140}" 
+        ValidationExpression="^(?!\s*$)(?![-a-zA-Z0-9]{20,}$)[-a-zA-Z0-9_.!:,'.\s.]{1,140}" 
         ErrorMessage="Message length is not correct. Max: 140." ></asp:RegularExpressionValidator>
     </section>
 </asp:Content>

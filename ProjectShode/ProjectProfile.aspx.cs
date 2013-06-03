@@ -20,7 +20,8 @@ namespace Project_Shode
         protected void Page_Load(object sender, EventArgs e)
         {
             //We need the title and the code. Otherwise the user must be playing with the URL.
-            if (Request.QueryString["ProTitle"] == null || Request.QueryString["Code"] == null)
+            if (Request.QueryString["ProTitle"] == null || Request.QueryString["ProTitle"]==""
+                || Request.QueryString["Code"] == null || Request.QueryString["Code"]=="")
                 Response.Redirect("Error.aspx");
 
             HttpCookie userCookie = Request.Cookies["UserNickname"];
