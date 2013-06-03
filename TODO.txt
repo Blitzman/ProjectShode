@@ -1,9 +1,4 @@
-- Handle database (no-sql) exception, handle all exceptions.
-- Use of LINQ.
-- Report.
-- Adjust CSS to fit Twitter box.
-- Comment the rest of the files.
-- Singleton class
-- CommentDAC "inserComment" with parameters does not work.
+- WE ARE DONE, WEEEE!
+
 - Control what the create development returns so we change the feedback message.
 - Breakline for long words. Long words at the beggining are controlled, but not the rest.
